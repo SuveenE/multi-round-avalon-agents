@@ -1,4 +1,4 @@
-# Avalon Bench Multi-Round
+# Multi-Round Avalon with AI Agents
 
 A dataset of 188 games where LLM agents play [The Resistance: Avalon](#how-a-game-works)—a hidden-role deception game where "good" players try to complete missions while "evil" players secretly sabotage them. Unlike prior work on single-game performance, **our agents play repeated games while retaining memory of previous interactions—who played which roles and how they behaved.** This enables us to study how social dynamics like reputation and trust evolve over time.
 
