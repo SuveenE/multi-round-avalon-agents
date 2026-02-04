@@ -1,0 +1,1040 @@
+{
+  "game_id": "avalon_20251201_052452",
+  "config": {
+    "model": "gpt-5.1",
+    "reasoning_effort": "low",
+    "mission_team_sizes": [
+      2,
+      3,
+      2,
+      3,
+      3
+    ],
+    "num_messages_per_player": 1,
+    "num_players": 5
+  },
+  "players": [
+    {
+      "name": "Alice",
+      "role": "merlin",
+      "is_good": true,
+      "special_knowledge": [
+        "Diana",
+        "Eve"
+      ]
+    },
+    {
+      "name": "Bob",
+      "role": "good",
+      "is_good": true,
+      "special_knowledge": []
+    },
+    {
+      "name": "Charlie",
+      "role": "good",
+      "is_good": true,
+      "special_knowledge": []
+    },
+    {
+      "name": "Diana",
+      "role": "evil",
+      "is_good": false,
+      "special_knowledge": [
+        "Eve"
+      ]
+    },
+    {
+      "name": "Eve",
+      "role": "assassin",
+      "is_good": false,
+      "special_knowledge": [
+        "Diana"
+      ]
+    }
+  ],
+  "missions": [
+    {
+      "mission_number": 1,
+      "proposals": [
+        {
+          "proposal_id": 0,
+          "leader": "Alice",
+          "team_members": [
+            "Alice",
+            "Charlie"
+          ],
+          "reasoning": "Early mission 1 should stay within the lower-conflict pool and avoid overfitting to anyone\u2019s reads. Alice + Charlie is a broadly acceptable compromise: it keeps things simple, aligns with multiple players\u2019 slight preferences (Bob and Eve explicitly, Charlie conditionally), and avoids immediately pairing the two most spotlighted players (Alice and Bob). This gives us a clean baseline read for future comparisons without committing too hard to any single narrative this early.",
+          "thinking_time": 3.364219903945923,
+          "reasoning_content": null,
+          "votes": [
+            {
+              "player": "Alice",
+              "vote": "approve",
+              "comment": "Early 2-player mission within the lower-suspicion pool; reasonable low-risk baseline for Mission 1.",
+              "thinking_time": 3.125730037689209,
+              "reasoning_content": null
+            },
+            {
+              "player": "Bob",
+              "vote": "approve",
+              "comment": "Matches my stated preference for Alice+Charlie as a low-conflict, informative Mission 1 without overcommitting to any read.",
+              "thinking_time": 1.775028944015503,
+              "reasoning_content": null
+            },
+            {
+              "player": "Charlie",
+              "vote": "approve",
+              "comment": "I\u2019m on the team so it guarantees at least one good, and an early 2-player mission with Alice gives us useful alignment info on her without overcomplicating Mission 1.",
+              "thinking_time": 5.979865074157715,
+              "reasoning_content": null
+            },
+            {
+              "player": "Diana",
+              "vote": "approve",
+              "comment": "Mission 1 is low info anyway; this is a broadly accepted, low-conflict team and I don\u2019t want to overplay resistance to it.",
+              "thinking_time": 2.7961208820343018,
+              "reasoning_content": null
+            },
+            {
+              "player": "Eve",
+              "vote": "reject",
+              "comment": "I do like keeping it within Alice/Bob/Charlie, but I\u2019m worried that a clean Alice+Charlie result will lock in a very strong trust pair too early with no direct comparison, so I\u2019d rather start with a mix that includes Bob instead.",
+              "thinking_time": 5.333400011062622,
+              "reasoning_content": null
+            }
+          ],
+          "vote_result": "approved"
+        }
+      ],
+      "final_team_index": 0,
+      "discussion": [
+        {
+          "player": "Alice",
+          "content": "For the first mission I\u2019d rather keep it simple and low-risk: I\u2019m happy to go, and I slightly prefer pairing with Bob or Charlie so we can start building some early trust without overcomplicating things. We\u2019ll get better info from a clean-looking team than from trying to be fancy right away.",
+          "timestamp": 0,
+          "global_turn_id": 0,
+          "phase": "discussion",
+          "thinking_time": 2.6976518630981445,
+          "reasoning_content": null
+        },
+        {
+          "player": "Bob",
+          "content": "I\u2019m okay with a simple start too, and I\u2019d slightly prefer Alice + Charlie for Mission 1 so we\u2019re not immediately trusting Alice\u2019s read on me. If people really want me on it, I\u2019m fine going, but I don\u2019t want us to lock in early assumptions without a comparison point.",
+          "timestamp": 1,
+          "global_turn_id": 1,
+          "phase": "discussion",
+          "thinking_time": 2.02852201461792,
+          "reasoning_content": null
+        },
+        {
+          "player": "Charlie",
+          "content": "I like starting with two of Alice/Bob/me, but I slightly prefer Bob + me so we\u2019re not immediately anchoring on Alice\u2019s judgment or giving her early cover if she\u2019s evil. If table prefers Alice + me though, I\u2019d still vote that through for Mission 1.",
+          "timestamp": 2,
+          "global_turn_id": 2,
+          "phase": "discussion",
+          "thinking_time": 2.2533302307128906,
+          "reasoning_content": null
+        },
+        {
+          "player": "Diana",
+          "content": "I\u2019m fine keeping Mission 1 within Alice/Bob/Charlie, and I slightly prefer Alice + Bob so we get a read on how they work together and leave Charlie as a comparison point for Mission 2.",
+          "timestamp": 3,
+          "global_turn_id": 3,
+          "phase": "discussion",
+          "thinking_time": 3.580411195755005,
+          "reasoning_content": null
+        },
+        {
+          "player": "Eve",
+          "content": "I\u2019d rather not start by pairing up the two people (Alice and Bob) everyone\u2019s already circling around, so I slightly prefer Alice + Charlie as a cleaner baseline read and we can bring Bob in next round for comparison. If the table really wants Bob + Charlie though, I\u2019d still approve that as long as we don\u2019t read too much into a single early result.",
+          "timestamp": 4,
+          "global_turn_id": 4,
+          "phase": "discussion",
+          "thinking_time": 4.2590649127960205,
+          "reasoning_content": null
+        }
+      ],
+      "quest_actions": [
+        {
+          "player": "Alice",
+          "action": "success"
+        },
+        {
+          "player": "Charlie",
+          "action": "success"
+        }
+      ],
+      "mission_result": "success",
+      "fail_count": 0
+    },
+    {
+      "mission_number": 2,
+      "proposals": [
+        {
+          "proposal_id": 0,
+          "leader": "Bob",
+          "team_members": [
+            "Bob",
+            "Charlie",
+            "Diana"
+          ],
+          "reasoning": "We only have one data point so far, a clean Alice\u2013Charlie mission that doesn\u2019t actually clear either of them because evil can easily pass Mission 1. I\u2019m including myself (Bob) so I can directly control my own card, keeping at least one member from the successful team (Charlie) to preserve some continuity, but I\u2019m *not* locking in both Alice and Charlie together yet. Adding Diana spreads information into the pool of players who haven\u2019t been on a mission, and it avoids auto-forming an Alice\u2013Charlie core that could hide an early evil. This team balances using what little positive info we have with generating new info and minimizing the risk of an entrenched, potentially compromised pair.",
+          "thinking_time": 5.410006999969482,
+          "reasoning_content": null,
+          "votes": [
+            {
+              "player": "Alice",
+              "vote": "reject",
+              "comment": "I\u2019d rather not drop Alice entirely from the only successful team we\u2019ve seen and also bring in two people who haven\u2019t been on a mission together yet; I\u2019d prefer either keep Alice with one new person or use a different mix that doesn\u2019t hinge on a mostly untested combination.",
+              "thinking_time": 5.434184789657593,
+              "reasoning_content": null
+            },
+            {
+              "player": "Bob",
+              "vote": "approve",
+              "comment": "Team is reasonably balanced, avoids auto-locking Alice\u2013Charlie, includes me so I know at least one good, and gives new info with Diana without any strong red flags so far.",
+              "thinking_time": 2.234179973602295,
+              "reasoning_content": null
+            },
+            {
+              "player": "Charlie",
+              "vote": "approve",
+              "comment": "Team is structurally sound: I know I\u2019m good, Bob feels reasonable so far, and adding Diana gives new info while avoiding auto-locking the Alice\u2013Charlie pair. A fail here gives very clear info on Bob/Diana from my perspective.",
+              "thinking_time": 5.149950981140137,
+              "reasoning_content": null
+            },
+            {
+              "player": "Diana",
+              "vote": "approve",
+              "comment": "This avoids locking in Alice\u2013Charlie as an untouchable core, keeps one member from the clean team for continuity, and adds a new player for better info spread.",
+              "thinking_time": 4.27026891708374,
+              "reasoning_content": null
+            },
+            {
+              "player": "Eve",
+              "vote": "approve",
+              "comment": "It avoids auto-locking the Alice\u2013Charlie pair, adds a new player for info, and fits the kind of mixed team I said I wanted.",
+              "thinking_time": 4.104365110397339,
+              "reasoning_content": null
+            }
+          ],
+          "vote_result": "approved"
+        }
+      ],
+      "final_team_index": 0,
+      "discussion": [
+        {
+          "player": "Alice",
+          "content": "Given the clean first mission, I\u2019d like to stick with that core of Alice + Charlie and add one more; right now Bob feels like the most reasonable third based on how he\u2019s been approaching things.",
+          "timestamp": 0,
+          "global_turn_id": 5,
+          "phase": "discussion",
+          "thinking_time": 3.4080569744110107,
+          "reasoning_content": null
+        },
+        {
+          "player": "Bob",
+          "content": "I\u2019m okay being the third, but we shouldn\u2019t treat Alice\u2013Charlie as confirmed just off one clean mission since evil can easily pass early. If we go with this team, I\u2019d like to hear a bit more from Diana and Eve first so we\u2019re not locking in a spy by comfort.",
+          "timestamp": 1,
+          "global_turn_id": 6,
+          "phase": "discussion",
+          "thinking_time": 3.124070167541504,
+          "reasoning_content": null
+        },
+        {
+          "player": "Charlie",
+          "content": "I like keeping Alice + me as a starting point, but I agree with Bob that one clean mission doesn\u2019t clear either of us, so I\u2019d rather hear where Diana and Eve stand before we decide whether Bob\u2019s the best third or we mix it up.",
+          "timestamp": 2,
+          "global_turn_id": 7,
+          "phase": "discussion",
+          "thinking_time": 2.569700002670288,
+          "reasoning_content": null
+        },
+        {
+          "player": "Diana",
+          "content": "From my seat Bob feels like a reasonable third, but I don\u2019t love auto-locking Alice\u2013Charlie as a permanent core off one clean mission, so I\u2019d be happier seeing a mix like Alice\u2013Bob\u2013me or Charlie\u2013Bob\u2013me to spread info a bit.",
+          "timestamp": 3,
+          "global_turn_id": 8,
+          "phase": "discussion",
+          "thinking_time": 4.220861196517944,
+          "reasoning_content": null
+        },
+        {
+          "player": "Eve",
+          "content": "I\u2019m with Bob and Charlie that we shouldn\u2019t treat Alice\u2013Charlie as a locked core after just one clean, so I\u2019d rather see something like Alice\u2013Bob\u2013me or Charlie\u2013Bob\u2013me this round to spread info and avoid us tunneling too early.",
+          "timestamp": 4,
+          "global_turn_id": 9,
+          "phase": "discussion",
+          "thinking_time": 3.9816510677337646,
+          "reasoning_content": null
+        }
+      ],
+      "quest_actions": [
+        {
+          "player": "Bob",
+          "action": "success"
+        },
+        {
+          "player": "Charlie",
+          "action": "success"
+        },
+        {
+          "player": "Diana",
+          "action": "fail"
+        }
+      ],
+      "mission_result": "fail",
+      "fail_count": 1
+    },
+    {
+      "mission_number": 3,
+      "proposals": [
+        {
+          "proposal_id": 0,
+          "leader": "Charlie",
+          "team_members": [
+            "Alice",
+            "Charlie"
+          ],
+          "reasoning": "Mission 1 with Alice and me was a clean success, so from my perspective the only possible sources of the Mission 2 fail are Bob or Diana. Reusing the proven Alice\u2013Charlie pair both maximizes our chance of a successful Mission 3 and gives very strong information: if this team passes again, it heavily implicates Bob and Diana as the likely evil pair; if it somehow fails, then Alice is almost certainly evil (since I know I\u2019m good). This team is therefore the highest-value combination for both winning this mission and clarifying alignments going into Missions 4 and 5.",
+          "thinking_time": 5.524104833602905,
+          "reasoning_content": null,
+          "votes": [
+            {
+              "player": "Alice",
+              "vote": "approve",
+              "comment": "Alice and Charlie are the only pair with a proven clean mission so far; reusing them is both high win probability and gives strong info about who caused the M2 fail.",
+              "thinking_time": 2.766700029373169,
+              "reasoning_content": null
+            },
+            {
+              "player": "Bob",
+              "vote": "reject",
+              "comment": "From my perspective I know I\u2019m good, so Alice+Bob is safer than re-sending Charlie, who was on the failed Mission 2 and is at least as suspicious as Diana. I\u2019d rather avoid a team that includes a prime suspect when a cleaner option exists.",
+              "thinking_time": 12.000913858413696,
+              "reasoning_content": null
+            },
+            {
+              "player": "Charlie",
+              "vote": "approve",
+              "comment": "I know I\u2019m good and M1 with Alice was clean; reusing this proven pair both maximizes chance of a pass and sharply narrows evil to Bob/Diana if it succeeds.",
+              "thinking_time": 1.924034833908081,
+              "reasoning_content": null
+            },
+            {
+              "player": "Diana",
+              "vote": "reject",
+              "comment": "I\u2019ve already said I\u2019m not comfortable immediately re-sending Charlie after the M2 fail; I still prefer Alice + Bob as a cleaner, lower-risk pair that also gives better info on where the M2 problem was.",
+              "thinking_time": 4.953467845916748,
+              "reasoning_content": null
+            },
+            {
+              "player": "Eve",
+              "vote": "reject",
+              "comment": "I still prefer pairing Alice with someone from the M2 suspects (like Diana) to get new info, rather than re-sending Charlie right after a fail.",
+              "thinking_time": 3.7742903232574463,
+              "reasoning_content": null
+            }
+          ],
+          "vote_result": "rejected"
+        },
+        {
+          "proposal_id": 1,
+          "leader": "Diana",
+          "team_members": [
+            "Alice",
+            "Diana"
+          ],
+          "reasoning": "I want to anchor this mission on Alice\u2019s clean result from Mission 1 while directly retesting one of the Mission 2 suspects instead of shelving them. Sending Alice + Diana both leans on Alice\u2019s prior success and gives us strong information about whether the Mission 2 fail was more likely tied to Bob or Charlie versus Diana. If this passes, it points suspicion back toward the remaining members of the failed Mission 2 team; if it fails, we learn a lot about the overlap between Alice, Diana, and that earlier result.",
+          "thinking_time": 32.98268795013428,
+          "reasoning_content": null,
+          "votes": [
+            {
+              "player": "Alice",
+              "vote": "reject",
+              "comment": "I don\u2019t want to send someone straight back out from the failed M2 team yet; I\u2019d rather see a pair that avoids both Diana and Charlie this round.",
+              "thinking_time": 2.0649588108062744,
+              "reasoning_content": null
+            },
+            {
+              "player": "Bob",
+              "vote": "reject",
+              "comment": "From my perspective at least one of Charlie/Diana is evil due to the M2 fail, and I know I\u2019m good, so I\u2019d rather avoid both suspects and go with a safer pair like Alice+Bob or Alice+Eve than include Diana here.",
+              "thinking_time": 6.013463973999023,
+              "reasoning_content": null
+            },
+            {
+              "player": "Charlie",
+              "vote": "reject",
+              "comment": "From my view the M2 fail is on Bob or Diana, so including Diana here is too risky; Alice + Charlie is the safer reuse of the only clean pair I trust.",
+              "thinking_time": 6.279322147369385,
+              "reasoning_content": null
+            },
+            {
+              "player": "Diana",
+              "vote": "approve",
+              "comment": "I still slightly preferred Alice + Bob, but this keeps Alice from the clean M1 while directly retesting a Mission 2 suspect, which gives good info and I\u2019m fine taking that shot.",
+              "thinking_time": 4.561974763870239,
+              "reasoning_content": null
+            },
+            {
+              "player": "Eve",
+              "vote": "approve",
+              "comment": "I proposed this Alice+Diana team as a strong info-gathering setup off Alice\u2019s clean M1; rejecting now would be inconsistent and suspicious.",
+              "thinking_time": 3.69913911819458,
+              "reasoning_content": null
+            }
+          ],
+          "vote_result": "rejected"
+        },
+        {
+          "proposal_id": 2,
+          "leader": "Eve",
+          "team_members": [
+            "Alice",
+            "Diana"
+          ],
+          "reasoning": "We know Alice comes from a clean M1, and the only overlapping suspect between the M2 fail and any proposed team is Diana/Charlie. Sending Alice + Diana directly tests one of the M2 suspects while still anchoring the team with Alice\u2019s prior success. If this passes, it strongly points the M2 fail toward Bob/Charlie dynamics; if it fails, we get very sharp information on Diana without repeatedly re-using Charlie right after a fail. This gives both a solid chance to succeed and the most immediate clarity about where the M2 sabotage came from.",
+          "thinking_time": 4.402681827545166,
+          "reasoning_content": null,
+          "votes": [
+            {
+              "player": "Alice",
+              "vote": "reject",
+              "comment": "I don\u2019t want to send Diana right after the M2 fail when she\u2019s one of the main suspects; I\u2019d rather run either the proven M1 pair again or a fresh combo like me + Bob.",
+              "thinking_time": 2.6365818977355957,
+              "reasoning_content": null
+            },
+            {
+              "player": "Bob",
+              "vote": "reject",
+              "comment": "Diana is one of the two main suspects from the failed Mission 2, and as a known-good to myself I prefer the safer Alice+Bob combo that avoids sending a prime suspect on a critical 2-player mission.",
+              "thinking_time": 8.946906089782715,
+              "reasoning_content": null
+            },
+            {
+              "player": "Charlie",
+              "vote": "reject",
+              "comment": "I know the M2 fail had to be Bob or Diana from my seat, so putting Diana on a 2-player mission is too risky; I\u2019d rather push for the proven M1 pair Alice + me instead.",
+              "thinking_time": 7.788214921951294,
+              "reasoning_content": null
+            },
+            {
+              "player": "Diana",
+              "vote": "approve",
+              "comment": "Alice still looks safest from M1, and pairing me with her directly tests one of the M2 suspects without reusing Charlie right after a fail.",
+              "thinking_time": 11.491842985153198,
+              "reasoning_content": null
+            },
+            {
+              "player": "Eve",
+              "vote": "approve",
+              "comment": "I like keeping Alice from the clean M1 while directly testing one of the M2 suspects; this gives both a real shot at success and useful info whichever way it goes.",
+              "thinking_time": 2.308767080307007,
+              "reasoning_content": null
+            }
+          ],
+          "vote_result": "rejected"
+        },
+        {
+          "proposal_id": 3,
+          "leader": "Alice",
+          "team_members": [
+            "Alice",
+            "Bob"
+          ],
+          "reasoning": "Mission 1\u2019s clean result with me on it gives us a solid starting anchor, and after the Mission 2 fail I don\u2019t love immediately re-sending Charlie for a second mission in a row. Pairing me with Bob creates a mostly fresh combo that still leans on a previously successful member, avoids stacking suspicion on Charlie right after a fail, and gives us strong information: if this passes, it makes the Mission 2 failure much more likely to have come from the remaining member of that team rather than from Bob.",
+          "thinking_time": 9.355931997299194,
+          "reasoning_content": null,
+          "votes": [
+            {
+              "player": "Alice",
+              "vote": "approve",
+              "comment": "Alice is from the clean M1, and if Alice+Bob pass here it heavily implicates either Charlie or Diana from the M2 fail; it\u2019s both a strong win attempt and very informative.",
+              "thinking_time": 2.3531363010406494,
+              "reasoning_content": null
+            },
+            {
+              "player": "Bob",
+              "vote": "approve",
+              "comment": "From my seat I\u2019m good, and the most consistent evil pair with the M2 fail and the voting/push patterns is Diana + Eve. That makes Alice look good, so Alice+Bob is very likely a double-good team and a strong info win if it passes.",
+              "thinking_time": 25.359320878982544,
+              "reasoning_content": null
+            },
+            {
+              "player": "Charlie",
+              "vote": "reject",
+              "comment": "From my perspective at least one of Bob/Diana is evil because I know I\u2019m good on the failed M2 team; putting Bob on this small 2-player mission is too risky when we could instead use Alice with someone outside that suspect pool.",
+              "thinking_time": 5.1494810581207275,
+              "reasoning_content": null
+            },
+            {
+              "player": "Diana",
+              "vote": "approve",
+              "comment": "Consistent with my earlier preference for Alice+Bob as the cleaner, lower-risk pair after the M2 fail and avoiding pushing us to a fifth proposal auto-approve.",
+              "thinking_time": 5.49819803237915,
+              "reasoning_content": null
+            },
+            {
+              "player": "Eve",
+              "vote": "approve",
+              "comment": "Consensus is converging on Alice+Bob as a low-risk, informative pair after the failed attempts to run Alice+Diana; blocking a mostly fresh team anchored by the clean M1 member this late in the proposal order would look overly stubborn and unhelpful.",
+              "thinking_time": 8.931739091873169,
+              "reasoning_content": null
+            }
+          ],
+          "vote_result": "approved"
+        }
+      ],
+      "final_team_index": 3,
+      "discussion": [
+        {
+          "player": "Alice",
+          "content": "Given M1 was clean with me and Charlie, I\u2019m inclined to reuse that smaller, proven pair here, while we keep digging into who on the M2 team (Bob/Diana/Charlie) is actually responsible for the fail. If people are nervous about Charlie\u2019s double appearance, I\u2019d also be okay with a fresh combo like me + Bob for this 2-person mission.",
+          "timestamp": 0,
+          "global_turn_id": 10,
+          "phase": "discussion",
+          "thinking_time": 7.067326068878174,
+          "reasoning_content": null
+        },
+        {
+          "player": "Bob",
+          "content": "I don\u2019t love sending Charlie again right after a fail, so I\u2019d rather see Alice + me here as a mostly fresh pair that still leans on Alice\u2019s clean M1. If that passes, it really helps narrow down whether the problem on M2 was Charlie or Diana.",
+          "timestamp": 1,
+          "global_turn_id": 11,
+          "phase": "discussion",
+          "thinking_time": 3.57340407371521,
+          "reasoning_content": null
+        },
+        {
+          "player": "Charlie",
+          "content": "From my seat I know the M2 fail has to be Bob or Diana, so the safest info-and-win line is just to reuse the clean M1 pair of Alice + me. If people won\u2019t go for that, I\u2019d still rather see Diana sit out and have Alice paired with someone she hasn\u2019t yet shared a fail with.",
+          "timestamp": 2,
+          "global_turn_id": 12,
+          "phase": "discussion",
+          "thinking_time": 6.053086042404175,
+          "reasoning_content": null
+        },
+        {
+          "player": "Diana",
+          "content": "Given the M2 fail, I\u2019m not thrilled about immediately re-sending Charlie, so Alice + Bob feels like the cleaner, lower-risk pair here and gives us solid info about whether the problem on M2 was more likely in me/Charlie versus Bob. If that passes, we can re-evaluate the M2 team with a lot more clarity.",
+          "timestamp": 3,
+          "global_turn_id": 13,
+          "phase": "discussion",
+          "thinking_time": 8.302807092666626,
+          "reasoning_content": null
+        },
+        {
+          "player": "Eve",
+          "content": "I get why people like Alice + Bob, but I actually prefer Alice + Diana here: it keeps Alice from M1\u2019s clean result while directly testing one of the M2 suspects instead of just shelving her and learning nothing new.",
+          "timestamp": 4,
+          "global_turn_id": 14,
+          "phase": "discussion",
+          "thinking_time": 5.274501085281372,
+          "reasoning_content": null
+        }
+      ],
+      "quest_actions": [
+        {
+          "player": "Alice",
+          "action": "success"
+        },
+        {
+          "player": "Bob",
+          "action": "success"
+        }
+      ],
+      "mission_result": "success",
+      "fail_count": 0
+    },
+    {
+      "mission_number": 4,
+      "proposals": [
+        {
+          "proposal_id": 0,
+          "leader": "Bob",
+          "team_members": [
+            "Alice",
+            "Bob",
+            "Eve"
+          ],
+          "reasoning": "I know I\u2019m good, so I want myself on the team. Mission 2\u2019s only fail came from the Bob\u2013Charlie\u2013Diana trio, which guarantees at least one of Charlie or Diana is evil from my perspective. Both missions involving Alice and/or me (Alice\u2013Charlie and Alice\u2013Bob) have passed, while Eve hasn\u2019t been on any failed mission yet. Statistically, that makes Alice and Eve more likely to be good than at least one of Charlie/Diana. Choosing Alice\u2013Bob\u2013Eve keeps us away from the known-problem Mission 2 triangle and maximizes the chance of a clean pass here.",
+          "thinking_time": 14.354093074798584,
+          "reasoning_content": null,
+          "votes": [
+            {
+              "player": "Alice",
+              "vote": "reject",
+              "comment": "Too many people are treating Eve as auto-clear despite being untested; I\u2019d rather keep building around the proven Alice\u2013Charlie/Bob core than add a fresh, unproven third this late.",
+              "thinking_time": 9.161064863204956,
+              "reasoning_content": null
+            },
+            {
+              "player": "Bob",
+              "vote": "reject",
+              "comment": "Given I\u2019m good, checking all possible evil pairs consistent with the mission results shows this team is all-good in only one case ({Charlie, Diana} both evil) and contains exactly one evil in all the others. Too risky to approve.",
+              "thinking_time": 21.75615930557251,
+              "reasoning_content": null
+            },
+            {
+              "player": "Charlie",
+              "vote": "reject",
+              "comment": "I know I\u2019m good and this team excludes me while including Bob, who is in the failing Mission 2 triangle from my perspective. A team with me (e.g., Alice\u2013Charlie\u2013Eve) has a plausible all-good configuration and is safer from my seat.",
+              "thinking_time": 12.986774682998657,
+              "reasoning_content": null
+            },
+            {
+              "player": "Diana",
+              "vote": "approve",
+              "comment": "One of Charlie/Diana is already suspect from Mission 2; this keeps that tangle off the board and puts only one of them (me) out of the spotlight while using the proven Alice\u2013Bob pair plus a fresh third.",
+              "thinking_time": 7.106160879135132,
+              "reasoning_content": null
+            },
+            {
+              "player": "Eve",
+              "vote": "approve",
+              "comment": "I\u2019m on it and it avoids the messy Mission 2 trio, so from my stated perspective it looks like a solid, low-risk team to try.",
+              "thinking_time": 5.642644882202148,
+              "reasoning_content": null
+            }
+          ],
+          "vote_result": "rejected"
+        },
+        {
+          "proposal_id": 1,
+          "leader": "Charlie",
+          "team_members": [
+            "Alice",
+            "Charlie",
+            "Eve"
+          ],
+          "reasoning": "I know I\u2019m good, and Alice has been on two successful missions (with different partners), which strongly suggests she\u2019s good and not coordinated evil. The only fail came from Mission 2 (Bob\u2013Charlie\u2013Diana), so from my perspective the evil causing that fail must be Bob or Diana. To minimize risk, I want to exclude both Bob and Diana entirely. That leaves Alice\u2013Charlie\u2013Eve as the team that avoids the proven-problematic Mission 2 triangle while anchoring on the most reliable information we have: Alice\u2019s two clean missions and my own alignment.",
+          "thinking_time": 38.36785316467285,
+          "reasoning_content": null,
+          "votes": [
+            {
+              "player": "Alice",
+              "vote": "reject",
+              "comment": "I still prefer drawing from the Alice/Bob/Charlie pool only; Eve is completely untested and this mission is too critical to introduce that risk.",
+              "thinking_time": 3.600943088531494,
+              "reasoning_content": null
+            },
+            {
+              "player": "Bob",
+              "vote": "reject",
+              "comment": "From my perspective I know I\u2019m good and at least one of Charlie/Diana is evil from Mission 2. Under every consistent evil pairing with me good, this team (Alice\u2013Charlie\u2013Eve) always contains at least one evil and often two, so it\u2019s never a fully clean team for me.",
+              "thinking_time": 16.11288285255432,
+              "reasoning_content": null
+            },
+            {
+              "player": "Charlie",
+              "vote": "reject",
+              "comment": "From my POV at least one of Bob/Diana is evil, and Eve is strongly aligned with their preferred A-B-E team. The only way A-C-E is all-good is if both Bob and Diana are evil, which is unlikely given their push for A-B-E (a zero-evil team in that case). Much more likely A-C-E contains exactly one evil (Alice or Eve), so I\u2019d prefer a different team, probably Alice\u2013Charlie\u2013Bob or Alice\u2013Charlie\u2013Diana.",
+              "thinking_time": 37.42888283729553,
+              "reasoning_content": null
+            },
+            {
+              "player": "Diana",
+              "vote": "approve",
+              "comment": "It still avoids the full Mission 2 tangle and keeps both Bob and me off, which is a reasonable low-risk option even though I slightly preferred anchoring on Alice\u2013Bob.",
+              "thinking_time": 7.2820188999176025,
+              "reasoning_content": null
+            },
+            {
+              "player": "Eve",
+              "vote": "approve",
+              "comment": "I\u2019m fine with keeping both Bob and Diana off after the Mission 2 fail; I\u2019m comfortable going with this cleaner-looking lineup.",
+              "thinking_time": 2.873239040374756,
+              "reasoning_content": null
+            }
+          ],
+          "vote_result": "rejected"
+        },
+        {
+          "proposal_id": 2,
+          "leader": "Diana",
+          "team_members": [
+            "Alice",
+            "Bob",
+            "Eve"
+          ],
+          "reasoning": "Mission 2 is our only fail and it involved the Bob/Charlie/Diana triangle, while Alice\u2013Bob just passed clean on Mission 3. To minimize risk, I want to anchor on the proven Alice\u2013Bob pair and add a fresh third who wasn\u2019t part of the Mission 2 tangle. Including Eve fits that logic and also matches the consensus that Alice\u2013Bob\u2013Eve is the lowest-drama, highest-confidence team for this critical mission.",
+          "thinking_time": 8.318766832351685,
+          "reasoning_content": null,
+          "votes": [
+            {
+              "player": "Alice",
+              "vote": "reject",
+              "comment": "I still trust the Alice\u2013Bob core, but I\u2019m more comfortable adding Charlie than a completely untested third this late, since every Alice/Charlie/Bob combo we\u2019ve tried has been clean except the one that added Diana.",
+              "thinking_time": 3.8924338817596436,
+              "reasoning_content": null
+            },
+            {
+              "player": "Bob",
+              "vote": "approve",
+              "comment": "Best available team that fully avoids the Mission 2 tangle (Charlie/Diana). If both evils are in C/D, this is an all-good team; alternative teams all risk including at least one of them.",
+              "thinking_time": 37.138914823532104,
+              "reasoning_content": null
+            },
+            {
+              "player": "Charlie",
+              "vote": "reject",
+              "comment": "From my POV at least one of Alice/Bob/Eve must be evil (since I know I\u2019m good and there are 2 evils among A,B,D,E), so this team cannot be all-good.",
+              "thinking_time": 8.497323036193848,
+              "reasoning_content": null
+            },
+            {
+              "player": "Diana",
+              "vote": "approve",
+              "comment": "This keeps us off the messy Mission 2 triangle while reusing the clean Alice\u2013Bob pair and adding a fresh third, which feels like the safest, most consistent option right now.",
+              "thinking_time": 2.5242578983306885,
+              "reasoning_content": null
+            },
+            {
+              "player": "Eve",
+              "vote": "approve",
+              "comment": "This matches the Alice\u2013Bob core that just succeeded and avoids the messy Mission 2 triangle, with me as the fresh third I\u2019ve already argued for.",
+              "thinking_time": 5.001863956451416,
+              "reasoning_content": null
+            }
+          ],
+          "vote_result": "approved"
+        }
+      ],
+      "final_team_index": 2,
+      "discussion": [
+        {
+          "player": "Alice",
+          "content": "I\u2019m most comfortable with a team drawn from Alice, Bob, and Charlie since every combo of them we\u2019ve tried has passed, and Mission 2 is the only blemish so far. Let\u2019s avoid repeating that Mission 2 setup and see if we can lock this down cleanly.",
+          "timestamp": 0,
+          "global_turn_id": 15,
+          "phase": "discussion",
+          "thinking_time": 5.411888122558594,
+          "reasoning_content": null
+        },
+        {
+          "player": "Bob",
+          "content": "From my seat Mission 2 tells me exactly one of Charlie/Diana is evil, so I really don\u2019t want both of them in the pool again. I\u2019d prefer we lock in Alice + me and add Eve (Alice/Bob/Eve) rather than gambling on Charlie or Diana here.",
+          "timestamp": 1,
+          "global_turn_id": 16,
+          "phase": "discussion",
+          "thinking_time": 9.59390377998352,
+          "reasoning_content": null
+        },
+        {
+          "player": "Charlie",
+          "content": "From my seat I know the Mission 2 evil has to be Bob or Diana, so I\u2019m fine with any team that includes me and Alice but doesn\u2019t pair Bob and Diana together. I\u2019d lean Alice\u2013Charlie\u2013Eve as the cleanest shot, but I can live with Alice\u2013Bob\u2013Charlie if people really want Bob on it.",
+          "timestamp": 2,
+          "global_turn_id": 17,
+          "phase": "discussion",
+          "thinking_time": 4.4117820262908936,
+          "reasoning_content": null
+        },
+        {
+          "player": "Diana",
+          "content": "Given Mission 2 is our only blemish and Alice\u2013Bob just passed clean, I\u2019d rather anchor on them and add Eve than reopen the Bob/Charlie/Diana tangle. Alice\u2013Bob\u2013Eve feels like the lowest-drama, highest-info team here.",
+          "timestamp": 3,
+          "global_turn_id": 18,
+          "phase": "discussion",
+          "thinking_time": 8.39983582496643,
+          "reasoning_content": null
+        },
+        {
+          "player": "Eve",
+          "content": "Given Mission 2 is our only fail and it\u2019s the Bob/Charlie/Diana triangle that\u2019s messy, I\u2019d rather lean on the proven Alice\u2013Bob pair and add me as the fresh third. Alice\u2013Bob\u2013Eve keeps us away from the Mission 2 tangle while still building on the last success.",
+          "timestamp": 4,
+          "global_turn_id": 19,
+          "phase": "discussion",
+          "thinking_time": 7.422834873199463,
+          "reasoning_content": null
+        }
+      ],
+      "quest_actions": [
+        {
+          "player": "Alice",
+          "action": "success"
+        },
+        {
+          "player": "Bob",
+          "action": "success"
+        },
+        {
+          "player": "Eve",
+          "action": "fail"
+        }
+      ],
+      "mission_result": "fail",
+      "fail_count": 1
+    },
+    {
+      "mission_number": 5,
+      "proposals": [
+        {
+          "proposal_id": 0,
+          "leader": "Eve",
+          "team_members": [
+            "Alice",
+            "Charlie",
+            "Eve"
+          ],
+          "reasoning": "Alice and Charlie form the strongest trusted core: both were on the clean first mission, and Charlie only appears on the single failed mission alongside Bob and Diana, where Bob is the common factor across both failed quests. Keeping Bob off the team avoids the repeated overlap with both failures, and compared to combinations that reintroduce that same risk, adding myself maintains the Alice\u2013Charlie core while steering clear of the exact player mixes that have already produced FAIL results.",
+          "thinking_time": 8.595385789871216,
+          "reasoning_content": null,
+          "votes": [
+            {
+              "player": "Alice",
+              "vote": "reject",
+              "comment": "I still think Alice\u2013Bob\u2013Charlie is the most consistent with the mission history, and I don\u2019t want to add someone from the most recent failed team here.",
+              "thinking_time": 4.530366897583008,
+              "reasoning_content": null
+            },
+            {
+              "player": "Bob",
+              "vote": "reject",
+              "comment": "This team can contain both evils (Charlie and Eve in a consistent scenario), which would guarantee a FAIL, whereas Alice\u2013Bob\u2013Charlie is never worse than one evil across all consistent worlds.",
+              "thinking_time": 31.73338508605957,
+              "reasoning_content": null
+            },
+            {
+              "player": "Charlie",
+              "vote": "reject",
+              "comment": "Too many plausible worlds where either Alice or Eve is evil; this team is only clean if the evil pair is {Bob, Diana}, which doesn\u2019t outweigh Bob\u2019s behavioral suspicion and the overlap patterns on the failed missions.",
+              "thinking_time": 29.658593893051147,
+              "reasoning_content": null
+            },
+            {
+              "player": "Diana",
+              "vote": "approve",
+              "comment": "Keeps Bob, the common factor on both failed missions, off the team while preserving the trusted Alice\u2013Charlie core, which fits the logic I\u2019ve been pushing.",
+              "thinking_time": 3.822946071624756,
+              "reasoning_content": null
+            },
+            {
+              "player": "Eve",
+              "vote": "approve",
+              "comment": "I\u2019ve been pushing for an Alice\u2013Charlie\u2013Eve lineup as the safest option that avoids Bob\u2019s overlap on both failed missions, so this fits my stated logic.",
+              "thinking_time": 2.968698024749756,
+              "reasoning_content": null
+            }
+          ],
+          "vote_result": "rejected"
+        },
+        {
+          "proposal_id": 1,
+          "leader": "Alice",
+          "team_members": [
+            "Alice",
+            "Bob",
+            "Charlie"
+          ],
+          "reasoning": "Given the mission history, the only player who has been on every *successful* mission is Alice, and Charlie has only ever appeared on clean missions as well. The core {Alice, Charlie} has never produced a fail. We then need to decide between re\u2011including Bob or pulling in someone from {Diana, Eve}, both of whom are tied to at least one failed mission. While Bob was on both fails, each of those teams also included at least one of {Charlie, Diana, Eve}, so we can\u2019t cleanly isolate him as the unique problem without also assuming very specific double\u2011good/double\u2011evil patterns that don\u2019t line up neatly with the clean missions. If we avoid Bob, we\u2019re forced to bring in either Diana or Eve, who each only have evidence from the failed runs. By contrast, the trio Alice\u2013Bob\u2013Charlie is the only 3\u2011person combination that (1) fully contains the repeatedly clean Alice\u2013Charlie core, (2) has a concrete clean data point involving Alice\u2013Bob, and (3) stays entirely away from both Diana and Eve, who are only associated with failures. On balance, Alice\u2013Bob\u2013Charlie is the most consistent team with the success/fail pattern while minimizing exposure to players only seen on failed missions.",
+          "thinking_time": 5.420731067657471,
+          "reasoning_content": null,
+          "votes": [
+            {
+              "player": "Alice",
+              "vote": "approve",
+              "comment": "Alice\u2013Charlie has only ever been clean, Alice\u2013Bob was clean, and this is the only trio that keeps that proven core while fully avoiding both Diana and Eve, who are only tied to failed missions.",
+              "thinking_time": 3.5875329971313477,
+              "reasoning_content": null
+            },
+            {
+              "player": "Bob",
+              "vote": "approve",
+              "comment": "I know I\u2019m good; the clean pattern with A\u2013B and A\u2013C plus both fails introducing D then E fits best with D and E as the two evils, in which case A\u2013B\u2013C is an all-good team.",
+              "thinking_time": 36.54294395446777,
+              "reasoning_content": null
+            },
+            {
+              "player": "Charlie",
+              "vote": "approve",
+              "comment": "Given 0-fail missions Alice\u2013Charlie and Alice\u2013Bob, all three of us (Alice, Bob, Charlie) must be good, which forces Diana and Eve as the two evils; this team is guaranteed all-good.",
+              "thinking_time": 3.9390320777893066,
+              "reasoning_content": null
+            },
+            {
+              "player": "Diana",
+              "vote": "reject",
+              "comment": "Bob is the only player on both failed missions; I don\u2019t want to send him again on the deciding quest when we can instead use the Alice\u2013Charlie core with someone who isn\u2019t tied to both fails.",
+              "thinking_time": 1.9953138828277588,
+              "reasoning_content": null
+            },
+            {
+              "player": "Eve",
+              "vote": "reject",
+              "comment": "Bob is the common factor on both failed missions, so I still don\u2019t feel good about sending him on the deciding team.",
+              "thinking_time": 1.7211792469024658,
+              "reasoning_content": null
+            }
+          ],
+          "vote_result": "approved"
+        }
+      ],
+      "final_team_index": 1,
+      "discussion": [
+        {
+          "player": "Alice",
+          "content": "Looking at which combos have actually succeeded, Alice\u2013Bob\u2013Charlie is the only trio that fits the clean missions while minimizing overlap with the two failed ones. I\u2019d feel most comfortable sending those three for the last quest.",
+          "timestamp": 0,
+          "global_turn_id": 20,
+          "phase": "discussion",
+          "thinking_time": 7.060693979263306,
+          "reasoning_content": null
+        },
+        {
+          "player": "Bob",
+          "content": "I\u2019m definitely keeping Eve off after that last fail, and since we know there\u2019s exactly one evil in {Charlie, Diana} from Mission 2, I\u2019d rather gamble on Alice\u2013Bob\u2013Charlie as the most consistent with the clean results so far.",
+          "timestamp": 1,
+          "global_turn_id": 21,
+          "phase": "discussion",
+          "thinking_time": 8.784239053726196,
+          "reasoning_content": null
+        },
+        {
+          "player": "Charlie",
+          "content": "Given I know I\u2019m clean and Bob is the only player on both failed missions, I really don\u2019t like sending him again here; I\u2019d much rather see something like Alice\u2013Charlie\u2013Eve or Alice\u2013Charlie\u2013Diana for the last team.",
+          "timestamp": 2,
+          "global_turn_id": 22,
+          "phase": "discussion",
+          "thinking_time": 9.281108379364014,
+          "reasoning_content": null
+        },
+        {
+          "player": "Diana",
+          "content": "Given Bob is the common factor on both failed missions, I\u2019m really not comfortable sending him again, so between the options on the table I\u2019d lean toward Alice\u2013Charlie\u2013Diana as the safest mix that avoids that overlap.",
+          "timestamp": 3,
+          "global_turn_id": 23,
+          "phase": "discussion",
+          "thinking_time": 4.607921123504639,
+          "reasoning_content": null
+        },
+        {
+          "player": "Eve",
+          "content": "Given Bob\u2019s on both failed missions, I really don\u2019t love sending him again here. From my perspective, Alice\u2013Charlie\u2013Eve keeps the trusted Alice/Charlie core while avoiding the exact combos that have already blown up.",
+          "timestamp": 4,
+          "global_turn_id": 24,
+          "phase": "discussion",
+          "thinking_time": 6.706606864929199,
+          "reasoning_content": null
+        }
+      ],
+      "quest_actions": [
+        {
+          "player": "Alice",
+          "action": "success"
+        },
+        {
+          "player": "Bob",
+          "action": "success"
+        },
+        {
+          "player": "Charlie",
+          "action": "success"
+        }
+      ],
+      "mission_result": "success",
+      "fail_count": 0
+    }
+  ],
+  "winner": "evil",
+  "assassin_phase": {
+    "assassin": "Eve",
+    "evil_discussion": [
+      {
+        "player": "Diana",
+        "content": "I\u2019m leaning pretty hard toward Alice as Merlin: she never stuck her neck out with loud accusations, but when it actually mattered she consistently steered away from both me and Eve, especially in her Mission 4 and 5 preferences where she cleanly locked in the all-good Alice\u2013Bob\u2013Charlie trio. Bob\u2019s reads were mixed and even pulled Eve onto a critical team, and Charlie\u2019s logic actively shielded Eve and pushed on Bob, which feels way too off for Merlin compared to Alice\u2019s quietly correct endgame instincts.",
+        "timestamp": 0,
+        "global_turn_id": 25,
+        "phase": "evil_discussion",
+        "thinking_time": 9.844444990158081,
+        "reasoning_content": null
+      },
+      {
+        "player": "Eve",
+        "content": "I\u2019m with Diana that Alice is the most likely Merlin by a mile. She quietly but consistently avoided both of us when it mattered (especially Missions 4 and 5), framed the endgame around the all-good Alice\u2013Bob\u2013Charlie block, and never pushed any hard, wrong-world takes the way Bob and Charlie did. Bob hard-cleared me onto a critical team and Charlie kept tunneling in the wrong triangle, which is just not how informed Merlin plays this setup.",
+        "timestamp": 1,
+        "global_turn_id": 26,
+        "phase": "evil_discussion",
+        "thinking_time": 4.021438837051392,
+        "reasoning_content": null
+      }
+    ],
+    "guess": "Alice",
+    "reasoning": "Alice consistently gravitated toward the all-good Alice\u2013Bob\u2013Charlie block in Missions 4 and 5 while quietly steering away from both Diana and Eve when it really mattered, without making loud or risky accusations that might expose her. Bob and Charlie each pushed wrong-world narratives at key points (Bob pulling Eve onto a critical team, Charlie tunneling on Bob as the common factor), which is much less consistent with informed Merlin play than Alice\u2019s understated but accurate endgame positioning.",
+    "correct": true,
+    "thinking_time": 3.372734308242798,
+    "reasoning_content": null
+  },
+  "post_game_reflections": [
+    {
+      "game_number": 44,
+      "player_name": "Alice",
+      "role_played": "merlin",
+      "game_result": "lost",
+      "self_assessment": "I balanced revealing information fairly well early on, helping steer missions 1 and 3 to success without outing any specific person directly. However, I clearly left too many breadcrumbs for the assassin by endgame and should have been more ambiguous in how I treated Diana vs. Bob/Eve, especially around mission 4 and the final team.",
+      "player_observations": {
+        "Bob": "Played consistently pro-good, accepting some suspicion after mission 2 but stayed calm and cooperative; his willingness to go on risky teams without over-defending himself made him look more ambiguous than he actually was.",
+        "Charlie": "Came across as solidly trustworthy after mission 1 and did not over-talk or over-steer, which made him a comfortable inclusion on the final mission team and a natural town-core type presence.",
+        "Diana": "Managed to blend in well by taking only one failing mission and not getting overly aggressive, using mission 2\u2019s fail to create lingering doubt without drawing heavy blame to herself.",
+        "Eve": "Stayed just under the radar for much of the game, then leveraged the final mission and post-mission discussion to narrow Merlin down effectively, suggesting careful attention to who subtly favored or avoided certain players."
+      },
+      "thinking_time": 5.66063117980957
+    },
+    {
+      "game_number": 44,
+      "player_name": "Bob",
+      "role_played": "good",
+      "game_result": "lost",
+      "self_assessment": "I was too trusting of Diana and didn\u2019t push hard enough to resolve the contradiction around Mission 2\u2019s fail, which let evil stay comfortably hidden. I did reasonably well trusting Alice and Charlie for the final team, but I didn\u2019t think enough about how my public reads might be exposing Merlin, especially once Alice kept landing on successful teams.",
+      "player_observations": {
+        "Alice": "Played a very strong, controlled Merlin game with consistent, subtly guided team selections, but her repeated presence on successful teams made her look increasingly central to correct decisions and ultimately exposed her to the assassin.",
+        "Charlie": "Came across as naturally towny and generally low-conflict, which made it easy to keep trusting him after Mission 1 and 5; didn\u2019t strongly push any alternative narratives, which helped evil avoid pressure on Diana and Eve.",
+        "Diana": "Blended in well after the Mission 2 fail by not over-defending herself and letting uncertainty linger, and as leader on Mission 4 she managed to include a bad composition without drawing overwhelming suspicion afterward.",
+        "Eve": "Stayed relatively under the radar and let others drive the big alignment debates, which is ideal assassin play; was attentive enough to the mission patterns and table talk to correctly zero in on Alice as Merlin in the end."
+      },
+      "thinking_time": 5.530032157897949
+    },
+    {
+      "game_number": 44,
+      "player_name": "Charlie",
+      "role_played": "good",
+      "game_result": "lost",
+      "self_assessment": "I stayed consistently village-leaning in tone and helped secure three successful missions, but I didn\u2019t do enough to pressure-test the composition of the failing teams, especially around Mission 2 and Mission 4. I also didn\u2019t think carefully enough about how exposed Alice was as Merlin after the mission results, and I could have done more to muddy the waters for the assassin going into the final guess.",
+      "player_observations": {
+        "Alice": "Played a very clean Merlin game in terms of mission outcomes, but the pattern of repeatedly putting herself on successful teams and avoiding obvious evil combinations made her look a bit too accurate and thus assassinate-able at the end.",
+        "Bob": "Came across as generally sincere and cooperative, but ended up on both a fail and a success in a way that kept his alignment ambiguous for too long; he didn\u2019t strongly push back on suspicious team comps, which may have indirectly helped evil.",
+        "Diana": "Did a good job blending in by taking a mid-level profile\u2014participating enough without drawing excessive suspicion\u2014and timed her fail contribution well so that it wasn\u2019t immediately pinned on her.",
+        "Eve": "Stayed under the radar socially while leveraging the mission info effectively in the assassin phase; read the Merlin signals well from Alice\u2019s team selections and confidence, and converted that into a correct assassination."
+      },
+      "thinking_time": 5.725186824798584
+    },
+    {
+      "game_number": 44,
+      "player_name": "Diana",
+      "role_played": "evil",
+      "game_result": "won",
+      "self_assessment": "I coordinated well with Eve, especially around Missions 2 and 4, keeping my own suspicion relatively low while enabling just enough doubt on the good team. I could improve by creating more plausible alternative Merlin candidates early on, as Alice still stood out too clearly by the end despite our mission results.",
+      "player_observations": {
+        "Alice": "Played very assertively and consistently steered teams, which helped her as Merlin but also made her reads more visible and thus easier to pinpoint. Her team selections were often accurate, but she didn\u2019t spread enough doubt onto other players to hide her knowledge.",
+        "Bob": "Played cautiously and tended to follow emerging table consensus rather than drive it, which made him appear generically good but not particularly coordinated. His willingness to be on multiple mixed-alignment teams without strongly objecting made him look less like Merlin and more like a standard good role.",
+        "Charlie": "Came across as straightforward and somewhat trusting, especially early on, which reduced suspicion on him but also limited his impact on team decisions. His reactions to mission outcomes felt genuine and uncalculated, marking him as a likely vanilla good from midgame onward.",
+        "Eve": "Managed the assassin role well by tracking who was pushing or soft-clearing whom, culminating in a correct Merlin shot on Alice. Played subtly enough during the missions to avoid being the center of attention, saving her credibility and focus for the endgame read."
+      },
+      "thinking_time": 6.253375053405762
+    },
+    {
+      "game_number": 44,
+      "player_name": "Eve",
+      "role_played": "assassin",
+      "game_result": "won",
+      "self_assessment": "I stayed coordinated with Diana and let the mission results create just enough ambiguity without overexposing either of us, and I correctly identified Alice as Merlin based on her strongly opinionated but selectively accurate reads. I could improve by seeding more concrete but misleading theories earlier so that town has competing narratives going into the final mission, making my Merlin shot feel less obvious in retrospect.",
+      "player_observations": {
+        "Alice": "Played a very classic Merlin game: generally accurate on evil placement but occasionally allowed a suspicious team to pass, which created just enough doubt without fully clearing her; her confidence in certain team compositions late game was a major clue to her role.",
+        "Bob": "Played cautiously and seemed to trust mission outcomes heavily, which made him look like a standard good player following the table more than driving it; he didn\u2019t push hard alternative theories, which kept him fairly low on my Merlin radar.",
+        "Charlie": "Came across as straightforward and relatively transparent, often deferring to others\u2019 reasoning on team choices; his lack of strong, independent reads made him appear solidly good but not like a power role.",
+        "Diana": "Did a good job blending in as evil by failing in a way that didn\u2019t overcommit her narrative and by not over-defending me; her subtle presence let the focus stay on other players\u2019 decisions and made the evil coordination less noticeable."
+      },
+      "thinking_time": 6.918150901794434
+    }
+  ]
+}

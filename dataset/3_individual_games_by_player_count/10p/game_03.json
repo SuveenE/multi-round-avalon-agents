@@ -1,0 +1,836 @@
+{
+  "game_id": "avalon_20251130_233346",
+  "config": {
+    "model": "gpt-5.1",
+    "reasoning_effort": "low",
+    "mission_team_sizes": [
+      3,
+      4,
+      4,
+      5,
+      5
+    ],
+    "num_messages_per_player": 1,
+    "num_players": 10
+  },
+  "players": [
+    {
+      "name": "Alice",
+      "role": "good",
+      "is_good": true,
+      "special_knowledge": []
+    },
+    {
+      "name": "Bob",
+      "role": "oberon",
+      "is_good": false,
+      "special_knowledge": []
+    },
+    {
+      "name": "Charlie",
+      "role": "percival",
+      "is_good": true,
+      "special_knowledge": [
+        "Grace",
+        "Henry"
+      ]
+    },
+    {
+      "name": "Diana",
+      "role": "good",
+      "is_good": true,
+      "special_knowledge": []
+    },
+    {
+      "name": "Eve",
+      "role": "assassin",
+      "is_good": false,
+      "special_knowledge": [
+        "Henry",
+        "Jack"
+      ]
+    },
+    {
+      "name": "Frank",
+      "role": "good",
+      "is_good": true,
+      "special_knowledge": []
+    },
+    {
+      "name": "Grace",
+      "role": "merlin",
+      "is_good": true,
+      "special_knowledge": [
+        "Bob",
+        "Eve",
+        "Henry"
+      ]
+    },
+    {
+      "name": "Henry",
+      "role": "morgana",
+      "is_good": false,
+      "special_knowledge": [
+        "Eve",
+        "Jack"
+      ]
+    },
+    {
+      "name": "Iris",
+      "role": "good",
+      "is_good": true,
+      "special_knowledge": []
+    },
+    {
+      "name": "Jack",
+      "role": "mordred",
+      "is_good": false,
+      "special_knowledge": [
+        "Eve",
+        "Henry"
+      ]
+    }
+  ],
+  "missions": [
+    {
+      "mission_number": 1,
+      "proposals": [
+        {
+          "proposal_id": 0,
+          "leader": "Charlie",
+          "team_members": [
+            "Alice",
+            "Grace",
+            "Iris"
+          ],
+          "reasoning": "This team has broad consensus across the table and keeps the early loud drivers (like Eve and myself) off Mission 1 so our talk can later be compared to actual results. Starting with Alice\u2013Grace\u2013Iris gives us a low-drama, information-rich first mission: if it passes cleanly, we get a solid baseline of likely-good players; if it fails, the blame is tightly contained within a single well-discussed trio, making the analysis straightforward. Grace and Iris have both been relatively measured, and Alice is a central pick in most suggested lineups, so this composition best matches the emerging group logic while maximizing clarity from Mission 1\u2019s outcome.",
+          "thinking_time": 4.796635866165161,
+          "reasoning_content": null,
+          "votes": [
+            {
+              "player": "Alice",
+              "vote": "approve",
+              "comment": "I know I\u2019m good, and starting with a broadly supported, low-conflict trio like Alice\u2013Grace\u2013Iris gives us clean early info with minimal risk.",
+              "thinking_time": 2.3990840911865234,
+              "reasoning_content": null
+            },
+            {
+              "player": "Bob",
+              "vote": "approve",
+              "comment": "Broad consensus and low-drama first mission; rejecting now would draw needless attention without any inside info on alignments.",
+              "thinking_time": 2.9090821743011475,
+              "reasoning_content": null
+            },
+            {
+              "player": "Charlie",
+              "vote": "approve",
+              "comment": "Early low-drama team with broad consensus; we need a clean info baseline and there\u2019s no strong reason yet to distrust any of Alice, Grace, or Iris specifically.",
+              "thinking_time": 4.711377859115601,
+              "reasoning_content": null
+            },
+            {
+              "player": "Diana",
+              "vote": "approve",
+              "comment": "Broad consensus, no strong individual red flags yet, and Mission 1 is low-risk and high-info with a tightly scoped trio.",
+              "thinking_time": 2.3724350929260254,
+              "reasoning_content": null
+            },
+            {
+              "player": "Eve",
+              "vote": "approve",
+              "comment": "Broad consensus early team with no known evil teammates; rejecting would be suspicious without a strong reason.",
+              "thinking_time": 5.105156183242798,
+              "reasoning_content": null
+            },
+            {
+              "player": "Frank",
+              "vote": "approve",
+              "comment": "Broad consensus, low-drama info-rich first mission; no one on the team is pinging strongly evil yet and we need an early baseline.",
+              "thinking_time": 3.732011079788208,
+              "reasoning_content": null
+            },
+            {
+              "player": "Grace",
+              "vote": "approve",
+              "comment": "No known red flags on this lineup yet, and a quiet-leaning first team should give clean info if it somehow fails.",
+              "thinking_time": 2.0113089084625244,
+              "reasoning_content": null
+            },
+            {
+              "player": "Henry",
+              "vote": "approve",
+              "comment": "Matches my earlier support for a low-drama Alice\u2013Grace\u2013Iris start and gives us a clean information baseline either way.",
+              "thinking_time": 3.298090934753418,
+              "reasoning_content": null
+            },
+            {
+              "player": "Iris",
+              "vote": "approve",
+              "comment": "I\u2019m on the team with two broadly townread, non-pushy picks; Mission 1 info will be very clean whether it passes or fails.",
+              "thinking_time": 4.211567163467407,
+              "reasoning_content": null
+            },
+            {
+              "player": "Jack",
+              "vote": "approve",
+              "comment": "Matches broad table consensus and keeps higher-profile players (including me) off the first mission, which is a safe, low-information-risk start for me to support.",
+              "thinking_time": 2.955064058303833,
+              "reasoning_content": null
+            }
+          ],
+          "vote_result": "approved"
+        }
+      ],
+      "final_team_index": 0,
+      "discussion": [
+        {
+          "player": "Alice",
+          "content": "Early on I\u2019d rather lean toward people who aren\u2019t rushing to steer the conversation, so I\u2019m tentatively okay with including quieter players like Grace or Iris, plus one of Bob/Charlie if they don\u2019t act too pushy about it. Let\u2019s avoid anyone who\u2019s already heavily trying to control the first team.",
+          "timestamp": 0,
+          "global_turn_id": 0,
+          "phase": "discussion",
+          "thinking_time": 2.659689426422119,
+          "reasoning_content": null
+        },
+        {
+          "player": "Bob",
+          "content": "I like the idea of starting with quieter players too, so something like Grace, Iris, and maybe Alice herself feels like a reasonable first team. I\u2019d rather avoid stacking it with people who are already driving the discussion a lot this early.",
+          "timestamp": 1,
+          "global_turn_id": 1,
+          "phase": "discussion",
+          "thinking_time": 2.8586461544036865,
+          "reasoning_content": null
+        },
+        {
+          "player": "Charlie",
+          "content": "I\u2019m fine starting with a quieter-heavy team like Grace, Iris, and Alice, as long as we don\u2019t completely ignore someone like Henry for early missions either, since keeping all our info-holders off the board can backfire later.",
+          "timestamp": 2,
+          "global_turn_id": 2,
+          "phase": "discussion",
+          "thinking_time": 2.662621021270752,
+          "reasoning_content": null
+        },
+        {
+          "player": "Diana",
+          "content": "I\u2019m okay starting with a Grace\u2013Iris\u2013Alice team, but I\u2019d like at least one of them to explain their own preferences a bit first so we\u2019re not just handing the first mission to the quietest corner of the table.",
+          "timestamp": 3,
+          "global_turn_id": 3,
+          "phase": "discussion",
+          "thinking_time": 2.049210786819458,
+          "reasoning_content": null
+        },
+        {
+          "player": "Eve",
+          "content": "I like the quieter-leaning idea, but I\u2019d rather not have a team of three people who\u2019ve barely been questioned yet. Something like Alice, Grace, and me feels like a better balance between someone who\u2019s talked a bit and a couple of lower-profile picks.",
+          "timestamp": 4,
+          "global_turn_id": 4,
+          "phase": "discussion",
+          "thinking_time": 8.519626140594482,
+          "reasoning_content": null
+        },
+        {
+          "player": "Frank",
+          "content": "I\u2019m wary of how fast Eve volunteered herself there, so I\u2019d rather see something like Alice, Grace, and Iris for the first team, with the understanding we reshuffle hard if it fails.",
+          "timestamp": 5,
+          "global_turn_id": 5,
+          "phase": "discussion",
+          "thinking_time": 1.9750080108642578,
+          "reasoning_content": null
+        },
+        {
+          "player": "Grace",
+          "content": "I\u2019m comfortable starting with something like Alice\u2013Iris\u2013me, especially since there\u2019s already a lot of talk around that combo and we\u2019ll get a clean data point if it passes or fails. Eve putting herself forward this early makes me a bit hesitant to include her on the very first mission.",
+          "timestamp": 6,
+          "global_turn_id": 6,
+          "phase": "discussion",
+          "thinking_time": 2.3935160636901855,
+          "reasoning_content": null
+        },
+        {
+          "player": "Henry",
+          "content": "Alice\u2013Grace\u2013Iris feels like a solid low-drama first team to me, and if it somehow fails we get a really clear cluster to scrutinize. I\u2019d rather keep people who pushed hardest for shaping the early narrative, like Eve or even Charlie, off Mission 1 so we can compare their talk to actual results later.",
+          "timestamp": 7,
+          "global_turn_id": 7,
+          "phase": "discussion",
+          "thinking_time": 2.610483169555664,
+          "reasoning_content": null
+        },
+        {
+          "player": "Iris",
+          "content": "Given how much agreement there already is, I\u2019m okay with an Alice\u2013Grace\u2013me team for Mission 1, mainly because it keeps the early loud voices like Eve off the board so we can compare what they\u2019ve been saying to actual results later. If this first mission fails, we\u2019ll have a very tight trio to dissect instead of a muddled mix.",
+          "timestamp": 8,
+          "global_turn_id": 8,
+          "phase": "discussion",
+          "thinking_time": 2.0078418254852295,
+          "reasoning_content": null
+        },
+        {
+          "player": "Jack",
+          "content": "I\u2019m fine with the Alice\u2013Grace\u2013Iris team for Mission 1 since it lines up with most people\u2019s thinking and keeps the early drivers like Eve off the board for now. If it passes cleanly, that gives us a decent baseline to compare future teams against.",
+          "timestamp": 9,
+          "global_turn_id": 9,
+          "phase": "discussion",
+          "thinking_time": 2.2457571029663086,
+          "reasoning_content": null
+        }
+      ],
+      "quest_actions": [
+        {
+          "player": "Alice",
+          "action": "success"
+        },
+        {
+          "player": "Grace",
+          "action": "success"
+        },
+        {
+          "player": "Iris",
+          "action": "success"
+        }
+      ],
+      "mission_result": "success",
+      "fail_count": 0
+    },
+    {
+      "mission_number": 2,
+      "proposals": [
+        {
+          "proposal_id": 0,
+          "leader": "Diana",
+          "team_members": [
+            "Alice",
+            "Grace",
+            "Iris",
+            "Diana"
+          ],
+          "reasoning": "Mission 1\u2019s team of Alice\u2013Grace\u2013Iris was completely clean, so they\u2019re our strongest provisional core. Nearly everyone has expressed comfort with that trio staying together, and multiple players (Bob, Eve, Frank, Grace, Henry, Iris) have specifically highlighted adding me (Diana) as the preferred fourth over riskier or more controversial picks like Henry. This lineup both maximizes the probability of a second clean mission and gives the table a clear, low\u2011drama data point: if this team passes and succeeds, it strongly town\u2011leans all four; if it passes and fails, it tightly narrows where the evil is hiding among a well\u2011discussed group rather than spreading uncertainty across fresh, less\u2011vetted names.",
+          "thinking_time": 3.102635145187378,
+          "reasoning_content": null,
+          "votes": [
+            {
+              "player": "Alice",
+              "vote": "approve",
+              "comment": "Same clean core from Mission 1 plus widely townread Diana; best chance for a second success and good info either way.",
+              "thinking_time": 2.5823681354522705,
+              "reasoning_content": null
+            },
+            {
+              "player": "Bob",
+              "vote": "reject",
+              "comment": "This locks in the same clean core plus a widely trusted fourth, risking a second consecutive success with no new info or leverage for evil.",
+              "thinking_time": 7.931711435317993,
+              "reasoning_content": null
+            },
+            {
+              "player": "Charlie",
+              "vote": "approve",
+              "comment": "First mission\u2019s Alice\u2013Grace\u2013Iris core is clean so far, and adding widely trusted Diana is a low\u2011risk way to push for a second success while keeping scrutiny on a well\u2011discussed group.",
+              "thinking_time": 6.007278203964233,
+              "reasoning_content": null
+            },
+            {
+              "player": "Diana",
+              "vote": "approve",
+              "comment": "Keeps the fully clean core from Mission 1 and adds me, which most players already favored; best balance of safety and information right now.",
+              "thinking_time": 1.676297903060913,
+              "reasoning_content": null
+            },
+            {
+              "player": "Eve",
+              "vote": "reject",
+              "comment": "No evil is on this team, so as evil I need to keep it from going through to avoid another likely clean success for good.",
+              "thinking_time": 1.895517349243164,
+              "reasoning_content": null
+            },
+            {
+              "player": "Frank",
+              "vote": "approve",
+              "comment": "Consistent with the clean Mission 1 core and my prior preference for adding Diana; good balance of safety and information gain.",
+              "thinking_time": 3.256058931350708,
+              "reasoning_content": null
+            },
+            {
+              "player": "Grace",
+              "vote": "approve",
+              "comment": "Keeps the fully clean core from Mission 1 and adds a widely town-leaned fourth, maximizing odds of a second success while giving strong info either way.",
+              "thinking_time": 2.0078063011169434,
+              "reasoning_content": null
+            },
+            {
+              "player": "Henry",
+              "vote": "reject",
+              "comment": "All four are widely townread and none of my known evil teammates are on it; too likely to be a clean good team and put us down 0\u20132.",
+              "thinking_time": 2.2940680980682373,
+              "reasoning_content": null
+            },
+            {
+              "player": "Iris",
+              "vote": "approve",
+              "comment": "Keeps the fully clean core from Mission 1 and adds a widely supported fourth (Diana), maximizing both success odds and useful info from the result.",
+              "thinking_time": 2.491002082824707,
+              "reasoning_content": null
+            },
+            {
+              "player": "Jack",
+              "vote": "reject",
+              "comment": "I\u2019d rather not double down on the exact same core plus the most consensus fourth; this feels too safe and low\u2011information. I\u2019d prefer swapping in someone like Eve or Bob to diversify and actually test a wider pool before we lock in a bloc.",
+              "thinking_time": 4.170027017593384,
+              "reasoning_content": null
+            }
+          ],
+          "vote_result": "approved"
+        }
+      ],
+      "final_team_index": 0,
+      "discussion": [
+        {
+          "player": "Alice",
+          "content": "Given Mission 1 went clean with me, Grace, and Iris, I\u2019m inclined to keep at least two of us on the next team for consistency. Obviously a spy could have passed, but until we see any fails, Grace and Iris look like our best bets.",
+          "timestamp": 0,
+          "global_turn_id": 10,
+          "phase": "discussion",
+          "thinking_time": 4.110943794250488,
+          "reasoning_content": null
+        },
+        {
+          "player": "Bob",
+          "content": "Keeping a core from the first clean team makes sense, but I\u2019d like to see at least one new face added so we actually learn something\u2014maybe Alice, Grace, Iris plus one of Charlie or Diana?",
+          "timestamp": 1,
+          "global_turn_id": 11,
+          "phase": "discussion",
+          "thinking_time": 1.4573791027069092,
+          "reasoning_content": null
+        },
+        {
+          "player": "Charlie",
+          "content": "I like keeping a solid core from the first mission, so I\u2019m happy with Grace and Iris staying on, and between the new faces I slightly prefer adding Henry over Diana or Bob for now. That gives us some continuity plus one fresh read without changing too much at once.",
+          "timestamp": 2,
+          "global_turn_id": 12,
+          "phase": "discussion",
+          "thinking_time": 1.6392319202423096,
+          "reasoning_content": null
+        },
+        {
+          "player": "Diana",
+          "content": "I\u2019m good keeping a core from the first mission, but I\u2019d rather see something like Alice\u2013Grace\u2013Iris plus one of me or Bob than jumping straight to Henry, since Charlie pushing Henry in this early without any info pings me a bit.",
+          "timestamp": 3,
+          "global_turn_id": 13,
+          "phase": "discussion",
+          "thinking_time": 2.4856200218200684,
+          "reasoning_content": null
+        },
+        {
+          "player": "Eve",
+          "content": "I\u2019m with Diana that Charlie\u2019s early push for Henry feels a bit premature, so I\u2019d rather see us stick with the clean core of Alice\u2013Grace\u2013Iris and add either Bob or Diana this round. That keeps most of what worked while giving us one new data point without jumping to someone already being subtly shielded.",
+          "timestamp": 4,
+          "global_turn_id": 14,
+          "phase": "discussion",
+          "thinking_time": 6.589845895767212,
+          "reasoning_content": null
+        },
+        {
+          "player": "Frank",
+          "content": "I really like sticking with the Alice\u2013Grace\u2013Iris core for now, and I\u2019d lean toward adding Diana over Henry since Charlie\u2019s early push for Henry feels a bit like soft-covering. Bob\u2019s also fine as the fourth, but I\u2019m most comfortable with Alice\u2013Grace\u2013Iris\u2013Diana this round.",
+          "timestamp": 5,
+          "global_turn_id": 15,
+          "phase": "discussion",
+          "thinking_time": 2.8743767738342285,
+          "reasoning_content": null
+        },
+        {
+          "player": "Grace",
+          "content": "I like sticking with the Alice\u2013Grace\u2013Iris core for now, and of the suggested additions I\u2019m most comfortable with Diana since the early enthusiasm for Henry feels a bit rushed. I\u2019d rather avoid piling too many untested or subtly shielded players onto the same team this early.",
+          "timestamp": 6,
+          "global_turn_id": 16,
+          "phase": "discussion",
+          "thinking_time": 3.9403393268585205,
+          "reasoning_content": null
+        },
+        {
+          "player": "Henry",
+          "content": "Keeping Alice\u2013Grace\u2013Iris as a core seems reasonable, but given how much heat there already is around Charlie floating my name, I\u2019d rather see a lower\u2011drama fourth like Bob or Diana than double down on that.",
+          "timestamp": 7,
+          "global_turn_id": 17,
+          "phase": "discussion",
+          "thinking_time": 6.423523187637329,
+          "reasoning_content": null
+        },
+        {
+          "player": "Iris",
+          "content": "I\u2019m happy to keep the Alice\u2013Grace\u2013Iris core since the first mission was clean, and of the options I slightly prefer adding Diana here, given how odd Charlie\u2019s early push for Henry felt.",
+          "timestamp": 8,
+          "global_turn_id": 18,
+          "phase": "discussion",
+          "thinking_time": 2.3453218936920166,
+          "reasoning_content": null
+        },
+        {
+          "player": "Jack",
+          "content": "Sticking with the Alice\u2013Grace\u2013Iris core seems fine to me, but I\u2019d actually like to see Eve as the fourth since she\u2019s been measured and not hard\u2011pushing any particular agenda so far.",
+          "timestamp": 9,
+          "global_turn_id": 19,
+          "phase": "discussion",
+          "thinking_time": 4.043251991271973,
+          "reasoning_content": null
+        }
+      ],
+      "quest_actions": [
+        {
+          "player": "Alice",
+          "action": "success"
+        },
+        {
+          "player": "Grace",
+          "action": "success"
+        },
+        {
+          "player": "Iris",
+          "action": "success"
+        },
+        {
+          "player": "Diana",
+          "action": "success"
+        }
+      ],
+      "mission_result": "success",
+      "fail_count": 0
+    },
+    {
+      "mission_number": 3,
+      "proposals": [
+        {
+          "proposal_id": 0,
+          "leader": "Eve",
+          "team_members": [
+            "Alice",
+            "Grace",
+            "Iris",
+            "Henry"
+          ],
+          "reasoning": "The Alice\u2013Grace\u2013Iris core has been clean on both previous missions, and a clear majority of the table wants to keep that core together. The main point of debate has been whether to rerun Diana or to swap the fourth slot to gain new information. Several players (Bob, Frank, Henry, Jack, and I) explicitly supported the 'keep the core, change the fringe' approach, with Henry often named as a good test candidate. Proposing Alice, Grace, Iris, and Henry respects the proven core, aligns with the expressed preference to avoid autopiloting the exact same four, and gives us meaningful new info on a widely suggested fourth without disrupting the most trusted trio.",
+          "thinking_time": 5.402768135070801,
+          "reasoning_content": null,
+          "votes": [
+            {
+              "player": "Alice",
+              "vote": "reject",
+              "comment": "We only need one more success, so I\u2019d rather rerun the already clean Alice\u2013Grace\u2013Iris\u2013Diana team than introduce the new risk of Henry just for information.",
+              "thinking_time": 6.151599168777466,
+              "reasoning_content": null
+            },
+            {
+              "player": "Bob",
+              "vote": "approve",
+              "comment": "Consistent with my earlier stance: keep the proven core but swap the fringe to gain info on Henry rather than autopiloting the exact same four.",
+              "thinking_time": 6.601166725158691,
+              "reasoning_content": null
+            },
+            {
+              "player": "Charlie",
+              "vote": "reject",
+              "comment": "Grace has a strong track record from two clean missions, but Henry is untested and, from my perspective, could very well be evil. Adding him here unnecessarily risks contaminating what\u2019s been a reliable core; I\u2019d rather rerun Alice\u2013Grace\u2013Iris\u2013Diana.",
+              "thinking_time": 6.912346124649048,
+              "reasoning_content": null
+            },
+            {
+              "player": "Diana",
+              "vote": "reject",
+              "comment": "At 2\u20130 up the lowest\u2011risk play is rerunning the previously clean team including me; swapping in an untested Henry introduces unnecessary risk when we\u2019re one success from winning.",
+              "thinking_time": 2.3658058643341064,
+              "reasoning_content": null
+            },
+            {
+              "player": "Eve",
+              "vote": "approve",
+              "comment": "Keeps the trusted core while finally testing someone new like I\u2019d been asking for, so this balances safety with actually gaining information.",
+              "thinking_time": 3.066736936569214,
+              "reasoning_content": null
+            },
+            {
+              "player": "Frank",
+              "vote": "reject",
+              "comment": "At 2\u20130 we should maximize win odds, not info. Re-running Alice\u2013Grace\u2013Iris\u2013Diana (already clean) is safer than adding untested Henry right when evil must sabotage.",
+              "thinking_time": 3.769005060195923,
+              "reasoning_content": null
+            },
+            {
+              "player": "Grace",
+              "vote": "reject",
+              "comment": "At 2\u20130 up I\u2019d rather stick with the exact team that already succeeded than introduce a totally untested fourth when one fail loses us this mission.",
+              "thinking_time": 2.3589391708374023,
+              "reasoning_content": null
+            },
+            {
+              "player": "Henry",
+              "vote": "approve",
+              "comment": "I\u2019m on the team, so I\u2019d rather let this go through and control the outcome than risk a different lineup that might succeed cleanly for the win.",
+              "thinking_time": 5.512966871261597,
+              "reasoning_content": null
+            },
+            {
+              "player": "Iris",
+              "vote": "reject",
+              "comment": "I prefer rerunning the exact same successful team with Diana; introducing Henry now adds unnecessary risk when we\u2019re one clean mission from victory.",
+              "thinking_time": 5.7384352684021,
+              "reasoning_content": null
+            },
+            {
+              "player": "Jack",
+              "vote": "approve",
+              "comment": "Henry is on the team and we need a fail opportunity this round.",
+              "thinking_time": 2.6867220401763916,
+              "reasoning_content": null
+            }
+          ],
+          "vote_result": "rejected"
+        },
+        {
+          "proposal_id": 1,
+          "leader": "Frank",
+          "team_members": [
+            "Alice",
+            "Grace",
+            "Iris",
+            "Diana"
+          ],
+          "reasoning": "Two missions have succeeded with zero fails using the Alice\u2013Grace\u2013Iris core, and the second mission also successfully included Diana. With good already up 2\u20130 and needing only one more success, the highest-percentage play is to minimize new uncertainty and rerun the exact proven team rather than introduce an untested player who could be a hidden spy. Even though I previously suggested swapping the fourth slot, the objective best chance to secure the win now is to stick with the only fully tested and clean combination we have.",
+          "thinking_time": 5.13714599609375,
+          "reasoning_content": null,
+          "votes": [
+            {
+              "player": "Alice",
+              "vote": "approve",
+              "comment": "Same four already passed a mission with zero fails; at 2\u20130 up, rerunning the proven team is the safest path to a win.",
+              "thinking_time": 4.729282855987549,
+              "reasoning_content": null
+            },
+            {
+              "player": "Bob",
+              "vote": "reject",
+              "comment": "I still don\u2019t like auto-running the same core; if they\u2019re all good this just hands good the game, and if there\u2019s a deep-cover spy we learn nothing new.",
+              "thinking_time": 12.038301944732666,
+              "reasoning_content": null
+            },
+            {
+              "player": "Charlie",
+              "vote": "approve",
+              "comment": "We\u2019re 2\u20130 with this exact core and this exact four already passed clean; introducing a new, untested player now adds more risk than rerunning the proven team for the win.",
+              "thinking_time": 7.1666951179504395,
+              "reasoning_content": null
+            },
+            {
+              "player": "Diana",
+              "vote": "approve",
+              "comment": "Same four have already produced a clean mission; introducing new players adds unnecessary risk when we only need one more success.",
+              "thinking_time": 2.3930251598358154,
+              "reasoning_content": null
+            },
+            {
+              "player": "Eve",
+              "vote": "reject",
+              "comment": "I\u2019m still against auto-running the same four when it could be hiding a deep-cover spy; we should test at least one new person instead of repeating this exact team.",
+              "thinking_time": 6.8421947956085205,
+              "reasoning_content": null
+            },
+            {
+              "player": "Frank",
+              "vote": "approve",
+              "comment": "Two clean missions with the same core plus Diana make it highly likely this team is all good; introducing a new player now adds more risk than value when we only need one more success.",
+              "thinking_time": 5.941609859466553,
+              "reasoning_content": null
+            },
+            {
+              "player": "Grace",
+              "vote": "approve",
+              "comment": "Same core has been clean twice and this exact four already passed once with no fails; at 2\u20130 up, rerunning the most proven team is the safest path to a win.",
+              "thinking_time": 2.1972999572753906,
+              "reasoning_content": null
+            },
+            {
+              "player": "Henry",
+              "vote": "reject",
+              "comment": "We\u2019re one success from losing and this team has no confirmed spy; I\u2019d rather not auto-rerun the same four and risk handing good the game without ever testing new players or getting better info.",
+              "thinking_time": 6.854059934616089,
+              "reasoning_content": null
+            },
+            {
+              "player": "Iris",
+              "vote": "approve",
+              "comment": "Same core has two clean missions and Diana was on the second; rerunning the only fully tested team is the safest way to secure the win now.",
+              "thinking_time": 5.133822917938232,
+              "reasoning_content": null
+            },
+            {
+              "player": "Jack",
+              "vote": "reject",
+              "comment": "No known evil is on this team while good is already up 2\u20130; we need a spy on the mission to have a chance, so this is too safe for good.",
+              "thinking_time": 5.21653413772583,
+              "reasoning_content": null
+            }
+          ],
+          "vote_result": "approved"
+        }
+      ],
+      "final_team_index": 1,
+      "discussion": [
+        {
+          "player": "Alice",
+          "content": "Given two clean missions with the same core, I really want to keep Alice\u2013Grace\u2013Iris together, and I\u2019m tentatively okay adding Diana again unless someone has a strong reason to shake things up.",
+          "timestamp": 0,
+          "global_turn_id": 20,
+          "phase": "discussion",
+          "thinking_time": 2.678839683532715,
+          "reasoning_content": null
+        },
+        {
+          "player": "Bob",
+          "content": "I\u2019m a bit wary of just auto-locking in the same core three every time\u2014if there is a deep-cover spy, that\u2019s exactly where they\u2019d want to sit. I\u2019d like to see at least one swap this round, maybe test someone like Frank or Henry instead of rerunning the exact group.",
+          "timestamp": 1,
+          "global_turn_id": 21,
+          "phase": "discussion",
+          "thinking_time": 3.2560431957244873,
+          "reasoning_content": null
+        },
+        {
+          "player": "Charlie",
+          "content": "Given we\u2019re one success away from winning and the same Alice\u2013Grace\u2013Iris core has been clean twice (plus Diana once), I\u2019d rather not get fancy here\u2014I'd stick with those four again for this mission. If we start swapping now and hit a fail, we just give evil more info for free.",
+          "timestamp": 2,
+          "global_turn_id": 22,
+          "phase": "discussion",
+          "thinking_time": 4.7960591316223145,
+          "reasoning_content": null
+        },
+        {
+          "player": "Diana",
+          "content": "Given we only need one more success and the Alice\u2013Grace\u2013Iris core has been clean twice (including with me last time), I\u2019m strongly in favor of rerunning the same four rather than introducing new uncertainty. Bob\u2019s concern about a deep-cover spy is fair in theory, but changing now helps evil more than us if we accidentally add a spy.",
+          "timestamp": 3,
+          "global_turn_id": 23,
+          "phase": "discussion",
+          "thinking_time": 4.274080991744995,
+          "reasoning_content": null
+        },
+        {
+          "player": "Eve",
+          "content": "I\u2019m with Bob that auto-running the same core three every time is risky\u2014if there is a deep-cover spy, we\u2019re just handing them the win\u2014so I\u2019d like to see at least one change, maybe swap one of Alice/Grace/Iris for someone like Henry or Frank to actually test new people.",
+          "timestamp": 4,
+          "global_turn_id": 24,
+          "phase": "discussion",
+          "thinking_time": 4.337825059890747,
+          "reasoning_content": null
+        },
+        {
+          "player": "Frank",
+          "content": "I really want to keep the Alice\u2013Grace\u2013Iris core since they\u2019ve been clean twice, but I\u2019d rather swap the fourth slot\u2014either test me or Henry instead of just auto-adding Diana again so we actually learn something this round.",
+          "timestamp": 5,
+          "global_turn_id": 25,
+          "phase": "discussion",
+          "thinking_time": 2.9500069618225098,
+          "reasoning_content": null
+        },
+        {
+          "player": "Grace",
+          "content": "Given we\u2019re already 2\u20130 up with the same core and the only change last time (adding Diana) still gave us a clean result, I\u2019d rather not introduce new risk now\u2014Alice, Iris, Diana, and I feels like the safest path to a 3\u20130. If people really hate repeating, I\u2019d at least keep Alice\u2013Iris together and only swap the fourth, but I think rerunning the last team is best.",
+          "timestamp": 6,
+          "global_turn_id": 26,
+          "phase": "discussion",
+          "thinking_time": 4.787964105606079,
+          "reasoning_content": null
+        },
+        {
+          "player": "Henry",
+          "content": "I\u2019m with the \u201ckeep the core, change the fringe\u201d camp: I\u2019d keep Alice\u2013Grace\u2013Iris together but I\u2019d rather swap Diana out and test someone new like Frank or me this round so we\u2019re not blindly auto-running the same exact four to a potential loss.",
+          "timestamp": 7,
+          "global_turn_id": 27,
+          "phase": "discussion",
+          "thinking_time": 2.422538995742798,
+          "reasoning_content": null
+        },
+        {
+          "player": "Iris",
+          "content": "Given we only need one more success, I\u2019m most comfortable just rerunning Alice\u2013Grace\u2013Diana\u2013me; changing the core now feels like it adds unnecessary risk for almost no upside.",
+          "timestamp": 8,
+          "global_turn_id": 28,
+          "phase": "discussion",
+          "thinking_time": 2.5064311027526855,
+          "reasoning_content": null
+        },
+        {
+          "player": "Jack",
+          "content": "I\u2019m in the \u201ckeep the core, change the fringe\u201d camp too\u2014Alice, Grace, and Iris feel as safe as we\u2019re going to get, but I\u2019d rather swap Diana out and try someone like Henry this round so we\u2019re not just autopiloting the exact same four.",
+          "timestamp": 9,
+          "global_turn_id": 29,
+          "phase": "discussion",
+          "thinking_time": 4.470122814178467,
+          "reasoning_content": null
+        }
+      ],
+      "quest_actions": [
+        {
+          "player": "Alice",
+          "action": "success"
+        },
+        {
+          "player": "Grace",
+          "action": "success"
+        },
+        {
+          "player": "Iris",
+          "action": "success"
+        },
+        {
+          "player": "Diana",
+          "action": "success"
+        }
+      ],
+      "mission_result": "success",
+      "fail_count": 0
+    }
+  ],
+  "winner": "evil",
+  "assassin_phase": {
+    "assassin": "Eve",
+    "evil_discussion": [
+      {
+        "player": "Bob",
+        "content": "I\u2019m leaning hardest toward Grace as Merlin. She\u2019s been on every successful mission, consistently nudged the table away from Eve and Henry without over-explaining why, and her preferences always \u201cjust happen\u201d to line up with the actually-good-heavy teams while sounding like cautious logic instead of gut reads. Alice and Iris feel more like standard cautious goods riding the consensus Grace helped shape, rather than the ones quietly steering it.",
+        "timestamp": 0,
+        "global_turn_id": 30,
+        "phase": "evil_discussion",
+        "thinking_time": 9.287264823913574,
+        "reasoning_content": null
+      },
+      {
+        "player": "Eve",
+        "content": "I\u2019m mostly with Bob on Grace as Merlin: she\u2019s been on every successful team, consistently framed the \u201csafe\u201d narrative around the Alice\u2013Grace\u2013Iris core, and her pushes (like preferring Diana over Henry/Bob) always happened to keep us off the board without sounding like hard reads. Alice and Iris feel more like conservative followers anchored to that core, whereas Grace subtly shaped direction while sounding like she was just going with table logic, which is exactly how I\u2019d expect Merlin to play it here.",
+        "timestamp": 1,
+        "global_turn_id": 31,
+        "phase": "evil_discussion",
+        "thinking_time": 3.435426712036133,
+        "reasoning_content": null
+      },
+      {
+        "player": "Henry",
+        "content": "I\u2019m mostly on the Grace-as-Merlin train too: she quietly anchored that Alice\u2013Grace\u2013Iris core from the start, consistently framed it as \u201csafe\u201d while pushing subtle suspicion on Henry/Eve without ever needing to spell out strong reads, and her preferences kept us off missions without looking like hard vetoes. Alice and Iris read more like conservative villagers who were happy to ride the already-accepted core, whereas Grace repeatedly justified the exact team shapes that turned out to be good-heavy with just enough \u201ccautious logic\u201d to pass as normal town play.",
+        "timestamp": 2,
+        "global_turn_id": 32,
+        "phase": "evil_discussion",
+        "thinking_time": 4.366466760635376,
+        "reasoning_content": null
+      },
+      {
+        "player": "Jack",
+        "content": "I\u2019m with you all that Grace is the best Merlin hit: from Mission 1 on she quietly anchored the Alice\u2013Grace\u2013Iris core, consistently framed it as the \u201csafe info\u201d choice, and her preference for Diana over Henry/Bob/Eve repeatedly kept us off missions without ever sounding like a hard read. Alice and Iris feel like conservative good players who trusted that core once it was socially accepted, but it was Grace who kept giving just enough \u201cprocess\u201d to nudge the table toward exactly the teams that turned out to be good-heavy.",
+        "timestamp": 3,
+        "global_turn_id": 33,
+        "phase": "evil_discussion",
+        "thinking_time": 2.6476292610168457,
+        "reasoning_content": null
+      }
+    ],
+    "guess": "Grace",
+    "reasoning": "Grace quietly anchored the Alice\u2013Grace\u2013Iris core from Mission 1 and consistently framed it as the safest option, while her preferences (like favoring Diana over Henry or Eve) repeatedly kept known evil players off missions without sounding like hard reads. Alice and Iris played more like conservative followers of that already-accepted core, whereas Grace subtly steered team selection with just enough logical justification to resemble Merlin protecting her information.",
+    "correct": true,
+    "thinking_time": 2.7467830181121826,
+    "reasoning_content": null
+  }
+}

@@ -1,0 +1,580 @@
+{
+  "game_id": "avalon_20251130_214806",
+  "config": {
+    "model": "gpt-5.1",
+    "reasoning_effort": "low",
+    "mission_team_sizes": [
+      2,
+      3,
+      2,
+      3,
+      3
+    ],
+    "num_messages_per_player": 1,
+    "num_players": 5
+  },
+  "players": [
+    {
+      "name": "Alice",
+      "role": "merlin",
+      "is_good": true,
+      "special_knowledge": [
+        "Charlie",
+        "Diana"
+      ]
+    },
+    {
+      "name": "Bob",
+      "role": "good",
+      "is_good": true,
+      "special_knowledge": []
+    },
+    {
+      "name": "Charlie",
+      "role": "evil",
+      "is_good": false,
+      "special_knowledge": [
+        "Diana"
+      ]
+    },
+    {
+      "name": "Diana",
+      "role": "assassin",
+      "is_good": false,
+      "special_knowledge": [
+        "Charlie"
+      ]
+    },
+    {
+      "name": "Eve",
+      "role": "good",
+      "is_good": true,
+      "special_knowledge": []
+    }
+  ],
+  "missions": [
+    {
+      "mission_number": 1,
+      "proposals": [
+        {
+          "proposal_id": 0,
+          "leader": "Eve",
+          "team_members": [
+            "Alice",
+            "Eve"
+          ],
+          "reasoning": "Putting myself (Eve) on the team guarantees at least one player I know is good, and pairing with Alice tests the player most broadly trusted so far without giving the consensus Alice\u2013Bob duo an easy, auto-cleared start. If this mission passes with Alice\u2013Eve, it builds strong trust in both of us; if it fails, it sharply narrows suspicion onto a small set instead of letting two widely trusted players potentially coordinate a hidden fail.",
+          "thinking_time": 4.706728219985962,
+          "reasoning_content": null,
+          "votes": [
+            {
+              "player": "Alice",
+              "vote": "approve",
+              "comment": "Team is likely low-risk for Mission 1 and avoids the heavily pushed Alice\u2013Bob duo, giving us information without immediately auto-clearing a pair.",
+              "thinking_time": 2.8916640281677246,
+              "reasoning_content": null
+            },
+            {
+              "player": "Bob",
+              "vote": "reject",
+              "comment": "Eve is the least tested and most contested pick so far; I\u2019d rather start with the broadly trusted Alice\u2013Bob pair than risk giving an unknown a potential early fail opportunity.",
+              "thinking_time": 2.0777220726013184,
+              "reasoning_content": null
+            },
+            {
+              "player": "Charlie",
+              "vote": "reject",
+              "comment": "I\u2019m uneasy with auto-trusting the leader\u2019s self-inclusion and sidelining Bob after he was in the most-discussed pair; I\u2019d rather see a team that better reflects the early consensus or includes more clearly debated options first.",
+              "thinking_time": 3.964534044265747,
+              "reasoning_content": null
+            },
+            {
+              "player": "Diana",
+              "vote": "reject",
+              "comment": "As evil, I want at least one of myself or Charlie on the mission to allow a possible sabotage; this team has neither of us.",
+              "thinking_time": 2.8044209480285645,
+              "reasoning_content": null
+            },
+            {
+              "player": "Eve",
+              "vote": "approve",
+              "comment": "I know I\u2019m good, and this tests the widely trusted Alice without giving the Alice\u2013Bob pair an easy auto-clear start.",
+              "thinking_time": 2.02927303314209,
+              "reasoning_content": null
+            }
+          ],
+          "vote_result": "rejected"
+        },
+        {
+          "proposal_id": 1,
+          "leader": "Alice",
+          "team_members": [
+            "Alice",
+            "Bob"
+          ],
+          "reasoning": "This pairing has the broadest support and is the lowest-friction way to get an early read: both players have been active and transparent in discussion, making it easier for everyone to evaluate their actions and votes afterward. Starting with a relatively consensus, low-drama team for Mission 1 lets us gather information without immediately sidelining anyone based on very thin early-game reads.",
+          "thinking_time": 4.597023010253906,
+          "reasoning_content": null,
+          "votes": [
+            {
+              "player": "Alice",
+              "vote": "approve",
+              "comment": "Consensus low-drama pair for Mission 1; we need early info and there\u2019s no strong reason to suspect this combo yet.",
+              "thinking_time": 4.150960922241211,
+              "reasoning_content": null
+            },
+            {
+              "player": "Bob",
+              "vote": "approve",
+              "comment": "I know I\u2019m good, and Alice\u2013Bob has broad support with no strong red flags yet. Getting an early mission with at least one confirmed-good-from-my-perspective is valuable for information.",
+              "thinking_time": 3.1869750022888184,
+              "reasoning_content": null
+            },
+            {
+              "player": "Charlie",
+              "vote": "approve",
+              "comment": "I\u2019ve already argued Alice\u2013Bob is the safest low-drama first mission; rejecting it now would be inconsistent and suspicious, so I\u2019ll back the consensus team.",
+              "thinking_time": 4.583030939102173,
+              "reasoning_content": null
+            },
+            {
+              "player": "Diana",
+              "vote": "reject",
+              "comment": "Both proposed members are good from my perspective, so this would give good a clean early success and too much trust-building.",
+              "thinking_time": 6.203871011734009,
+              "reasoning_content": null
+            },
+            {
+              "player": "Eve",
+              "vote": "approve",
+              "comment": "Early mission with a broadly supported, talkative pair is fine for information; odds both are evil are low and we learn a lot from the result and later patterns.",
+              "thinking_time": 9.368692874908447,
+              "reasoning_content": null
+            }
+          ],
+          "vote_result": "approved"
+        }
+      ],
+      "final_team_index": 1,
+      "discussion": [
+        {
+          "player": "Alice",
+          "content": "For a 2-person first mission, I\u2019d lean toward lower-risk picks like Bob and Eve so we can get some information without giving too much control to anyone who\u2019s been quiet or vague so far. It\u2019s early, but that combo feels like a reasonable starting point.",
+          "timestamp": 0,
+          "global_turn_id": 0,
+          "phase": "discussion",
+          "thinking_time": 3.432340145111084,
+          "reasoning_content": null
+        },
+        {
+          "player": "Bob",
+          "content": "I\u2019m fine being on the first team, but I\u2019m not sold on Eve yet just because we have almost no info. I\u2019d rather hear a bit more from everyone and would also consider pairs like Alice\u2013Bob or Alice\u2013Charlie before we lock it in.",
+          "timestamp": 1,
+          "global_turn_id": 1,
+          "phase": "discussion",
+          "thinking_time": 2.0949509143829346,
+          "reasoning_content": null
+        },
+        {
+          "player": "Charlie",
+          "content": "I\u2019m inclined to agree that Alice\u2013Bob is the safest low-drama pair for the first mission, since they\u2019re both being pretty transparent so far. I\u2019d rather keep Eve off this one until we\u2019ve heard a bit more from her and seen how people react to an initial clean or failed mission.",
+          "timestamp": 2,
+          "global_turn_id": 2,
+          "phase": "discussion",
+          "thinking_time": 4.076445817947388,
+          "reasoning_content": null
+        },
+        {
+          "player": "Diana",
+          "content": "I\u2019m okay with an Alice\u2013Bob first mission since they\u2019ve both been pretty clear so far, but I\u2019d also like to hear a bit more from Eve before we leave her off entirely and accidentally start hard-clearing the wrong people.",
+          "timestamp": 3,
+          "global_turn_id": 3,
+          "phase": "discussion",
+          "thinking_time": 4.9922120571136475,
+          "reasoning_content": null
+        },
+        {
+          "player": "Eve",
+          "content": "If we auto-default to Alice\u2013Bob, we risk giving two evils a very easy, trusted start, so I\u2019d prefer a split like Alice\u2013Eve or Bob\u2013Eve to get information on at least one person who isn\u2019t already being soft-cleared by everyone.",
+          "timestamp": 4,
+          "global_turn_id": 4,
+          "phase": "discussion",
+          "thinking_time": 2.461819887161255,
+          "reasoning_content": null
+        }
+      ],
+      "quest_actions": [
+        {
+          "player": "Alice",
+          "action": "success"
+        },
+        {
+          "player": "Bob",
+          "action": "success"
+        }
+      ],
+      "mission_result": "success",
+      "fail_count": 0
+    },
+    {
+      "mission_number": 2,
+      "proposals": [
+        {
+          "proposal_id": 0,
+          "leader": "Bob",
+          "team_members": [
+            "Alice",
+            "Bob",
+            "Charlie"
+          ],
+          "reasoning": "Mission 1 with Alice and me (Bob) succeeded with no fails, so keeping that core is currently our best baseline of apparent reliability while still acknowledging one of us could theoretically be a hidden evil who chose to pass. For Mission 2, I want to maximize information gain rather than just follow the loudest preference, so I\u2019m adding Charlie as the new third member. Charlie volunteered to be the info-gathering addition and is reasonably active in discussion, which means if this mission fails we\u2019ll have clearer behavioral and voting data to analyze compared to adding a quieter or more consensus-driven player. This team preserves a proven pair and tests a new player who can be meaningfully read from both the mission result and their subsequent reactions.",
+          "thinking_time": 4.934004783630371,
+          "reasoning_content": null,
+          "votes": [
+            {
+              "player": "Alice",
+              "vote": "reject",
+              "comment": "I still prefer keeping the Alice\u2013Bob core but adding Eve for a cleaner info read; putting Charlie on now muddies things if it fails and goes against the earlier emerging preference for testing Eve first.",
+              "thinking_time": 2.987287759780884,
+              "reasoning_content": null
+            },
+            {
+              "player": "Bob",
+              "vote": "approve",
+              "comment": "I trust the Alice+Bob core from the clean first mission and adding Charlie gives good info without introducing multiple unknowns at once.",
+              "thinking_time": 3.5227620601654053,
+              "reasoning_content": null
+            },
+            {
+              "player": "Charlie",
+              "vote": "approve",
+              "comment": "I\u2019m on the team and it keeps the trusted Alice\u2013Bob core intact, so I want this to go through to keep suspicion low and gain info.",
+              "thinking_time": 1.8210780620574951,
+              "reasoning_content": null
+            },
+            {
+              "player": "Diana",
+              "vote": "approve",
+              "comment": "My evil teammate is on the team, and a potential fail here helps shift suspicion onto that core early.",
+              "thinking_time": 2.9029860496520996,
+              "reasoning_content": null
+            },
+            {
+              "player": "Eve",
+              "vote": "approve",
+              "comment": "Keeping the proven Alice+Bob core and testing Charlie gives useful info early without any strong reason yet to distrust this lineup.",
+              "thinking_time": 4.48901104927063,
+              "reasoning_content": null
+            }
+          ],
+          "vote_result": "approved"
+        }
+      ],
+      "final_team_index": 0,
+      "discussion": [
+        {
+          "player": "Alice",
+          "content": "Given the clean first mission, I\u2019m inclined to keep Bob on and add someone who wasn\u2019t involved yet\u2014Eve feels like a reasonable pick so we can test a new player without overhauling what\u2019s already worked.",
+          "timestamp": 0,
+          "global_turn_id": 5,
+          "phase": "discussion",
+          "thinking_time": 4.409140110015869,
+          "reasoning_content": null
+        },
+        {
+          "player": "Bob",
+          "content": "I\u2019m okay staying on the team since mission 1 was clean, but I\u2019d rather add someone we can pressure a bit more than Eve\u2014maybe Charlie\u2014so we\u2019re not just blindly accepting the first new name.",
+          "timestamp": 1,
+          "global_turn_id": 6,
+          "phase": "discussion",
+          "thinking_time": 4.569568872451782,
+          "reasoning_content": null
+        },
+        {
+          "player": "Charlie",
+          "content": "I\u2019m fine being the new addition if we want more info, but I agree the safest core right now is still Alice + Bob, and then we just need to decide which of Eve, Diana, or me gives us the best read going forward.",
+          "timestamp": 2,
+          "global_turn_id": 7,
+          "phase": "discussion",
+          "thinking_time": 7.946170091629028,
+          "reasoning_content": null
+        },
+        {
+          "player": "Diana",
+          "content": "I still like keeping the Alice + Bob core since mission 1 was clean, and if we\u2019re just adding one new person for info, I slightly prefer Eve over Charlie so we\u2019re not immediately stacking the most vocal players on the same team and muddying the read if it fails.",
+          "timestamp": 3,
+          "global_turn_id": 8,
+          "phase": "discussion",
+          "thinking_time": 7.779881954193115,
+          "reasoning_content": null
+        },
+        {
+          "player": "Eve",
+          "content": "I\u2019m fine sticking with the Alice + Bob core and adding me this round, but if we do that we should all agree that a fail there puts heavy suspicion on that core rather than just blaming the new add.",
+          "timestamp": 4,
+          "global_turn_id": 9,
+          "phase": "discussion",
+          "thinking_time": 2.8568592071533203,
+          "reasoning_content": null
+        }
+      ],
+      "quest_actions": [
+        {
+          "player": "Alice",
+          "action": "success"
+        },
+        {
+          "player": "Bob",
+          "action": "success"
+        },
+        {
+          "player": "Charlie",
+          "action": "success"
+        }
+      ],
+      "mission_result": "success",
+      "fail_count": 0
+    },
+    {
+      "mission_number": 3,
+      "proposals": [
+        {
+          "proposal_id": 0,
+          "leader": "Charlie",
+          "team_members": [
+            "Alice",
+            "Charlie"
+          ],
+          "reasoning": "We\u2019ve already run Alice + Bob twice, which keeps us blind about everyone else. At 2\u20130, I don\u2019t want to hand the same unchanged pair a third mission when, if there is a slow-playing evil between them, this is exactly when they\u2019d cash it in. Keeping Alice maintains some continuity with the successful missions, but swapping Bob for me introduces new information and slightly diversifies the risk while not overhauling the team structure completely.",
+          "thinking_time": 22.49329686164856,
+          "reasoning_content": null,
+          "votes": [
+            {
+              "player": "Alice",
+              "vote": "reject",
+              "comment": "At 2\u20130 we should minimize risk; putting an untested player like Charlie on a tiny 2-person mission feels unnecessary when we have a fully clean 2-person combo available.",
+              "thinking_time": 2.2560601234436035,
+              "reasoning_content": null
+            },
+            {
+              "player": "Bob",
+              "vote": "reject",
+              "comment": "Alice+Bob is the only pair proven over multiple missions; introducing untested Charlie adds unnecessary risk when we only need one more success.",
+              "thinking_time": 8.909073829650879,
+              "reasoning_content": null
+            },
+            {
+              "player": "Charlie",
+              "vote": "approve",
+              "comment": "Consistent with my earlier point about varying from the Alice+Bob core to gain new information while keeping Alice for continuity.",
+              "thinking_time": 4.757123947143555,
+              "reasoning_content": null
+            },
+            {
+              "player": "Diana",
+              "vote": "approve",
+              "comment": "This still breaks up the repeated Alice+Bob core and gives us new information while keeping at least one proven member, which feels safer than handing the same unchanged pair a third mission.",
+              "thinking_time": 4.835674047470093,
+              "reasoning_content": null
+            },
+            {
+              "player": "Eve",
+              "vote": "reject",
+              "comment": "We\u2019re 2\u20130 up and Alice+Bob has twice proven clean; swapping in Charlie adds unnecessary risk when we only need one more success.",
+              "thinking_time": 5.950257778167725,
+              "reasoning_content": null
+            }
+          ],
+          "vote_result": "rejected"
+        },
+        {
+          "proposal_id": 1,
+          "leader": "Diana",
+          "team_members": [
+            "Alice",
+            "Diana"
+          ],
+          "reasoning": "We\u2019ve only ever seen the Alice + Bob core, which means if one of them is evil and slow-playing, they can end the game with a single fail here. Keeping Alice maintains continuity with the clean missions so far, but swapping Bob out for me both reduces the risk of reusing the identical pair a third time and gives the table new information about another player on a small, high-signal mission.",
+          "thinking_time": 7.2141759395599365,
+          "reasoning_content": null,
+          "votes": [
+            {
+              "player": "Alice",
+              "vote": "reject",
+              "comment": "Diana on the team introduces unnecessary risk when we\u2019re one mission from winning; safer to stick with pairs that already look clean.",
+              "thinking_time": 2.041088819503784,
+              "reasoning_content": null
+            },
+            {
+              "player": "Bob",
+              "vote": "reject",
+              "comment": "Alice and I are the only fully proven pair so far; introducing Diana adds more risk than reusing the already twice-clean Alice+Bob combo when we\u2019re up 2\u20130.",
+              "thinking_time": 9.24734091758728,
+              "reasoning_content": null
+            },
+            {
+              "player": "Charlie",
+              "vote": "approve",
+              "comment": "We need to stop auto-locking Alice+Bob; this keeps Alice for continuity but adds a new partner, which gives more information and avoids the risk of blindly reusing the same pair a third time.",
+              "thinking_time": 5.036489963531494,
+              "reasoning_content": null
+            },
+            {
+              "player": "Diana",
+              "vote": "approve",
+              "comment": "I\u2019m on the team, so this gives evil a direct chance to sabotage and prevents good from winning 3\u20130 uncontested.",
+              "thinking_time": 8.086565017700195,
+              "reasoning_content": null
+            },
+            {
+              "player": "Eve",
+              "vote": "reject",
+              "comment": "Alice and Bob are the most proven pair with two clean missions; swapping Bob for Diana adds unnecessary risk when we only need one more success.",
+              "thinking_time": 7.190040826797485,
+              "reasoning_content": null
+            }
+          ],
+          "vote_result": "rejected"
+        },
+        {
+          "proposal_id": 2,
+          "leader": "Eve",
+          "team_members": [
+            "Alice",
+            "Bob"
+          ],
+          "reasoning": "Both previous missions that included Alice and Bob (including the smaller 2-person team on Mission 1) succeeded with 0 FAIL cards, giving us the strongest empirical evidence that this pair is safe. With the score already 2\u20130 in favor of Good and only a 2-person team required, reusing the proven Alice+Bob combination minimizes new risk on a potential game-winning mission. If this team were to fail, we\u2019d immediately know that at least one of them is evil, greatly clarifying the endgame, but if it succeeds we win outright. This balance of high success likelihood plus strong informational value makes Alice and Bob the optimal choice.",
+          "thinking_time": 6.307834148406982,
+          "reasoning_content": null,
+          "votes": [
+            {
+              "player": "Alice",
+              "vote": "approve",
+              "comment": "We\u2019re up 2\u20130 and this exact pair has already passed a 2-person mission cleanly; reusing the only fully tested combo is the lowest-risk way to try to win here.",
+              "thinking_time": 2.3203859329223633,
+              "reasoning_content": null
+            },
+            {
+              "player": "Bob",
+              "vote": "approve",
+              "comment": "Both previous missions with Alice+Bob, including a 2-person team, succeeded with 0 fails; with a 2\u20130 lead this is the safest low-variance, potentially game-winning choice.",
+              "thinking_time": 2.1496529579162598,
+              "reasoning_content": null
+            },
+            {
+              "player": "Charlie",
+              "vote": "reject",
+              "comment": "I\u2019m still uncomfortable giving the exact same core a third straight mission when we\u2019ve learned nothing about the rest of the table\u2014if one of them is slow-playing evil, this is the game-ending risk with no new info gained, so I\u2019d rather see at least one new person swapped in.",
+              "thinking_time": 5.253229856491089,
+              "reasoning_content": null
+            },
+            {
+              "player": "Diana",
+              "vote": "reject",
+              "comment": "As evil, I don\u2019t want to send an all-good pair that\u2019s already passed twice on a potential game-winning mission for Good.",
+              "thinking_time": 2.870378017425537,
+              "reasoning_content": null
+            },
+            {
+              "player": "Eve",
+              "vote": "approve",
+              "comment": "Alice+Bob have twice passed with 0 fails, including as a 2-person team, and at 2\u20130 this is the highest-percent, game-winning shot; if it somehow fails, we at least pinpoint evil to within those two for the endgame.",
+              "thinking_time": 2.6076180934906006,
+              "reasoning_content": null
+            }
+          ],
+          "vote_result": "approved"
+        }
+      ],
+      "final_team_index": 2,
+      "discussion": [
+        {
+          "player": "Alice",
+          "content": "Given we only need two people, I\u2019d stick with the mission 1 pair of me and Bob\u2014those are the only two who\u2019ve been on a smaller team that already passed cleanly.",
+          "timestamp": 0,
+          "global_turn_id": 10,
+          "phase": "discussion",
+          "thinking_time": 7.008737087249756,
+          "reasoning_content": null
+        },
+        {
+          "player": "Bob",
+          "content": "Given we\u2019re already up 2\u20130, I\u2019d rather not introduce new risk\u2014sticking with the proven Alice + Bob pair for this 2-person mission seems safest. If either of us were evil, they\u2019ve passed twice already, so at least this combo is clearly motivated to keep missions clean.",
+          "timestamp": 1,
+          "global_turn_id": 11,
+          "phase": "discussion",
+          "thinking_time": 4.988923072814941,
+          "reasoning_content": null
+        },
+        {
+          "player": "Charlie",
+          "content": "I get the logic of reusing Alice + Bob, but the fact that we\u2019ve only ever seen that core together means we\u2019ve learned basically nothing about anyone else\u2014I'd rather see a slight variation like Alice + me so we at least start getting some new information instead of blindly locking in the same pair.",
+          "timestamp": 2,
+          "global_turn_id": 12,
+          "phase": "discussion",
+          "thinking_time": 5.410992860794067,
+          "reasoning_content": null
+        },
+        {
+          "player": "Diana",
+          "content": "I\u2019m a little uneasy about giving the exact same core a third shot\u2014if one of Alice/Bob is evil just slow-playing, they only need this one fail to win, so I\u2019d rather keep Alice for consistency but pair her with someone new like me to at least reduce that risk and get more info.",
+          "timestamp": 3,
+          "global_turn_id": 13,
+          "phase": "discussion",
+          "thinking_time": 13.21358323097229,
+          "reasoning_content": null
+        },
+        {
+          "player": "Eve",
+          "content": "Given we\u2019re already 2\u20130 up and both missions with Alice + Bob were clean, I\u2019m inclined to keep that pair for this small team\u2014if it somehow fails, we at least clearly narrow evil down to one of them going into the last missions.",
+          "timestamp": 4,
+          "global_turn_id": 14,
+          "phase": "discussion",
+          "thinking_time": 3.1512370109558105,
+          "reasoning_content": null
+        }
+      ],
+      "quest_actions": [
+        {
+          "player": "Alice",
+          "action": "success"
+        },
+        {
+          "player": "Bob",
+          "action": "success"
+        }
+      ],
+      "mission_result": "success",
+      "fail_count": 0
+    }
+  ],
+  "winner": "evil",
+  "assassin_phase": {
+    "assassin": "Diana",
+    "evil_discussion": [
+      {
+        "player": "Charlie",
+        "content": "I\u2019m leaning pretty hard toward Alice as Merlin. From the start she kept gently but consistently anchoring around the correct good core (her + Bob), always sounding \u201creason-based\u201d instead of paranoid, and never seriously pushed to include either of us despite multiple opportunities to shake things up. Bob feels more like a cautious good who\u2019s reacting to table vibes, whereas Alice keeps proactively steering composition in a way that\u2019s exactly right if she already knows who\u2019s safe.",
+        "timestamp": 0,
+        "global_turn_id": 15,
+        "phase": "evil_discussion",
+        "thinking_time": 7.370941877365112,
+        "reasoning_content": null
+      },
+      {
+        "player": "Diana",
+        "content": "I\u2019m with you that Alice is the best Merlin hit: from mission 1 onward she calmly framed \u201csafe\u201d logic that always happened to keep the real good core (her + Bob) intact, and she never seriously entertained putting both of us in even when that would\u2019ve been a very normal \u201cinfo-gathering\u201d suggestion from a true blind good. Her tone is that classic soft-directing style\u2014she proposes structures, not wild reads, and every structure just happens to preserve exactly the right people while sounding like generic risk management.",
+        "timestamp": 1,
+        "global_turn_id": 16,
+        "phase": "evil_discussion",
+        "thinking_time": 4.702627182006836,
+        "reasoning_content": null
+      }
+    ],
+    "guess": "Alice",
+    "reasoning": "From mission 1 onward, Alice consistently advocated for the Alice\u2013Bob core and framed it as the \u2018safe, low-risk\u2019 option, which always protected the actual good core without ever meaningfully pushing to include both evils, even when that would have been a standard info-gathering move for a blind good player. Her tone stayed calm and structurally focused\u2014proposing lineups that just happened to be correct rather than actively hunting\u2014which fits Merlin quietly steering rather than a normal good guessing in the dark.",
+    "correct": true,
+    "thinking_time": 3.0138938426971436,
+    "reasoning_content": null
+  }
+}

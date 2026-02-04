@@ -1,0 +1,911 @@
+{
+  "game_id": "avalon_20251130_200627",
+  "config": {
+    "model": "gpt-5.1",
+    "reasoning_effort": "low",
+    "mission_team_sizes": [
+      3,
+      4,
+      4,
+      5,
+      5
+    ],
+    "num_messages_per_player": 1,
+    "num_players": 8
+  },
+  "players": [
+    {
+      "name": "Alice",
+      "role": "good",
+      "is_good": true,
+      "special_knowledge": []
+    },
+    {
+      "name": "Bob",
+      "role": "assassin",
+      "is_good": false,
+      "special_knowledge": [
+        "Diana",
+        "Eve"
+      ]
+    },
+    {
+      "name": "Charlie",
+      "role": "good",
+      "is_good": true,
+      "special_knowledge": []
+    },
+    {
+      "name": "Diana",
+      "role": "mordred",
+      "is_good": false,
+      "special_knowledge": [
+        "Bob",
+        "Eve"
+      ]
+    },
+    {
+      "name": "Eve",
+      "role": "morgana",
+      "is_good": false,
+      "special_knowledge": [
+        "Bob",
+        "Diana"
+      ]
+    },
+    {
+      "name": "Frank",
+      "role": "merlin",
+      "is_good": true,
+      "special_knowledge": [
+        "Bob",
+        "Eve"
+      ]
+    },
+    {
+      "name": "Grace",
+      "role": "percival",
+      "is_good": true,
+      "special_knowledge": [
+        "Frank",
+        "Eve"
+      ]
+    },
+    {
+      "name": "Henry",
+      "role": "good",
+      "is_good": true,
+      "special_knowledge": []
+    }
+  ],
+  "missions": [
+    {
+      "mission_number": 1,
+      "proposals": [
+        {
+          "proposal_id": 0,
+          "leader": "Eve",
+          "team_members": [
+            "Alice",
+            "Bob",
+            "Frank"
+          ],
+          "reasoning": "This aligns with the early consensus for a low-variance Mission 1: Alice and Frank are broadly trusted as solid anchors, and Bob has been treated as a reasonable early include. Sending this trio keeps us consistent with the table\u2019s preferences, gives us a clean baseline data point, and lets us use at most one of them as an anchor on Mission 2 for better comparison rather than prematurely clearing or condemning anyone based on a single early result.",
+          "thinking_time": 8.559410095214844,
+          "reasoning_content": null,
+          "votes": [
+            {
+              "player": "Alice",
+              "vote": "approve",
+              "comment": "Standard low-info Mission 1 team that includes me; good baseline and broadly consistent with table preferences.",
+              "thinking_time": 2.155844211578369,
+              "reasoning_content": null
+            },
+            {
+              "player": "Bob",
+              "vote": "approve",
+              "comment": "As evil I want to be on the first mission for control over the outcome and early trust-building opportunities.",
+              "thinking_time": 3.8223018646240234,
+              "reasoning_content": null
+            },
+            {
+              "player": "Charlie",
+              "vote": "approve",
+              "comment": "Solid low-info starter team that matches table consensus; no strong reason to burn a rejection this early.",
+              "thinking_time": 2.5627601146698,
+              "reasoning_content": null
+            },
+            {
+              "player": "Diana",
+              "vote": "approve",
+              "comment": "Solid low-info starter with one teammate on it; keeps suspicion spread and gives us flexible options based on the result.",
+              "thinking_time": 2.94268536567688,
+              "reasoning_content": null
+            },
+            {
+              "player": "Eve",
+              "vote": "approve",
+              "comment": "Good early data point and gets a trusted-looking mix onto Mission 1 without drawing suspicion.",
+              "thinking_time": 2.6602470874786377,
+              "reasoning_content": null
+            },
+            {
+              "player": "Frank",
+              "vote": "reject",
+              "comment": "I still slightly prefer starting without stacking both early-consensus reads together; I\u2019d rather see Alice\u2013Frank plus someone like Charlie or Diana for a cleaner baseline.",
+              "thinking_time": 2.9818952083587646,
+              "reasoning_content": null
+            },
+            {
+              "player": "Grace",
+              "vote": "approve",
+              "comment": "It\u2019s a reasonable low-info starter that most people are aligned on, and we get an early baseline with at least one likely anchor (Frank) for Mission 2 comparisons.",
+              "thinking_time": 3.3929662704467773,
+              "reasoning_content": null
+            },
+            {
+              "player": "Henry",
+              "vote": "approve",
+              "comment": "Mission 1 is low-info anyway; this team matches table consensus and we can use one of them as an anchor next round for comparison.",
+              "thinking_time": 2.413851737976074,
+              "reasoning_content": null
+            }
+          ],
+          "vote_result": "approved"
+        }
+      ],
+      "final_team_index": 0,
+      "discussion": [
+        {
+          "player": "Alice",
+          "content": "Early on I\u2019d rather start with lower-variance picks, so I\u2019m leaning toward including quieter, more analytical players like Bob and Frank with me for the first mission. If anyone is strongly opposed to that trio, I\u2019d like to hear a concrete alternative and why.",
+          "timestamp": 0,
+          "global_turn_id": 0,
+          "phase": "discussion",
+          "thinking_time": 2.7688138484954834,
+          "reasoning_content": null
+        },
+        {
+          "player": "Bob",
+          "content": "I\u2019m fine with Alice\u2013Bob\u2013Frank as a starting trio since it\u2019s low-impact and gives us an early data point without overthinking it. If people are uncomfortable with that, I\u2019d only really consider swapping in someone like Charlie or Diana, but I don\u2019t see a strong reason yet.",
+          "timestamp": 1,
+          "global_turn_id": 1,
+          "phase": "discussion",
+          "thinking_time": 3.5021700859069824,
+          "reasoning_content": null
+        },
+        {
+          "player": "Charlie",
+          "content": "I\u2019m generally okay with Alice\u2013Bob\u2013Frank as a low-drama first team, but I\u2019d like at least one of Alice/Bob anchored across the first two missions so we can actually compare results instead of just trusting this early vibe.",
+          "timestamp": 2,
+          "global_turn_id": 2,
+          "phase": "discussion",
+          "thinking_time": 2.2315878868103027,
+          "reasoning_content": null
+        },
+        {
+          "player": "Diana",
+          "content": "Alice\u2013Bob\u2013Frank seems like a reasonable low-info starter to me, and I\u2019d rather not overengineer Mission 1. As long as we commit to rotating at least one slot next round for comparison, I\u2019m fine sending that trio.",
+          "timestamp": 3,
+          "global_turn_id": 3,
+          "phase": "discussion",
+          "thinking_time": 4.265297889709473,
+          "reasoning_content": null
+        },
+        {
+          "player": "Eve",
+          "content": "Alice\u2013Bob\u2013Frank is fine as a low-stress first team, but I\u2019d really like us to avoid auto-clearing all three if it passes\u2014let\u2019s plan to keep at most one of them as an \u201canchor\u201d on Mission 2 so we actually get useful comparison info.",
+          "timestamp": 4,
+          "global_turn_id": 4,
+          "phase": "discussion",
+          "thinking_time": 3.786127805709839,
+          "reasoning_content": null
+        },
+        {
+          "player": "Frank",
+          "content": "I\u2019m generally fine with Alice\u2013Bob\u2013Frank going, but if people want to be a bit more conservative, I\u2019d slightly prefer Alice\u2013Frank plus either Charlie or Diana so we\u2019re not stacking both of our early consensus reads on the same first team.",
+          "timestamp": 5,
+          "global_turn_id": 5,
+          "phase": "discussion",
+          "thinking_time": 5.5261359214782715,
+          "reasoning_content": null
+        },
+        {
+          "player": "Grace",
+          "content": "I\u2019d like at least one of Alice/Frank on the first team, and I slightly prefer Alice\u2013Frank\u2013Charlie so we\u2019re not putting both early consensus reads (Alice and Bob) together right away. If people really want the original trio, I\u2019d still want Frank anchored into Mission 2 for comparison.",
+          "timestamp": 6,
+          "global_turn_id": 6,
+          "phase": "discussion",
+          "thinking_time": 4.143428087234497,
+          "reasoning_content": null
+        },
+        {
+          "player": "Henry",
+          "content": "I\u2019m okay with Alice\u2013Bob\u2013Frank as a first pass, but I slightly prefer swapping Bob for Charlie so we don\u2019t park both early \u201cconsensus good\u201d reads on the same low\u2011info mission. Overall I\u2019d like at least one of Alice/Frank to be our anchor into Mission 2 for comparison.",
+          "timestamp": 7,
+          "global_turn_id": 7,
+          "phase": "discussion",
+          "thinking_time": 2.8043510913848877,
+          "reasoning_content": null
+        }
+      ],
+      "quest_actions": [
+        {
+          "player": "Alice",
+          "action": "success"
+        },
+        {
+          "player": "Bob",
+          "action": "success"
+        },
+        {
+          "player": "Frank",
+          "action": "success"
+        }
+      ],
+      "mission_result": "success",
+      "fail_count": 0
+    },
+    {
+      "mission_number": 2,
+      "proposals": [
+        {
+          "proposal_id": 0,
+          "leader": "Frank",
+          "team_members": [
+            "Alice",
+            "Charlie",
+            "Diana",
+            "Frank"
+          ],
+          "reasoning": "We only have one data point so far, so I don\u2019t want to over-clear the entire first team. I\u2019m keeping a small core from the successful Mission 1 (Alice and me) and then adding two players who haven\u2019t been on a mission yet (Charlie and Diana). This balances using our only clean result with generating new information, and it avoids autopiloting on the Bob+Frank block that a lot of people are drifting toward off just a single success.",
+          "thinking_time": 12.980740070343018,
+          "reasoning_content": null,
+          "votes": [
+            {
+              "player": "Alice",
+              "vote": "approve",
+              "comment": "Keeps a proven core of 2 from Mission 1 while adding 2 new players for info; no strong reason yet to distrust this mix over alternatives.",
+              "thinking_time": 4.694482088088989,
+              "reasoning_content": null
+            },
+            {
+              "player": "Bob",
+              "vote": "approve",
+              "comment": "It keeps a partial core from the successful Mission 1 while adding two new players for info, and I don\u2019t think we should auto-lock the Bob+Frank block off a single clean result.",
+              "thinking_time": 4.887447834014893,
+              "reasoning_content": null
+            },
+            {
+              "player": "Charlie",
+              "vote": "approve",
+              "comment": "Solid use of the M1 core without over-clearing it; I like being on the team for info generation and this mix balances knowns and unknowns reasonably well.",
+              "thinking_time": 4.066237926483154,
+              "reasoning_content": null
+            },
+            {
+              "player": "Diana",
+              "vote": "approve",
+              "comment": "I\u2019m on the team as the only evil, which is ideal for a subtle single fail without overconcentrating evil players.",
+              "thinking_time": 4.239374160766602,
+              "reasoning_content": null
+            },
+            {
+              "player": "Eve",
+              "vote": "approve",
+              "comment": "Gives us fresh info with two new players while still anchored on part of the successful M1 core; I\u2019m fine testing this mix now rather than stalling for a more conservative repeat.",
+              "thinking_time": 8.269883871078491,
+              "reasoning_content": null
+            },
+            {
+              "player": "Frank",
+              "vote": "approve",
+              "comment": "Fits the plan of keeping part of the clean M1 core while adding two new players for info; no strong reason to distrust this mix yet.",
+              "thinking_time": 3.2380008697509766,
+              "reasoning_content": null
+            },
+            {
+              "player": "Grace",
+              "vote": "approve",
+              "comment": "Keeps a strong core from the successful Mission 1 with Frank (a Merlin candidate) while adding two new players for information; no strong red flags yet.",
+              "thinking_time": 5.956855058670044,
+              "reasoning_content": null
+            },
+            {
+              "player": "Henry",
+              "vote": "approve",
+              "comment": "Team keeps part of the successful M1 core while adding two new players for info; nothing is strongly suspicious yet, so I\u2019m fine gathering data here.",
+              "thinking_time": 5.37834095954895,
+              "reasoning_content": null
+            }
+          ],
+          "vote_result": "approved"
+        }
+      ],
+      "final_team_index": 0,
+      "discussion": [
+        {
+          "player": "Alice",
+          "content": "Given the clean first mission, I\u2019m inclined to keep at least two of Alice/Bob/Frank on the next team, and I\u2019d lean toward reusing that core rather than throwing in too many unknowns at once.",
+          "timestamp": 0,
+          "global_turn_id": 8,
+          "phase": "discussion",
+          "thinking_time": 3.4057841300964355,
+          "reasoning_content": null
+        },
+        {
+          "player": "Bob",
+          "content": "I like keeping the Mission 1 core mostly intact, so Alice/Bob/Frank plus one new person feels safest to me right now\u2014maybe Diana, since she hasn\u2019t had a chance to generate any mission info yet and has seemed pretty reasonable so far.",
+          "timestamp": 1,
+          "global_turn_id": 9,
+          "phase": "discussion",
+          "thinking_time": 6.196306943893433,
+          "reasoning_content": null
+        },
+        {
+          "player": "Charlie",
+          "content": "I\u2019m good with keeping at least two from Alice/Bob/Frank, but I don\u2019t want us to autopilot assume that whole block is clean off one mission. I\u2019d like to see a team like Bob, Frank, me, and one of Diana/Grace so we\u2019re getting new info without overloading on unknowns.",
+          "timestamp": 2,
+          "global_turn_id": 10,
+          "phase": "discussion",
+          "thinking_time": 3.519599199295044,
+          "reasoning_content": null
+        },
+        {
+          "player": "Diana",
+          "content": "I\u2019m on board with keeping two from Alice/Bob/Frank, but I\u2019d prefer something like Bob, Frank, me, and one of Charlie/Grace so we\u2019re mixing in some new info without tossing out the only clean result we\u2019ve got.",
+          "timestamp": 3,
+          "global_turn_id": 11,
+          "phase": "discussion",
+          "thinking_time": 3.470416784286499,
+          "reasoning_content": null
+        },
+        {
+          "player": "Eve",
+          "content": "I like the idea of keeping a strong core from Mission 1, so Bob and Frank both feel like good anchors to me, and I\u2019d be happy to see something like Bob, Frank, Diana, and Charlie to balance knowns with fresh info.",
+          "timestamp": 4,
+          "global_turn_id": 12,
+          "phase": "discussion",
+          "thinking_time": 3.634917974472046,
+          "reasoning_content": null
+        },
+        {
+          "player": "Frank",
+          "content": "I\u2019d rather not treat the entire first team as automatically cleared off a single success, so I slightly prefer keeping Alice and me from that group and then adding two from Charlie/Diana/Grace. That gives us some new info while still leaning on the only data point we\u2019ve got.",
+          "timestamp": 5,
+          "global_turn_id": 13,
+          "phase": "discussion",
+          "thinking_time": 3.5860111713409424,
+          "reasoning_content": null
+        },
+        {
+          "player": "Grace",
+          "content": "I like anchoring this with two from the first mission, and Bob/Frank feels like a solid core to me, then add one of Charlie/Diana plus one of me/Grace to get some fresh info without going too wild. If we start seeing contradictions from that mix later, we\u2019ll have a much clearer picture of where the leak is.",
+          "timestamp": 6,
+          "global_turn_id": 14,
+          "phase": "discussion",
+          "thinking_time": 5.840245008468628,
+          "reasoning_content": null
+        },
+        {
+          "player": "Henry",
+          "content": "I don\u2019t want to auto-clear the whole M1 team off one success, but I\u2019m comfortable anchoring this next one with Bob + Frank and then adding one of Charlie/Diana plus one of Grace/me to get new info without going full mystery squad.",
+          "timestamp": 7,
+          "global_turn_id": 15,
+          "phase": "discussion",
+          "thinking_time": 3.926535129547119,
+          "reasoning_content": null
+        }
+      ],
+      "quest_actions": [
+        {
+          "player": "Alice",
+          "action": "success"
+        },
+        {
+          "player": "Charlie",
+          "action": "success"
+        },
+        {
+          "player": "Diana",
+          "action": "fail"
+        },
+        {
+          "player": "Frank",
+          "action": "success"
+        }
+      ],
+      "mission_result": "fail",
+      "fail_count": 1
+    },
+    {
+      "mission_number": 3,
+      "proposals": [
+        {
+          "proposal_id": 0,
+          "leader": "Grace",
+          "team_members": [
+            "Alice",
+            "Bob",
+            "Grace",
+            "Henry"
+          ],
+          "reasoning": "This team keeps the proven clean core of Mission 1 (Alice and Bob) while intentionally avoiding the three players most entangled with the Mission 2 fail (Charlie, Diana, Frank). Between the remaining options, adding Grace and Henry maximizes new information without stacking potentially risky overlaps like putting Bob and Eve together, which several players expressed concern about. This composition fits the table\u2019s general preference to sideline the Mission 2 trio for now, tests two fresh players alongside the trusted core, and should give us a clearer read on alignments from the result.",
+          "thinking_time": 18.976900815963745,
+          "reasoning_content": null,
+          "votes": [
+            {
+              "player": "Alice",
+              "vote": "approve",
+              "comment": "Keeps all three likely suspects from Mission 2 (Charlie, Diana, Frank) off the team while adding two new players around me; solid balance of safety and information.",
+              "thinking_time": 13.157324075698853,
+              "reasoning_content": null
+            },
+            {
+              "player": "Bob",
+              "vote": "approve",
+              "comment": "I like keeping Mission 2\u2019s suspects off while giving us another look at the Mission 1 core plus two new players, and I want an evil on this mission with flexibility on whether to fail or pass.",
+              "thinking_time": 6.974387884140015,
+              "reasoning_content": null
+            },
+            {
+              "player": "Charlie",
+              "vote": "reject",
+              "comment": "I know I\u2019m good, and the spy from Mission 2 must be in {Diana, Frank}, which means the remaining 2 spies are among {Bob, Eve, Grace, Henry}. This team has Alice plus three from that four, so it\u2019s very likely to include multiple spies; we should instead include me and reduce exposure to that pool.",
+              "thinking_time": 17.329913854599,
+              "reasoning_content": null
+            },
+            {
+              "player": "Diana",
+              "vote": "approve",
+              "comment": "One evil on a mostly trusted-looking team is ideal; we can choose later whether to fail or pass while keeping extra suspicion off the rest of us.",
+              "thinking_time": 4.67677903175354,
+              "reasoning_content": null
+            },
+            {
+              "player": "Eve",
+              "vote": "approve",
+              "comment": "It keeps the Mission 1 core while sidelining the Mission 2 overlap, matches most people\u2019s stated preferences, and gives good informational value with two new additions.",
+              "thinking_time": 16.32116723060608,
+              "reasoning_content": null
+            },
+            {
+              "player": "Frank",
+              "vote": "reject",
+              "comment": "Still not comfortable treating Bob as effectively cleared and building around that assumption; I\u2019d rather see at least one of the Mission 2 trio included so we\u2019re not tunneling too hard on a single narrative about where the spy sits.",
+              "thinking_time": 5.721448183059692,
+              "reasoning_content": null
+            },
+            {
+              "player": "Grace",
+              "vote": "approve",
+              "comment": "Best current compromise: it keeps only one player from the failed Mission 2 (Alice), retains the successful Mission 1 core with Bob, and adds two untested players (Grace, Henry) for good information while avoiding the main Mission 2 suspects.",
+              "thinking_time": 8.072641134262085,
+              "reasoning_content": null
+            },
+            {
+              "player": "Henry",
+              "vote": "approve",
+              "comment": "Matches my suggested composition, keeps the clean M1 core while sidelining the Mission 2 trio and adds two untested players for strong info without stacking extra risk.",
+              "thinking_time": 2.358013153076172,
+              "reasoning_content": null
+            }
+          ],
+          "vote_result": "approved"
+        }
+      ],
+      "final_team_index": 0,
+      "discussion": [
+        {
+          "player": "Alice",
+          "content": "Given Mission 2\u2019s single fail, I\u2019m pretty sure the spy is in {Charlie, Diana, Frank}, so for this team I\u2019d really like to stick with the clean Mission 1 core of me and Bob and fill the rest from Eve/Grace/Henry rather than re-adding any of those three.",
+          "timestamp": 0,
+          "global_turn_id": 16,
+          "phase": "discussion",
+          "thinking_time": 7.20718789100647,
+          "reasoning_content": null
+        },
+        {
+          "player": "Bob",
+          "content": "I\u2019m on board with avoiding the Mission 2 trio for now, and if I had to pick I\u2019m most suspicious of Frank there since he led the team and knew exactly what he was putting together. A team of you, me, Eve, and maybe Henry feels like a reasonable next step to test.",
+          "timestamp": 1,
+          "global_turn_id": 17,
+          "phase": "discussion",
+          "thinking_time": 6.687374114990234,
+          "reasoning_content": null
+        },
+        {
+          "player": "Charlie",
+          "content": "I get why people want to sideline the Mission 2 folks, but from my seat that was a single spy slipping through, not a double, and I\u2019m more inclined to trust Frank over Diana there, so I\u2019d be fine with something like Alice, Bob, Eve, and Henry next.",
+          "timestamp": 2,
+          "global_turn_id": 18,
+          "phase": "discussion",
+          "thinking_time": 2.4167821407318115,
+          "reasoning_content": null
+        },
+        {
+          "player": "Diana",
+          "content": "I\u2019m fine sitting out this next one; from the Mission 2 fail I still think the spy is more likely in {Charlie, Frank} than in the Mission 1 core, so something like Alice, Bob, Eve, and Henry looks pretty reasonable to me.",
+          "timestamp": 3,
+          "global_turn_id": 19,
+          "phase": "discussion",
+          "thinking_time": 5.361123085021973,
+          "reasoning_content": null
+        },
+        {
+          "player": "Eve",
+          "content": "I like the idea of sticking with the Mission 1 core plus adding from Grace/Henry/me, and Alice\u2013Bob\u2013Henry\u2013me seems like a solid next test. I wouldn\u2019t hard-clear all of Mission 2\u2019s team forever off one fail, but avoiding them for this round feels like the safest info-gathering move.",
+          "timestamp": 4,
+          "global_turn_id": 20,
+          "phase": "discussion",
+          "thinking_time": 9.534074068069458,
+          "reasoning_content": null
+        },
+        {
+          "player": "Frank",
+          "content": "I\u2019m a little wary of how quickly we\u2019re treating both Bob and Eve as cleared just because they were only on the small clean team, when neither has been stress\u2011tested on the failed mission overlap. I\u2019d be more comfortable with Alice plus a mix from Grace/Henry/Charlie, and only one of Bob or Eve at most, rather than putting both of them on together.",
+          "timestamp": 5,
+          "global_turn_id": 21,
+          "phase": "discussion",
+          "thinking_time": 11.256725072860718,
+          "reasoning_content": null
+        },
+        {
+          "player": "Grace",
+          "content": "I\u2019m generally okay avoiding the Mission 2 overlap for now, so something like Alice\u2013Bob\u2013Eve plus one of Henry/Grace feels safest to me, and I\u2019d slightly prefer being the fourth so we\u2019re testing a new configuration rather than re\u2011running too much of the same group.",
+          "timestamp": 6,
+          "global_turn_id": 22,
+          "phase": "discussion",
+          "thinking_time": 6.862221717834473,
+          "reasoning_content": null
+        },
+        {
+          "player": "Henry",
+          "content": "I like building around the Mission 1 core too, but I\u2019m slightly uneasy about putting both Bob and Eve together without testing more new blood, so I\u2019d lean Alice\u2013Bob\u2013Henry\u2013Grace this round and keep Eve/Frank/Charlie/Diana off until we have clearer signals.",
+          "timestamp": 7,
+          "global_turn_id": 23,
+          "phase": "discussion",
+          "thinking_time": 3.209217071533203,
+          "reasoning_content": null
+        }
+      ],
+      "quest_actions": [
+        {
+          "player": "Alice",
+          "action": "success"
+        },
+        {
+          "player": "Bob",
+          "action": "fail"
+        },
+        {
+          "player": "Grace",
+          "action": "success"
+        },
+        {
+          "player": "Henry",
+          "action": "success"
+        }
+      ],
+      "mission_result": "fail",
+      "fail_count": 1
+    },
+    {
+      "mission_number": 4,
+      "proposals": [
+        {
+          "proposal_id": 0,
+          "leader": "Henry",
+          "team_members": [
+            "Eve",
+            "Henry",
+            "Charlie",
+            "Bob",
+            "Diana"
+          ],
+          "reasoning": "We need to avoid the heaviest overlap with the two failing missions while still using players who have some positive history. Alice has been on both failing missions, making her the shadiest anchor, so I\u2019m excluding her. Mission 3\u2019s fail means at least one of {Alice, Bob, Grace} is evil; since I know I\u2019m good and I already distrust Alice and Grace from that team, I\u2019m keeping Bob as the single carry\u2011over risk from that set and excluding Grace as well. From Mission 2, at least one of {Alice, Charlie, Diana, Frank} is evil; with Alice already excluded, I\u2019m willing to take Charlie and Diana as reasonable candidates while leaving Frank off to minimize overlap with both previous failing patterns. Eve\u2019s only appearance was on the successful Mission 1 team and she has no direct fail association, so she\u2019s the safest anchor. This lineup (Eve, Henry, Charlie, Bob, Diana) avoids Alice and Grace entirely, limits us to at most one of Bob/Diana from each failing mission\u2019s suspect pool, and maximally breaks the repeat combinations that have already produced single\u2011fail outcomes.",
+          "thinking_time": 16.471796989440918,
+          "reasoning_content": null,
+          "votes": [
+            {
+              "player": "Alice",
+              "vote": "reject",
+              "comment": "I know I\u2019m good and off this team; with me being good, the constraints from the two single-fail missions imply that at least one of {Eve, Henry, Charlie, Bob, Diana} must be evil, so this lineup cannot be all-good and is too risky at 2\u20131 down.",
+              "thinking_time": 19.541325092315674,
+              "reasoning_content": null
+            },
+            {
+              "player": "Bob",
+              "vote": "approve",
+              "comment": "I\u2019m on it with both my known evil teammates, giving us maximum control over the mission outcome.",
+              "thinking_time": 2.011937141418457,
+              "reasoning_content": null
+            },
+            {
+              "player": "Charlie",
+              "vote": "approve",
+              "comment": "Structurally, Alice/Grace/Frank are the most likely evil from the two single-fail missions; this team excludes all three while keeping me and the low-overlap players, so it\u2019s a reasonable shot at a clean lineup given the game state.",
+              "thinking_time": 17.886574745178223,
+              "reasoning_content": null
+            },
+            {
+              "player": "Diana",
+              "vote": "approve",
+              "comment": "Three evils on the team and it fits the public logic of breaking past overlaps, so I should support it.",
+              "thinking_time": 2.394444704055786,
+              "reasoning_content": null
+            },
+            {
+              "player": "Eve",
+              "vote": "approve",
+              "comment": "Three of us are on this; it keeps suspicion focused on Alice/Grace while giving evil strong mission control.",
+              "thinking_time": 3.654823064804077,
+              "reasoning_content": null
+            },
+            {
+              "player": "Frank",
+              "vote": "reject",
+              "comment": "This puts a lot of weight on Eve and Bob together as core anchors while still pulling multiple people from the prior suspect pools; with the score at 1\u20132 we should be aiming for a lineup that more aggressively minimizes exposure to players repeatedly tied to failing patterns.",
+              "thinking_time": 3.4879310131073,
+              "reasoning_content": null
+            },
+            {
+              "player": "Grace",
+              "vote": "reject",
+              "comment": "Team stacks too many suspects from both failed missions (Charlie & Diana from M2, Bob & Henry from M3); likely contains multiple evils.",
+              "thinking_time": 7.589103937149048,
+              "reasoning_content": null
+            },
+            {
+              "player": "Henry",
+              "vote": "approve",
+              "comment": "Consistent with my earlier stance: it excludes my top suspects Alice and Grace, keeps only one from each failing-mission suspect pool, and I prefer not to stall this round given the limited better alternatives.",
+              "thinking_time": 11.040920972824097,
+              "reasoning_content": null
+            }
+          ],
+          "vote_result": "approved"
+        }
+      ],
+      "final_team_index": 0,
+      "discussion": [
+        {
+          "player": "Alice",
+          "content": "Given the single-fail results, I\u2019m pretty convinced there\u2019s at least one evil in {Charlie, Diana, Frank} and at least one in {Bob, Grace, Henry}, so for the next team I\u2019d like to keep myself and lean toward including Eve and *at most* one of Bob/Frank while avoiding combos like Diana+Grace together.",
+          "timestamp": 0,
+          "global_turn_id": 24,
+          "phase": "discussion",
+          "thinking_time": 7.774857997894287,
+          "reasoning_content": null
+        },
+        {
+          "player": "Bob",
+          "content": "I\u2019m wary of hard-partitioning the evils like that\u2014both fails could easily come from the overlapping players (Alice, Bob, or Frank), so I\u2019d actually like to anchor the next team around Eve plus a mix of people who haven\u2019t been paired in the failing configurations yet.",
+          "timestamp": 1,
+          "global_turn_id": 25,
+          "phase": "discussion",
+          "thinking_time": 9.326637268066406,
+          "reasoning_content": null
+        },
+        {
+          "player": "Charlie",
+          "content": "From my point of view, Alice being on both failing missions makes her the shadiest anchor, so I\u2019d like the next team to *exclude* Alice and include Eve plus me, and then pick at most one of Bob/Frank and avoid re\u2011pairing Grace+Henry exactly as they were on the last fail.",
+          "timestamp": 2,
+          "global_turn_id": 26,
+          "phase": "discussion",
+          "thinking_time": 8.115131855010986,
+          "reasoning_content": null
+        },
+        {
+          "player": "Diana",
+          "content": "Given Alice has been on both failing missions, I\u2019d rather not build around her; I\u2019d be comfortable with a team like Eve and me, plus two from {Charlie, Grace, Henry} and then at most one of {Bob, Frank} to break the overlap.",
+          "timestamp": 3,
+          "global_turn_id": 27,
+          "phase": "discussion",
+          "thinking_time": 6.819616079330444,
+          "reasoning_content": null
+        },
+        {
+          "player": "Eve",
+          "content": "From my perspective, Alice being on both failing teams is hard to ignore, so I\u2019d prefer we *don\u2019t* auto\u2011include her and instead build around me plus Bob and a couple from {Charlie, Grace, Henry} with limited overlap to the last two missions.",
+          "timestamp": 4,
+          "global_turn_id": 28,
+          "phase": "discussion",
+          "thinking_time": 13.53904390335083,
+          "reasoning_content": null
+        },
+        {
+          "player": "Frank",
+          "content": "I think writing off Alice entirely is risky\u2014if we want to really break the patterns, I\u2019d rather build a core from {Alice, Charlie, Diana, Grace, Henry} and keep at most one of Bob/Eve/Frank so we\u2019re not just re\u2011creating the same kinds of overlaps that already gave us two single\u2011fail missions.",
+          "timestamp": 5,
+          "global_turn_id": 29,
+          "phase": "discussion",
+          "thinking_time": 15.382397890090942,
+          "reasoning_content": null
+        },
+        {
+          "player": "Grace",
+          "content": "I don\u2019t love completely sidelining Alice, but I do think we should break the heavy overlaps, so I\u2019d like a team built around at least one of Eve/Frank plus me, Charlie, and Henry, with *at most* one of Alice/Bob to reduce repeat combos from the failed missions.",
+          "timestamp": 6,
+          "global_turn_id": 30,
+          "phase": "discussion",
+          "thinking_time": 5.062867879867554,
+          "reasoning_content": null
+        },
+        {
+          "player": "Henry",
+          "content": "From my perspective, Alice is the only person on *both* fail teams and someone on Mission 3 besides me has to be evil, which makes Grace look bad too, so I\u2019d like a team like Eve, me, Charlie, plus one of Bob/Frank and avoid both Alice and Grace this round.",
+          "timestamp": 7,
+          "global_turn_id": 31,
+          "phase": "discussion",
+          "thinking_time": 7.462666034698486,
+          "reasoning_content": null
+        }
+      ],
+      "quest_actions": [
+        {
+          "player": "Eve",
+          "action": "fail"
+        },
+        {
+          "player": "Henry",
+          "action": "success"
+        },
+        {
+          "player": "Charlie",
+          "action": "success"
+        },
+        {
+          "player": "Bob",
+          "action": "fail"
+        },
+        {
+          "player": "Diana",
+          "action": "fail"
+        }
+      ],
+      "mission_result": "fail",
+      "fail_count": 3
+    }
+  ],
+  "winner": "evil",
+  "assassin_phase": null,
+  "post_game_reflections": [
+    {
+      "game_number": 2,
+      "player_name": "Alice",
+      "role_played": "good",
+      "game_result": "lost",
+      "self_assessment": "I stayed consistently pro-mission and built early trust by being on two teams that only had a single fail each, which helped keep suspicion off me and preserved my influence in table talk. I could have pushed harder on the implications of Mission 2 and 3 fails\u2014especially pressing why Diana and Eve kept ending up on critical teams\u2014and been more vocal about protecting Frank once he started looking like a likely Merlin candidate.",
+      "player_observations": {
+        "Bob": "Played a very flexible evil game, mixing safe early behavior with just enough subtle steering to keep suspicion spread out; his late-game positioning for the assassination was strong.",
+        "Charlie": "Generally reasoned from mission data in a straightforward, logical way and seemed genuinely transparent, which made him read as pretty clearly good for much of the game.",
+        "Diana": "Managed to stay relatively under the radar despite being on the failing Mission 2 and 4 teams; blended in well with good\u2019s reasoning and avoided big, attention-grabbing accusations.",
+        "Eve": "Sold the fake-Merlin/Morgana ambiguity well, projecting confidence and giving very pointed reads that likely misled Grace and made it harder for good to converge on the true Merlin.",
+        "Frank": "Took the right kinds of risks with his team selections as Merlin while not over-defending the wrong people, but ended up just visible enough in his accuracy that evil could line him up for the assassination.",
+        "Grace": "Was active and engaged in deduction, but seemed heavily influenced by Eve\u2019s confident table talk; her Merlin/percival information read didn\u2019t quite land, which hurt good\u2019s late-game focus.",
+        "Henry": "Played like a cautious good player, generally trusting mission data and not forcing wild theories; his conservative leadership on Mission 4 didn\u2019t manage to avoid stacking evil, but his reasoning stayed mostly consistent with a good perspective."
+      },
+      "thinking_time": 8.064448118209839
+    },
+    {
+      "game_number": 2,
+      "player_name": "Bob",
+      "role_played": "assassin",
+      "game_result": "won",
+      "self_assessment": "I stayed relatively low-key as the Assassin, which helped keep suspicion off me even after the failed missions, and I coordinated implicitly with the other evil roles to ensure multiple mission failures without overexposing anyone. I could improve by being more active in driving misreads on Merlin; I relied a bit too much on town confusion rather than clearly shaping a false narrative about who the information role was.",
+      "player_observations": {
+        "Alice": "Consistently trusted early, and her inclusion on multiple teams suggests she projects a naturally good-aligned vibe that others are comfortable following. She didn\u2019t strongly drive suspicion toward the actual evil players, which made her a relatively safe presence for us to keep on teams.",
+        "Charlie": "Charlie played a fairly straightforward good game, getting onto the critical Mission 2 and Mission 4 teams but not creating strong, persuasive reads that changed the table\u2019s direction. Their involvement in a failed Mission 4 without clearly outing the evil combinations helped preserve ambiguity.",
+        "Diana": "As Mordred, Diana blended in well and contributed effectively to the heavy fail on Mission 4, which created substantial confusion and locked in the evil win. She stayed sufficiently under the radar that her participation in that final mission didn\u2019t immediately backfire on her.",
+        "Eve": "As Morgana, Eve did a solid job of being present in team discussions and looking like a potential information role, especially by leading Mission 1 cleanly. Her appearance on the final failing mission alongside multiple others helped maintain doubt about who the true Merlin/evil mix was.",
+        "Frank": "As Merlin, Frank played cautiously, guiding mission selections away from obvious danger early (Mission 1) but not forcefully enough later to prevent stacking evil on key missions. His subtlety kept him from being an obvious assassination target, but it also meant his good team didn\u2019t fully capitalize on his information.",
+        "Grace": "As Percival, Grace didn\u2019t strongly clarify the Morgana/Merlin identity puzzle for the table; her presence on Mission 3, which failed, added to the noise rather than cleaning it up. She seemed to struggle to translate her partial information into persuasive arguments that the rest of the table would follow.",
+        "Henry": "Henry appeared generally trustworthy and was given leadership on Missions 3 and 4, which indicates others read him as solidly good. His team choices, though, ended up including multiple evil players in the final mission, suggesting he either overtrusted or didn\u2019t push hard enough on his suspicions."
+      },
+      "thinking_time": 9.853281021118164
+    },
+    {
+      "game_number": 2,
+      "player_name": "Charlie",
+      "role_played": "good",
+      "game_result": "lost",
+      "self_assessment": "I stayed relatively consistent with my voting and team preferences, which helped signal that I was good to some extent. However, I didn\u2019t push hard enough against the patterns that pointed to Diana, Bob, and Eve after Missions 2 and 3, and I was too willing to accept the risky composition on Mission 4 instead of advocating for a tighter, more information-based team.",
+      "player_observations": {
+        "Alice": "Played a very clean good game, consistently ending up on mixed teams without causing suspicion, which made her feel reliably safe to most people.",
+        "Bob": "Blended in well early, especially on Missions 1 and 3, but his presence on multiple failing teams should have been more of a red flag; he leveraged that ambiguity effectively as evil.",
+        "Diana": "Slipped a single fail onto Mission 2 in a way that didn\u2019t draw much attention, then comfortably returned to a big risky team on Mission 4, suggesting a calm and low-profile evil style.",
+        "Eve": "Looked proactive in leadership and used that to get onto critical missions, with her evil alignment only really showing in hindsight after the heavy fail on Mission 4.",
+        "Frank": "Played Merlin cautiously, giving enough subtle direction to get mostly reasonable teams without overcommitting to hard accusations that would expose himself.",
+        "Grace": "Behaved like a typical information role, often aligning her preferences with safer-looking players and trying to avoid obviously mixed teams, which fit Percival\u2019s need to protect Merlin.",
+        "Henry": "Generally followed the table\u2019s emerging consensus but didn\u2019t strongly resist the risky final team as leader, which let multiple evil players slip through on Mission 4."
+      },
+      "thinking_time": 14.196149587631226
+    },
+    {
+      "game_number": 2,
+      "player_name": "Diana",
+      "role_played": "mordred",
+      "game_result": "won",
+      "self_assessment": "I stayed mostly under the radar as Mordred and avoided drawing strong Merlin suspicion, contributing to the credibility of evil teams on Missions 2 and 4. I could improve by shaping the table narrative more proactively earlier in the game, especially around Mission 2, to better misdirect suspicion toward specific good players instead of letting reads form more organically.",
+      "player_observations": {
+        "Alice": "Tended to accept early mission teams and project a generally trusting tone, which made her look quite village-aligned but also a bit influenceable by stronger voices. She didn't push too hard on solving, which kept her from being a major target but also limited her ability to steer outcomes.",
+        "Bob": "Played a bold, proactive evil game as Assassin, staying involved in key missions and not shying away from risk on Mission 4. His style is assertive and willing to be in the spotlight, which is powerful but could draw attention in more suspicious lobbies.",
+        "Charlie": "Came across as fairly straightforward and logically consistent, which is a strong look for good. However, he didn't heavily challenge dominant narratives, which made it easier for evil to operate within the existing consensus.",
+        "Eve": "Leaned into the deceptive Morgana role well by looking like a strong potential Merlin, often speaking with confidence and framing reads as if they were information-backed. Her assertive style created good cover and confusion between her and the real Merlin.",
+        "Frank": "As Merlin, he tried to guide missions subtly rather than loudly hard-clearing or hard-accusing people, which helped him survive longer but made his influence more muted. His careful approach was good, but it left some ambiguity that evil could exploit.",
+        "Grace": "As Percival, she seemed to take her time forming reads, which prevented her from overcommitting too quickly to a wrong Merlin candidate. However, she didn\u2019t always fully capitalize on her role\u2019s information to decisively sway the table when it mattered.",
+        "Henry": "Played a relatively open and collaborative good style, contributing to discussions without trying to dominate them. His willingness to be on critical teams suggested he was comfortable being tested, but he didn't manage to strongly clear himself to others before the late-game fail."
+      },
+      "thinking_time": 9.36994194984436
+    },
+    {
+      "game_number": 2,
+      "player_name": "Eve",
+      "role_played": "morgana",
+      "game_result": "won",
+      "self_assessment": "Staying clean on the early missions worked well, letting other evil players take the blame while I preserved ambiguity around my role. I could have done more to subtly steer suspicion toward Merlin/Grace earlier instead of relying so heavily on Diana and Bob\u2019s visible fails to carry the endgame. Next time I should speak up more in team discussions to actively shape narratives rather than mostly benefiting from others\u2019 mistakes.",
+      "player_observations": {
+        "Alice": "Tended to be included frequently and accepted that trust, which made her look suspicious by association with multiple fails even though she was good. She seemed relatively open to going on teams and less focused on aggressively solving, which made her an easy \u2018background\u2019 suspect without strong defense.",
+        "Bob": "Played a very aggressive evil game, taking responsibility for key fails and staying in the center of mission decisions. His willingness to be on repeated critical teams created strong swing potential but also risked drawing late-game suspicion if the game had gone to an assassination decision.",
+        "Charlie": "Came off as fairly low-impact and somewhat quiet in terms of driving team composition, which made them a safe person to keep in a gray area. Being on mixed-result teams without strongly pushing narratives kept them from becoming a prime clear or a prime suspect.",
+        "Diana": "Boldly failed early and late missions, embracing a high-impact Mordred style that put pressure on the good team\u2019s trust structure. Despite that, she managed to avoid becoming the sole scapegoat for the early fail, which helped keep confusion alive about who was actually evil.",
+        "Frank": "As Merlin, he positioned himself on and around critical teams but didn\u2019t manage to consistently keep evil off lineups, especially later. His reads seemed partially accurate but not forceful enough to stop multiple-evil teams from being approved.",
+        "Grace": "As Percival, her mission 3 team choice showed some misreads, especially in trusting Bob, which helped evil stay embedded in key lineups. She seemed active in shaping teams but not fully confident in separating Merlin/Morgana, which worked heavily in my favor.",
+        "Henry": "As a good leader on the final mission, he placed trust in multiple evil players and approved a very risky lineup that sealed the game. His leadership style leaned toward compromise and inclusion rather than hardline suspicion, which evil could exploit to stack the final team."
+      },
+      "thinking_time": 14.287601232528687
+    },
+    {
+      "game_number": 2,
+      "player_name": "Frank",
+      "role_played": "merlin",
+      "game_result": "lost",
+      "self_assessment": "I correctly suspected that Diana and Eve were likely evil relatively early based on their team preferences and how they reacted to mission results, but I struggled to communicate those suspicions subtly enough without overly exposing myself as Merlin. I also put too much trust in Bob after Mission 1's clean result, which let evil steer critical teams later; in future games I should more clearly differentiate between 'temporarily safe' and 'genuinely trusted' players in my voting and soft signals.",
+      "player_observations": {
+        "Alice": "Played consistently cautious but generally pro-mission, which made her look reliably good and a natural core for many teams; she didn\u2019t push strong accusations, which kept her from being targeted much by evil.",
+        "Bob": "Blended in very well as evil by riding the credibility from the clean first mission and then quietly influencing later team compositions; his assassin positioning seemed deliberate, staying just active enough to be informed without drawing heavy suspicion.",
+        "Charlie": "Came across as earnest and reasonably logical, but wasn\u2019t always forceful in pushing his reads, which made it easier for evil to ignore or override him in later team debates.",
+        "Diana": "Played a very controlled and low-friction Mordred game, passing in Mission 2 only once and then leaning on social trust rather than loud arguments, which helped her avoid becoming a focal point of suspicion until it was too late.",
+        "Eve": "As Morgana, she projected a confident, information-rich style that mimicked a power role well, which likely muddied the waters for Grace/Percival and helped confuse good about where the real information was coming from.",
+        "Grace": "As Percival, she tried to anchor around perceived information sources, but seemed pulled between competing Merlin candidates, which diluted the impact of her influence on team selection.",
+        "Henry": "Showed a cooperative and reasonably transparent thought process, but in Mission 4 ended up on a heavily evil-stacked team, suggesting he either over-trusted vocal players or deferred too much in a critical decision spot."
+      },
+      "thinking_time": 8.43838381767273
+    },
+    {
+      "game_number": 2,
+      "player_name": "Grace",
+      "role_played": "percival",
+      "game_result": "lost",
+      "self_assessment": "I correctly focused a lot of attention on Frank and Eve as potential Merlin/Morgana, but I didn\u2019t narrow it down fast enough or push hard enough for teams that protected my Merlin read. I also should have used the mission 2 and 3 results more aggressively to lock in likely evils and argue more forcefully against the mission 4 team.",
+      "player_observations": {
+        "Alice": "Played a very clean good game, staying consistently trustworthy and using the early mission success to build a reliable image without over-asserting reads.",
+        "Bob": "Blended into teams smoothly and leveraged his assassin role well by not appearing overly suspicious, especially on mission 1 and mission 4 where his presence didn\u2019t immediately raise alarms.",
+        "Charlie": "Came across as reasonably logical and good-aligned, but didn\u2019t push strongly enough to sway team compositions away from the evil-heavy mission 4 lineup.",
+        "Diana": "Did an excellent job as Mordred of staying under the radar and riding along with group consensus, especially on later missions where her presence didn\u2019t feel like a big red flag.",
+        "Eve": "Sold the Merlin/Morgana ambiguity very effectively, using the mission 1 leadership and her table presence to appear information-rich without overexposing herself.",
+        "Frank": "As Merlin, he tried to steer teams away from evil but stayed cautious enough that his signals weren\u2019t always obvious, which helped keep him alive but made it harder for me as Percival to hard-lock onto him.",
+        "Henry": "Played like a solid, straightforward good player, but his mission 4 leadership ended up heavily compromised; he seemed to trust too many ambiguous players at once and couldn\u2019t filter the evil roles from prior mission results."
+      },
+      "thinking_time": 7.6430041790008545
+    },
+    {
+      "game_number": 2,
+      "player_name": "Henry",
+      "role_played": "good",
+      "game_result": "lost",
+      "self_assessment": "I underestimated how coordinated evil was and didn\u2019t push hard enough to lock in a trustworthy core after Mission 2 failed. My Mission 4 team selection was especially poor, putting multiple evil players together and effectively handing them the game; in future games I should be more disciplined about excluding repeat suspicious players and pressing others harder for their reasoning.",
+      "player_observations": {
+        "Alice": "You played a very steady, low-drama good game, repeatedly ending up on teams and not drawing much suspicion, which is ideal for a vanilla good role. Your early presence on both a success and a later fail without being heavily questioned suggests you\u2019re good at blending into the background of team discussions.",
+        "Bob": "You were frequently included on teams despite being evil, which means your table talk and reactions were convincing and non-threatening. The big spike of fails on Mission 4 with you on the team shows you were willing to take bold risks once evil had enough cover.",
+        "Charlie": "You seemed cautious and not overly controlling, which likely helped you avoid being a main suspect even after being on the failed Mission 2. Your style felt cooperative but not loud enough to strongly redirect the group away from bad team comps.",
+        "Diana": "You managed to get onto multiple critical teams as Mordred, which shows you did a strong job of avoiding direct suspicion and benefitting from the confusion around other players. Being on both the Mission 2 and Mission 4 fails without being hard-cleared or hard-accused suggests a very balanced, deceptive presence.",
+        "Eve": "You had early leadership and used it to set a baseline of trust with a successful Mission 1, which likely bought you credibility for later. As Morgana, you convincingly maintained a \u2018reasonable good\u2019 persona and successfully avoided drawing enough structural suspicion to be consistently left off late missions.",
+        "Frank": "You played Merlin very subtly\u2014your actions didn\u2019t clearly hard-push the correct evil suspects, which kept you alive but also let evil control the late game. The teams you supported or allowed (especially around Missions 2 and 3) came off as cautious rather than strongly directive, so your information advantage wasn\u2019t fully obvious to the rest of us.",
+        "Grace": "You seemed to take a more active information-gathering role, consistent with Percival trying to sort out Merlin versus Morgana, but it didn\u2019t translate into confidently steering us away from bad teams. Your inclusion on the failed Mission 3 suggests you were willing to test risky mixes, which unfortunately gave evil an opening without giving us enough follow-up deductions."
+      },
+      "thinking_time": 9.612208843231201
+    }
+  ]
+}

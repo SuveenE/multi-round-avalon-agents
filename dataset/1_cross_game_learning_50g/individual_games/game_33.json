@@ -1,0 +1,505 @@
+{
+  "game_id": "avalon_20251201_043610",
+  "config": {
+    "model": "gpt-5.1",
+    "reasoning_effort": "low",
+    "mission_team_sizes": [
+      2,
+      3,
+      2,
+      3,
+      3
+    ],
+    "num_messages_per_player": 1,
+    "num_players": 5
+  },
+  "players": [
+    {
+      "name": "Alice",
+      "role": "merlin",
+      "is_good": true,
+      "special_knowledge": [
+        "Charlie",
+        "Eve"
+      ]
+    },
+    {
+      "name": "Bob",
+      "role": "good",
+      "is_good": true,
+      "special_knowledge": []
+    },
+    {
+      "name": "Charlie",
+      "role": "evil",
+      "is_good": false,
+      "special_knowledge": [
+        "Eve"
+      ]
+    },
+    {
+      "name": "Diana",
+      "role": "good",
+      "is_good": true,
+      "special_knowledge": []
+    },
+    {
+      "name": "Eve",
+      "role": "assassin",
+      "is_good": false,
+      "special_knowledge": [
+        "Charlie"
+      ]
+    }
+  ],
+  "missions": [
+    {
+      "mission_number": 1,
+      "proposals": [
+        {
+          "proposal_id": 0,
+          "leader": "Diana",
+          "team_members": [
+            "Alice",
+            "Diana"
+          ],
+          "reasoning": "I want a simple, low-drama 2-person opener that doesn\u2019t repeat the usual Alice+Bob test. Putting myself on the team guarantees at least one good player, and pairing with Alice\u2014who\u2019s broadly accepted as a reasonable early pick\u2014gives us a very clear early signal: if this fails, suspicion falls heavily on Alice; if it succeeds, we have a strong core to build from for Mission 2.",
+          "thinking_time": 3.1835570335388184,
+          "reasoning_content": null,
+          "votes": [
+            {
+              "player": "Alice",
+              "vote": "approve",
+              "comment": "Early 2-player mission with me off it and no strong red flags; fine to get a clean baseline read and avoid the usual Alice+Bob tunnel.",
+              "thinking_time": 2.143256187438965,
+              "reasoning_content": null
+            },
+            {
+              "player": "Bob",
+              "vote": "approve",
+              "comment": "Early 2-player team with no hard info yet; fine to take the information and see how Diana looks on an opener with Alice.",
+              "thinking_time": 4.000041246414185,
+              "reasoning_content": null
+            },
+            {
+              "player": "Charlie",
+              "vote": "reject",
+              "comment": "I\u2019d rather see an opener that includes me (e.g., Alice+Charlie) so we\u2019re not immediately locking in a potentially strong trust core without testing more options.",
+              "thinking_time": 2.1732118129730225,
+              "reasoning_content": null
+            },
+            {
+              "player": "Diana",
+              "vote": "approve",
+              "comment": "As good, I\u2019m fine with a 2-player opener that includes me; it avoids the usual Alice+Bob tunnel and gives us a clean early signal.",
+              "thinking_time": 1.4202907085418701,
+              "reasoning_content": null
+            },
+            {
+              "player": "Eve",
+              "vote": "reject",
+              "comment": "This swaps off the broadly discussed Alice+Charlie opener and gives the leader an auto-include; I\u2019d rather see an early test that isn\u2019t built around the proposer putting themselves on first mission.",
+              "thinking_time": 2.82210111618042,
+              "reasoning_content": null
+            }
+          ],
+          "vote_result": "approved"
+        }
+      ],
+      "final_team_index": 0,
+      "discussion": [
+        {
+          "player": "Alice",
+          "content": "For a 2-person opener I\u2019d rather keep it simple and low-risk\u2014something like me with Bob or me with Diana feels reasonable so we at least get a clear early signal to work from. I\u2019d avoid overthinking combos right now and focus on building a small core we can test and either trust or discard quickly.",
+          "timestamp": 0,
+          "global_turn_id": 0,
+          "phase": "discussion",
+          "thinking_time": 3.8639578819274902,
+          "reasoning_content": null
+        },
+        {
+          "player": "Bob",
+          "content": "I\u2019m fine being the early test if people want to run Alice + me, but I\u2019d also like to see at least one of Charlie/Diana get an early read soon so we\u2019re not tunneling too hard on just one pairing.",
+          "timestamp": 1,
+          "global_turn_id": 1,
+          "phase": "discussion",
+          "thinking_time": 2.6670022010803223,
+          "reasoning_content": null
+        },
+        {
+          "player": "Charlie",
+          "content": "I like the idea of a simple opener too\u2014Alice + Bob is fine, but I\u2019d slightly prefer Alice + me so we spread early info a bit and don\u2019t lock too hard onto the same Bob pairing we always seem to test first.",
+          "timestamp": 2,
+          "global_turn_id": 2,
+          "phase": "discussion",
+          "thinking_time": 2.7662770748138428,
+          "reasoning_content": null
+        },
+        {
+          "player": "Diana",
+          "content": "I\u2019d rather not default to Alice+Bob again; Alice+Charlie or Alice+me both give us a clean, low-drama read without tunneling on the same early pair we always test. If Alice feels strongly about one of those, I\u2019m happy to back it.",
+          "timestamp": 3,
+          "global_turn_id": 3,
+          "phase": "discussion",
+          "thinking_time": 2.4183919429779053,
+          "reasoning_content": null
+        },
+        {
+          "player": "Eve",
+          "content": "I\u2019d lean Alice + Charlie here: it keeps the opener simple but gives us an early read on someone we don\u2019t usually test first, and we can loop Bob/Diana into a larger team next round based on how this one goes.",
+          "timestamp": 4,
+          "global_turn_id": 4,
+          "phase": "discussion",
+          "thinking_time": 2.589210033416748,
+          "reasoning_content": null
+        }
+      ],
+      "quest_actions": [
+        {
+          "player": "Alice",
+          "action": "success"
+        },
+        {
+          "player": "Diana",
+          "action": "success"
+        }
+      ],
+      "mission_result": "success",
+      "fail_count": 0
+    },
+    {
+      "mission_number": 2,
+      "proposals": [
+        {
+          "proposal_id": 0,
+          "leader": "Eve",
+          "team_members": [
+            "Alice",
+            "Charlie",
+            "Diana"
+          ],
+          "reasoning": "Mission 1 with Alice and Diana was clean, and most of the table has already expressed that sticking close to that proven pair is safest. Adding Charlie instead of reshuffling too much keeps our information structured while not just auto-following Alice\u2019s exact initial suggestion. This team balances continuity from the successful first mission with a controlled introduction of one new player, which is a reasonable low-variance choice for Quest 2.",
+          "thinking_time": 4.695630073547363,
+          "reasoning_content": null,
+          "votes": [
+            {
+              "player": "Alice",
+              "vote": "reject",
+              "comment": "I still prefer adding Bob over Charlie here to diversify info a bit; I\u2019m not fully comfortable treating Mission 1 as enough to anchor this exact trio yet.",
+              "thinking_time": 2.384169816970825,
+              "reasoning_content": null
+            },
+            {
+              "player": "Bob",
+              "vote": "approve",
+              "comment": "Keeping the clean Alice\u2013Diana pair and adding one new player is a reasonable, structured low-risk choice for Quest 2.",
+              "thinking_time": 3.6458871364593506,
+              "reasoning_content": null
+            },
+            {
+              "player": "Charlie",
+              "vote": "approve",
+              "comment": "This keeps the clean Alice/Diana pair and adds just one new person, which matches what I argued for earlier and gives us good information with low disruption.",
+              "thinking_time": 2.8670990467071533,
+              "reasoning_content": null
+            },
+            {
+              "player": "Diana",
+              "vote": "approve",
+              "comment": "Stays close to the clean Mission 1 pair while adding just one new player, which is a solid low-risk, info-gaining team for Quest 2.",
+              "thinking_time": 1.974355936050415,
+              "reasoning_content": null
+            },
+            {
+              "player": "Eve",
+              "vote": "approve",
+              "comment": "Staying close to a clean Mission 1 while adding just one new player is standard and gives us good info either way.",
+              "thinking_time": 2.0699198246002197,
+              "reasoning_content": null
+            }
+          ],
+          "vote_result": "approved"
+        }
+      ],
+      "final_team_index": 0,
+      "discussion": [
+        {
+          "player": "Alice",
+          "content": "Given the clean 2-person start, I\u2019m inclined to keep Diana on and I\u2019d be comfortable adding Bob here\u2014Alice/Diana/Bob looks like a solid, low-risk team for Quest 2.",
+          "timestamp": 0,
+          "global_turn_id": 5,
+          "phase": "discussion",
+          "thinking_time": 3.0605740547180176,
+          "reasoning_content": null
+        },
+        {
+          "player": "Bob",
+          "content": "I\u2019m happy to be added, but I wouldn\u2019t lock in both Alice and Diana as cleared from a 2-person success yet\u2014Alice/Diana/Bob is fine for now, but we should be ready to re-evaluate if anything weird shows up later.",
+          "timestamp": 1,
+          "global_turn_id": 6,
+          "phase": "discussion",
+          "thinking_time": 2.2466609477996826,
+          "reasoning_content": null
+        },
+        {
+          "player": "Charlie",
+          "content": "Sticking close to the clean Mission 1 feels safest to me, so I\u2019d rather keep both Alice and Diana and then add just one new person\u2014something like Alice/Diana/Charlie seems like a solid incremental step.",
+          "timestamp": 2,
+          "global_turn_id": 7,
+          "phase": "discussion",
+          "thinking_time": 2.9122262001037598,
+          "reasoning_content": null
+        },
+        {
+          "player": "Diana",
+          "content": "I like the idea of sticking close to the clean first team, so I definitely want Alice and me back on; between Bob and Charlie I slightly prefer adding Charlie this round so we\u2019re not just auto-following Alice\u2019s first suggestion.",
+          "timestamp": 3,
+          "global_turn_id": 8,
+          "phase": "discussion",
+          "thinking_time": 2.478476047515869,
+          "reasoning_content": null
+        },
+        {
+          "player": "Eve",
+          "content": "Sticking close to the clean Mission 1 feels reasonable, so I slightly prefer Alice/Diana/Charlie here as well. I wouldn\u2019t hard-clear either Alice or Diana off just one success though, so we should keep an eye on voting patterns this round.",
+          "timestamp": 4,
+          "global_turn_id": 9,
+          "phase": "discussion",
+          "thinking_time": 3.788177967071533,
+          "reasoning_content": null
+        }
+      ],
+      "quest_actions": [
+        {
+          "player": "Alice",
+          "action": "success"
+        },
+        {
+          "player": "Charlie",
+          "action": "success"
+        },
+        {
+          "player": "Diana",
+          "action": "success"
+        }
+      ],
+      "mission_result": "success",
+      "fail_count": 0
+    },
+    {
+      "mission_number": 3,
+      "proposals": [
+        {
+          "proposal_id": 0,
+          "leader": "Alice",
+          "team_members": [
+            "Alice",
+            "Diana"
+          ],
+          "reasoning": "We\u2019re up 2\u20130 and both successful missions have included this same core, with zero fails so far. On a 2-player mission, the priority should be minimizing risk rather than chasing extra information, since a single mistake gives evil their first point and complicates endgame reads. Keeping the proven Alice\u2013Diana pair together is the most conservative, win-focused choice right now, and there\u2019s no mechanical pressure to experiment when this lineup has only produced clean results.",
+          "thinking_time": 3.233765125274658,
+          "reasoning_content": null,
+          "votes": [
+            {
+              "player": "Alice",
+              "vote": "approve",
+              "comment": "Both previous missions with Alice\u2013Diana were clean, and this 2-player team keeps proven low-risk members without introducing new uncertainty while we\u2019re already up 2\u20130.",
+              "thinking_time": 4.375678777694702,
+              "reasoning_content": null
+            },
+            {
+              "player": "Bob",
+              "vote": "approve",
+              "comment": "Both prior missions with this pair were clean, and at 2\u20130 the lowest-risk play is to reuse the proven core rather than introduce new uncertainty.",
+              "thinking_time": 4.688633918762207,
+              "reasoning_content": null
+            },
+            {
+              "player": "Charlie",
+              "vote": "reject",
+              "comment": "If Alice\u2013Diana is actually the hidden evil pair, this locks in a likely loss; we should break the core and pair one of them with someone else to generate info and avoid auto-piloting into a 3\u20130.",
+              "thinking_time": 2.568775177001953,
+              "reasoning_content": null
+            },
+            {
+              "player": "Diana",
+              "vote": "approve",
+              "comment": "I know I\u2019m good and Alice has been on both clean missions; with a 2\u20130 lead this is the safest low-risk choice to push for 3\u20130 rather than introducing new uncertainty now.",
+              "thinking_time": 3.710332155227661,
+              "reasoning_content": null
+            },
+            {
+              "player": "Eve",
+              "vote": "approve",
+              "comment": "At 2\u20130, evil can\u2019t win on missions anymore; allowing this very likely clean team to succeed pushes the game to assassination, which is our only remaining win condition.",
+              "thinking_time": 5.3581860065460205,
+              "reasoning_content": null
+            }
+          ],
+          "vote_result": "approved"
+        }
+      ],
+      "final_team_index": 0,
+      "discussion": [
+        {
+          "player": "Alice",
+          "content": "Given we\u2019re 2-for-2 with me and Diana on every successful team so far, I\u2019d really like to see a tight 2-player mission that keeps that core together rather than introducing new risk right now.",
+          "timestamp": 0,
+          "global_turn_id": 10,
+          "phase": "discussion",
+          "thinking_time": 2.371089220046997,
+          "reasoning_content": null
+        },
+        {
+          "player": "Bob",
+          "content": "Sticking with the Alice\u2013Diana core for this 2-player team makes the most sense to me right now; both missions with them have been clean, and there\u2019s no mechanical reason to introduce extra risk yet.",
+          "timestamp": 1,
+          "global_turn_id": 11,
+          "phase": "discussion",
+          "thinking_time": 2.346140146255493,
+          "reasoning_content": null
+        },
+        {
+          "player": "Charlie",
+          "content": "I get why everyone likes the Alice\u2013Diana core, but if we just auto-lock them in again we learn nothing new and are totally dead if they\u2019re actually the pair hiding in plain sight. I\u2019d rather see one of them paired with someone who\u2019s also looked clean so far, like me or Eve, to both keep risk low and actually generate some info.",
+          "timestamp": 2,
+          "global_turn_id": 12,
+          "phase": "discussion",
+          "thinking_time": 3.26857328414917,
+          "reasoning_content": null
+        },
+        {
+          "player": "Diana",
+          "content": "I hear the info argument, but at 2\u20130 I\u2019d rather lock in the safest path, which to me is keeping the Alice\u2013Diana core together for this 2-player team. If someone wants to break that up, I\u2019d need a really strong case for why introducing new risk here is worth it.",
+          "timestamp": 3,
+          "global_turn_id": 13,
+          "phase": "discussion",
+          "thinking_time": 3.3795509338378906,
+          "reasoning_content": null
+        },
+        {
+          "player": "Eve",
+          "content": "I\u2019m uneasy about auto-locking Alice\u2013Diana again; if that\u2019s secretly the pair, we just hand evil the game. I\u2019d rather see a \u201cone from core + one outside\u201d team like Alice\u2013Charlie so we keep risk low but actually learn something.",
+          "timestamp": 4,
+          "global_turn_id": 14,
+          "phase": "discussion",
+          "thinking_time": 5.480743885040283,
+          "reasoning_content": null
+        }
+      ],
+      "quest_actions": [
+        {
+          "player": "Alice",
+          "action": "success"
+        },
+        {
+          "player": "Diana",
+          "action": "success"
+        }
+      ],
+      "mission_result": "success",
+      "fail_count": 0
+    }
+  ],
+  "winner": "good",
+  "assassin_phase": {
+    "assassin": "Eve",
+    "evil_discussion": [
+      {
+        "player": "Charlie",
+        "content": "I\u2019m most suspicious that Alice is Merlin: her proposals line up eerily well with perfect-good teams (Alice/Diana/Bob on 2, then insisting on keeping the Alice\u2013Diana core on 3), and she\u2019s been subtly but consistently shepherding table consensus without looking too \u201cloud.\u201d  \n\nIf Alice isn\u2019t Merlin, my backup guess would be Bob, since he keeps slightly hedging (\u201cdon\u2019t hard clear them yet\u201d) while still supporting the \u201ccorrect\u201d good-core narrative, which is a very Merlin-safe posture.",
+        "timestamp": 0,
+        "global_turn_id": 15,
+        "phase": "evil_discussion",
+        "thinking_time": 5.288861274719238,
+        "reasoning_content": null
+      },
+      {
+        "player": "Eve",
+        "content": "I\u2019m a bit less sold on Alice as Merlin than you are: her pushes feel very \u201cconfident-good-core\u201d but also pretty normal for a strong vocal good, and she never really showed that extra layer of caution Merlin usually has about over-clearing people. Bob, on the other hand, keeps threading that needle of backing the correct good narrative (sticking with the Alice\u2013Diana core) while repeatedly warning the table not to hard-clear them yet, which reads to me like Merlin carefully protecting his info without looking like he *knows* they\u2019re good. If Alice isn\u2019t just a strong generic good, I\u2019d still keep her as a secondary candidate, but my first shot would be Bob.",
+        "timestamp": 1,
+        "global_turn_id": 16,
+        "phase": "evil_discussion",
+        "thinking_time": 4.8061439990997314,
+        "reasoning_content": null
+      }
+    ],
+    "guess": "Bob",
+    "reasoning": "Bob consistently backed the correct good-core of Alice and Diana while repeatedly cautioning the table not to over-clear them, which reads like Merlin trying to hide perfect information behind a facade of uncertainty. Alice\u2019s leadership can be explained as confident generic good, while Bob\u2019s careful hedging around an actually perfect record of support is more indicative of hidden knowledge.",
+    "correct": false,
+    "thinking_time": 11.309078931808472,
+    "reasoning_content": null
+  },
+  "post_game_reflections": [
+    {
+      "game_number": 33,
+      "player_name": "Alice",
+      "role_played": "merlin",
+      "game_result": "won",
+      "self_assessment": "I stayed subtly consistent with my team preferences, especially keeping Diana close while not over-clearing anyone too loudly, which helped avoid the assassin\u2019s shot on me. I could improve by creating a bit more ambiguity around my trust of Eve and Charlie so that my correct reads don\u2019t look as guided in retrospect, even if they weren\u2019t called out this game.",
+      "player_observations": {
+        "Bob": "Played very passively this game, which made him a safe but uninformative presence and a plausible Merlin target at the end. Tends to blend into the background rather than drive team composition or table talk.",
+        "Charlie": "Managed to stay off the immediate suspicion radar despite being evil, largely by not overpushing and letting others propose safe teams. Seems comfortable letting the game drift toward low-information successes instead of forcing risky plays.",
+        "Diana": "Consistently proposed and supported strong, clean teams, which made her look very towny early and often. She seems confident in leadership roles and comfortable taking initiative without overexplaining her logic.",
+        "Eve": "As assassin, played cautiously and didn\u2019t force sabotages, which helped get early missions through and kept options open for the endgame shot. The Merlin guess on Bob suggests she leans toward targeting quieter, less directive players as potential Merlin when information is thin."
+      },
+      "thinking_time": 6.0002360343933105
+    },
+    {
+      "game_number": 33,
+      "player_name": "Bob",
+      "role_played": "good",
+      "game_result": "won",
+      "self_assessment": "I stayed low-key and consistent, which helped me avoid drawing the assassin\u2019s attention while still supporting good team proposals and votes. I could improve by contributing a bit more explicit reasoning during discussions so I add value without accidentally looking too informed or suspicious.",
+      "player_observations": {
+        "Alice": "Played a very controlled, subtle Merlin game: consistently on the right teams without overexplaining, which made her look generically \u2018good\u2019 rather than obviously informed.",
+        "Charlie": "Blended in reasonably well for an evil player but failed to disrupt the strong early trust circle, which limited their ability to steer teams or sow real doubt.",
+        "Diana": "Came across as straightforward and trustworthy, quickly aligning with successful teams and projecting a \u2018no-nonsense good\u2019 vibe that helped stabilize the table.",
+        "Eve": "As assassin, showed decent social presence but wasn\u2019t able to create enough credible alternative narratives, and the final Merlin guess on me suggested misreads of who was quietly guiding choices."
+      },
+      "thinking_time": 3.7352020740509033
+    },
+    {
+      "game_number": 33,
+      "player_name": "Charlie",
+      "role_played": "evil",
+      "game_result": "lost",
+      "self_assessment": "I blended in reasonably well as evil by keeping Mission 2 clean, which avoided raising suspicion on me or Eve. However, I played too passively and didn\u2019t create enough doubt around Alice or push alternative Merlin candidates, which left the assassin with very little misdirection and led to the wrong final guess.",
+      "player_observations": {
+        "Alice": "Very controlled and subtly influential \u2014 she steered teams onto consistent, safe configurations while staying just quiet enough to avoid looking like an obvious information hub. Her willingness to be on every mission without pushing loudly for it is a strong Merlin pattern that I should have challenged more.",
+        "Bob": "Flew under the radar this game, with low impact on team selection and very little overt suspicion thrown around. That quiet, middle-of-the-pack presence made him a plausible Merlin decoy when we were desperate for an alternative target.",
+        "Diana": "Played straightforward, trust-building good \u2014 repeatedly pairing with Alice and supporting the same core of players, signaling high confidence in her reads. Her consistency helped make those small teams look legitimate and contributed to the clean mission streak.",
+        "Eve": "Took a conservative evil line by keeping Mission 2 clean, preserving cover but sacrificing late-game leverage and chaos. In the assassination, she seemed to lean heavily on table talk and the quietness of Bob instead of systematically eliminating Merlin candidates, which made the final shot more of a guess than a deduction."
+      },
+      "thinking_time": 6.297312021255493
+    },
+    {
+      "game_number": 33,
+      "player_name": "Diana",
+      "role_played": "good",
+      "game_result": "won",
+      "self_assessment": "I did well at consistently supporting successful teams and not attracting too much suspicion, which helped keep pressure off Merlin and contributed to three clean mission successes. I could improve by being more vocal in shaping team compositions and explicitly articulating my reasoning, so that if I am night-killed or suspected in future games, my logic still benefits the good team.",
+      "player_observations": {
+        "Alice": "Played a very calm, low-key Merlin game\u2014gave just enough subtle guidance on team choices without oversteering, which helped her avoid the assassination. Her early willingness to go on small, tight teams with me signaled quiet confidence in her reads.",
+        "Bob": "Flew under the radar and felt quite neutral, which unintentionally made him a tempting (and ultimately incorrect) assassination target. He could probably benefit from signaling his thought process a bit more so evil has a harder time misreading his alignment.",
+        "Charlie": "As evil on an all-success game, he played very cautiously and didn\u2019t push overtly suspicious narratives, likely trying to avoid drawing attention. His restraint may have helped him survive socially, but not failing a mission left evil with no leverage or data to work with.",
+        "Eve": "As assassin and leader of Mission 2, she played a convincing, cooperative role and picked a team that gained trust for her side, even though it ultimately succeeded. Her assassination choice showed she read table dynamics decently but slightly misjudged how much influence Alice versus Bob had on the successful team patterns."
+      },
+      "thinking_time": 5.064792156219482
+    },
+    {
+      "game_number": 33,
+      "player_name": "Eve",
+      "role_played": "assassin",
+      "game_result": "lost",
+      "self_assessment": "I blended in reasonably well as evil since all missions passed and no one seemed confident enough to suspect me strongly, which means my table image was fairly safe. However, I failed to correctly identify Merlin, overweighting Bob\u2019s behavior and underestimating how carefully Alice was hiding information; in future games I should track subtle early-game info shaping more closely and explicitly compare Merlin candidates before the final guess.",
+      "player_observations": {
+        "Alice": "Played a very clean and low-risk Merlin game, giving just enough soft approval to guide teams without ever needing fails to confirm her reads; her willingness to be on every successful mission made her look generically trustworthy rather than obviously informed.",
+        "Bob": "Came across as very standard-good: not overly controlling of team choices and not strongly signaling hidden information, which made him a plausible but ultimately decoy Merlin candidate; his balanced participation without sharp accusations helped mask the true Merlin.",
+        "Charlie": "Managed to stay hidden as evil by never forcing a fail and allowing the game to end in a clean-looking triple success, which helped create the illusion of an all-good table; his restraint increased the difficulty of the assassin guess but also ceded tempo control to good.",
+        "Diana": "Led the first mission and then stayed consistently on successful teams, projecting a straightforward, cooperative good persona; her play gave the impression of someone trusting and trusted, but without the extra layer of subtle guidance that would usually flag a Merlin."
+      },
+      "thinking_time": 5.151031255722046
+    }
+  ]
+}

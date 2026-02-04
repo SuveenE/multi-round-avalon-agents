@@ -1,0 +1,843 @@
+{
+  "game_id": "avalon_20251130_233251",
+  "config": {
+    "model": "gpt-5.1",
+    "reasoning_effort": "low",
+    "mission_team_sizes": [
+      3,
+      4,
+      4,
+      5,
+      5
+    ],
+    "num_messages_per_player": 1,
+    "num_players": 9
+  },
+  "players": [
+    {
+      "name": "Alice",
+      "role": "good",
+      "is_good": true,
+      "special_knowledge": []
+    },
+    {
+      "name": "Bob",
+      "role": "mordred",
+      "is_good": false,
+      "special_knowledge": [
+        "Charlie",
+        "Eve"
+      ]
+    },
+    {
+      "name": "Charlie",
+      "role": "assassin",
+      "is_good": false,
+      "special_knowledge": [
+        "Bob",
+        "Eve"
+      ]
+    },
+    {
+      "name": "Diana",
+      "role": "good",
+      "is_good": true,
+      "special_knowledge": []
+    },
+    {
+      "name": "Eve",
+      "role": "morgana",
+      "is_good": false,
+      "special_knowledge": [
+        "Bob",
+        "Charlie"
+      ]
+    },
+    {
+      "name": "Frank",
+      "role": "good",
+      "is_good": true,
+      "special_knowledge": []
+    },
+    {
+      "name": "Grace",
+      "role": "good",
+      "is_good": true,
+      "special_knowledge": []
+    },
+    {
+      "name": "Henry",
+      "role": "merlin",
+      "is_good": true,
+      "special_knowledge": [
+        "Charlie",
+        "Eve"
+      ]
+    },
+    {
+      "name": "Iris",
+      "role": "percival",
+      "is_good": true,
+      "special_knowledge": [
+        "Henry",
+        "Eve"
+      ]
+    }
+  ],
+  "missions": [
+    {
+      "mission_number": 1,
+      "proposals": [
+        {
+          "proposal_id": 0,
+          "leader": "Alice",
+          "team_members": [
+            "Alice",
+            "Diana",
+            "Henry"
+          ],
+          "reasoning": "Most players converged on a low-drama, info-gathering first team with one active talker and two quieter players. Alice is the leader and openly taking responsibility; Diana is broadly accepted and not aggressively steering; Henry has been suggested by several players and gives us a relatively neutral third without stacking strong table-shapers like Charlie. This combination aligns with the majority\u2019s preferences (Alice + Diana + Henry is explicitly supported by Grace, Henry, and Iris, and compatible with Eve\u2019s and Diana\u2019s suggestions) while avoiding putting too many narrative-drivers on the same early mission, which should give clearer reactions and voting data if anything goes wrong.",
+          "thinking_time": 4.260878086090088,
+          "reasoning_content": null,
+          "votes": [
+            {
+              "player": "Alice",
+              "vote": "approve",
+              "comment": "Reasonable, broadly supported low-drama starter team with no concrete red flags yet; good to gather early info.",
+              "thinking_time": 1.9486632347106934,
+              "reasoning_content": null
+            },
+            {
+              "player": "Bob",
+              "vote": "reject",
+              "comment": "I\u2019d rather not lock in such a consensus-friendly trio on the very first mission; I want to see at least one more divergent proposal before we give a near-unanimous-seeming team a clean pass.",
+              "thinking_time": 4.0752458572387695,
+              "reasoning_content": null
+            },
+            {
+              "player": "Charlie",
+              "vote": "approve",
+              "comment": "Team fits the broadly agreed \u2018low-drama, info-gathering\u2019 criteria and I don\u2019t see a strong reason to oppose the consensus on quest 1.",
+              "thinking_time": 5.7544450759887695,
+              "reasoning_content": null
+            },
+            {
+              "player": "Diana",
+              "vote": "approve",
+              "comment": "Solid info-gathering first team; I\u2019m on it, composition aligns with table consensus, and there\u2019s no strong reason to distrust Alice or Henry yet.",
+              "thinking_time": 2.866068124771118,
+              "reasoning_content": null
+            },
+            {
+              "player": "Eve",
+              "vote": "approve",
+              "comment": "Early neutral-looking team with no strong pushers; rejecting it without concrete suspicion would draw unnecessary attention.",
+              "thinking_time": 3.2518069744110107,
+              "reasoning_content": null
+            },
+            {
+              "player": "Frank",
+              "vote": "approve",
+              "comment": "Solid, widely supported low-drama first team; no strong red flags yet and we need mission info.",
+              "thinking_time": 3.8936362266540527,
+              "reasoning_content": null
+            },
+            {
+              "player": "Grace",
+              "vote": "approve",
+              "comment": "This matches the low-drama, one-talker structure I already supported; no strong red flags yet, and we need early mission info.",
+              "thinking_time": 2.5516061782836914,
+              "reasoning_content": null
+            },
+            {
+              "player": "Henry",
+              "vote": "approve",
+              "comment": "Team excludes the two known sketchiest picks (Charlie, Eve) and is a reasonable low-drama info-gathering first mission.",
+              "thinking_time": 2.556847095489502,
+              "reasoning_content": null
+            },
+            {
+              "player": "Iris",
+              "vote": "approve",
+              "comment": "Solid, broadly supported low-drama first team; no strong reason to distrust any member yet and it gives good info without stacking dominant voices.",
+              "thinking_time": 1.7983510494232178,
+              "reasoning_content": null
+            }
+          ],
+          "vote_result": "approved"
+        }
+      ],
+      "final_team_index": 0,
+      "discussion": [
+        {
+          "player": "Alice",
+          "content": "Since it\u2019s only three people, I\u2019d rather start with a fairly \u201cneutral\u201d team\u2014folks who haven\u2019t been super eager to steer the conversation yet. I\u2019m okay going on it myself plus two quieter players, so we can gather info without handing control to anyone who\u2019s already pushing hard narratives.",
+          "timestamp": 0,
+          "global_turn_id": 0,
+          "phase": "discussion",
+          "thinking_time": 2.085081100463867,
+          "reasoning_content": null
+        },
+        {
+          "player": "Bob",
+          "content": "I like the idea of a \u201cneutral\u201d team, but I\u2019d actually prefer at least one person who\u2019s been talking a bit more, just so we have clearer behavior to read later\u2014maybe Alice plus someone like Charlie and a quieter player.",
+          "timestamp": 1,
+          "global_turn_id": 1,
+          "phase": "discussion",
+          "thinking_time": 3.0015869140625,
+          "reasoning_content": null
+        },
+        {
+          "player": "Charlie",
+          "content": "I\u2019d rather avoid stacking the team with people who are already shaping the table talk\u2014maybe something like Alice plus two relatively low-profile players (Diana, Frank, or Henry) so we get a cleaner read on reactions if anything goes wrong.",
+          "timestamp": 2,
+          "global_turn_id": 2,
+          "phase": "discussion",
+          "thinking_time": 3.891566038131714,
+          "reasoning_content": null
+        },
+        {
+          "player": "Diana",
+          "content": "I\u2019m fine being on the first team, but I\u2019d really rather not see all three \u201ctalkers\u201d together\u2014something like Alice, me, and one of Frank/Henry feels like a safer, lower-drama starting point.",
+          "timestamp": 3,
+          "global_turn_id": 3,
+          "phase": "discussion",
+          "thinking_time": 1.7398099899291992,
+          "reasoning_content": null
+        },
+        {
+          "player": "Eve",
+          "content": "I\u2019d lean toward a mix of one \u201ctalker\u201d and two quieter players\u2014Alice plus Diana and either Frank or Henry feels like a solid, low-drama info-gathering team to start.",
+          "timestamp": 4,
+          "global_turn_id": 4,
+          "phase": "discussion",
+          "thinking_time": 4.941547870635986,
+          "reasoning_content": null
+        },
+        {
+          "player": "Frank",
+          "content": "I\u2019m okay with a first team of Alice + Diana + me, but I\u2019d really like to *not* auto-lock Henry in yet just because his name\u2019s getting repeated without any real reasoning.",
+          "timestamp": 5,
+          "global_turn_id": 5,
+          "phase": "discussion",
+          "thinking_time": 4.079782962799072,
+          "reasoning_content": null
+        },
+        {
+          "player": "Grace",
+          "content": "I like the idea of just one \u201ctalker\u201d on the first team, so Alice + Diana + Henry feels a bit cleaner to me than Alice + Diana + Frank, especially since Frank\u2019s already been lightly defending his own inclusion.",
+          "timestamp": 6,
+          "global_turn_id": 6,
+          "phase": "discussion",
+          "thinking_time": 2.4947187900543213,
+          "reasoning_content": null
+        },
+        {
+          "player": "Henry",
+          "content": "I\u2019m most comfortable starting with a low-drama trio like Alice + Diana + either me or Frank, since that keeps the early table-shapers from stacking the first mission. I\u2019d slightly rather avoid putting Charlie on this first team so we get a clearer read without too many strong voices in the mix.",
+          "timestamp": 7,
+          "global_turn_id": 7,
+          "phase": "discussion",
+          "thinking_time": 6.24129581451416,
+          "reasoning_content": null
+        },
+        {
+          "player": "Iris",
+          "content": "I\u2019m leaning toward Alice + Diana + Henry for the first team\u2014it fits the \u201cone talker, two quieter\u201d idea, and I\u2019d rather avoid putting someone like Charlie on early so we can read his pushes from the outside.",
+          "timestamp": 8,
+          "global_turn_id": 8,
+          "phase": "discussion",
+          "thinking_time": 2.6705169677734375,
+          "reasoning_content": null
+        }
+      ],
+      "quest_actions": [
+        {
+          "player": "Alice",
+          "action": "success"
+        },
+        {
+          "player": "Diana",
+          "action": "success"
+        },
+        {
+          "player": "Henry",
+          "action": "success"
+        }
+      ],
+      "mission_result": "success",
+      "fail_count": 0
+    },
+    {
+      "mission_number": 2,
+      "proposals": [
+        {
+          "proposal_id": 0,
+          "leader": "Bob",
+          "team_members": [
+            "Alice",
+            "Bob",
+            "Henry",
+            "Eve"
+          ],
+          "reasoning": "I\u2019m keeping a strong core from the clean first mission while adding targeted new info. Alice and Henry both come off the successful Mission 1 and have been widely treated as relatively safe, so keeping them gives us continuity without fully rerunning the old team. I\u2019m adding myself because as leader I should be willing to be on the line for the choices I\u2019m advocating, and I\u2019ve been pushing for teams that generate real information rather than just repeating the same trio. Eve fits the commonly suggested pattern of including one of the quieter voices alongside more vocal players; several people (Eve, Iris, Frank, Grace) have endorsed some variation of Alice + one of Diana/Henry + two from Bob/Charlie/Eve/Grace. This specific mix\u2014Alice, Henry, Bob, Eve\u2014matches that consensus while giving us a good info spread: if the mission fails, the blame is tightly constrained to the two new additions (Bob/Eve), and if it succeeds, we\u2019ve broadened our pool of trusted candidates beyond just the original three.",
+          "thinking_time": 10.418010950088501,
+          "reasoning_content": null,
+          "votes": [
+            {
+              "player": "Alice",
+              "vote": "approve",
+              "comment": "Team keeps a strong core from the successful first mission while adding two new players for information. Even if one of Alice/Henry is secretly evil, the mix is reasonable for Mission 2 and a fail would give focused suspects among the new additions.",
+              "thinking_time": 3.9298617839813232,
+              "reasoning_content": null
+            },
+            {
+              "player": "Bob",
+              "vote": "approve",
+              "comment": "As evil, I want this team approved since it puts two evils (including me) on a 4-person mission, giving us strong chances to sabotage later while still looking consistent with prior discussion.",
+              "thinking_time": 2.2668020725250244,
+              "reasoning_content": null
+            },
+            {
+              "player": "Charlie",
+              "vote": "approve",
+              "comment": "This matches my earlier push for keeping part of the proven core while adding new faces for information, so it\u2019s consistent for me to support it.",
+              "thinking_time": 3.5140137672424316,
+              "reasoning_content": null
+            },
+            {
+              "player": "Diana",
+              "vote": "approve",
+              "comment": "Team keeps a core from the successful first mission while adding two new players for information; nothing in the discussion makes this lineup look uniquely suspicious compared to alternatives, and we need data from a 4-person mission.",
+              "thinking_time": 5.757213830947876,
+              "reasoning_content": null
+            },
+            {
+              "player": "Eve",
+              "vote": "approve",
+              "comment": "Team fits the consensus structure (Alice + Henry from the clean mission plus two new voices), and a pass or fail here gives very focused info on Bob/Eve without overhauling the trusted core too fast.",
+              "thinking_time": 4.0334389209747314,
+              "reasoning_content": null
+            },
+            {
+              "player": "Frank",
+              "vote": "approve",
+              "comment": "Keeps two from a clean team while adding two new players for info; reasonable risk profile for Mission 2.",
+              "thinking_time": 3.464399814605713,
+              "reasoning_content": null
+            },
+            {
+              "player": "Grace",
+              "vote": "approve",
+              "comment": "Team keeps two members from the clean first mission while adding two new players for information; risk is acceptable this early and the composition matches the broad consensus structure many have suggested.",
+              "thinking_time": 3.0383172035217285,
+              "reasoning_content": null
+            },
+            {
+              "player": "Henry",
+              "vote": "reject",
+              "comment": "I don\u2019t like including Eve here when we have safer options from the first mission plus others like Diana/Grace; this mix feels higher risk than necessary for only our second quest.",
+              "thinking_time": 2.151801109313965,
+              "reasoning_content": null
+            },
+            {
+              "player": "Iris",
+              "vote": "reject",
+              "comment": "As Percival I know Henry/Eve are Merlin/Morgana, so this team guarantees at least one from that pair plus two unknowns; swapping out only Diana from the clean team for Bob and also adding Eve makes this much higher-risk than necessary for Mission 2.",
+              "thinking_time": 5.201802968978882,
+              "reasoning_content": null
+            }
+          ],
+          "vote_result": "approved"
+        }
+      ],
+      "final_team_index": 0,
+      "discussion": [
+        {
+          "player": "Alice",
+          "content": "Given the clean first mission, I\u2019m inclined to keep Diana and Henry in the mix with me for now and add one new person, preferably someone who\u2019s been talking clearly and consistently about their reads.",
+          "timestamp": 0,
+          "global_turn_id": 9,
+          "phase": "discussion",
+          "thinking_time": 1.9617950916290283,
+          "reasoning_content": null
+        },
+        {
+          "player": "Bob",
+          "content": "I don\u2019t think we should automatically lock in the entire first team just because it was clean\u2014evil loves hiding there early. I\u2019d keep at most two of Alice/Diana/Henry and add someone who\u2019s been scrutinized a bit more, so we actually learn something from Mission 2.",
+          "timestamp": 1,
+          "global_turn_id": 10,
+          "phase": "discussion",
+          "thinking_time": 3.5189828872680664,
+          "reasoning_content": null
+        },
+        {
+          "player": "Charlie",
+          "content": "I\u2019m with Bob that we shouldn\u2019t just rerun the exact same trio\u2014statistically there\u2019s a good chance at least one evil snuck on\u2014so I\u2019d keep Alice plus one of Diana/Henry and add two fresh faces who\u2019ve been clear in their reasoning so far. That way, if it passes or fails, we actually get new info instead of just reinforcing a possibly flawed assumption.",
+          "timestamp": 2,
+          "global_turn_id": 11,
+          "phase": "discussion",
+          "thinking_time": 3.4694557189941406,
+          "reasoning_content": null
+        },
+        {
+          "player": "Diana",
+          "content": "I\u2019m fine staying on the team given the clean first mission, but I agree we shouldn\u2019t just rerun the same trio\u2014keeping Alice plus me or Henry and then adding two people who\u2019ve been the most transparent in their thinking (maybe Bob and Charlie, since they\u2019re pushing for info) seems like a good balance of safety and new data.",
+          "timestamp": 3,
+          "global_turn_id": 12,
+          "phase": "discussion",
+          "thinking_time": 2.3693172931671143,
+          "reasoning_content": null
+        },
+        {
+          "player": "Eve",
+          "content": "I like the idea of keeping Alice plus one of Diana/Henry, but I\u2019d really rather not stack the whole team with only the loudest voices\u2014maybe do Alice, Diana, Bob, and one of the quieter folks like me so we\u2019re not just letting the most persuasive people steer all the info.",
+          "timestamp": 4,
+          "global_turn_id": 13,
+          "phase": "discussion",
+          "thinking_time": 3.208526849746704,
+          "reasoning_content": null
+        },
+        {
+          "player": "Frank",
+          "content": "I\u2019d like to keep exactly one of Diana/Henry with Alice, and then add two from Bob/Charlie/Eve so we get fresh info without throwing away all the safety from the first mission. If we ever see a fail from that mix, it\u2019ll narrow down suspects a lot faster than just rerunning the same core.",
+          "timestamp": 5,
+          "global_turn_id": 14,
+          "phase": "discussion",
+          "thinking_time": 3.139925003051758,
+          "reasoning_content": null
+        },
+        {
+          "player": "Grace",
+          "content": "I\u2019d also avoid rerunning the full first trio\u2014keep Alice plus one of Diana/Henry, then add two from Bob/Charlie/Eve (and I\u2019m fine being considered too) so we balance some proven-ish safety with genuinely new info.",
+          "timestamp": 6,
+          "global_turn_id": 15,
+          "phase": "discussion",
+          "thinking_time": 3.0956993103027344,
+          "reasoning_content": null
+        },
+        {
+          "player": "Henry",
+          "content": "I\u2019d rather not overload the next team with people who\u2019ve been pushing the hardest to reshape it, so I like keeping Alice plus one of Diana/me, then adding someone like Bob and Grace who\u2019ve felt reasonably measured so far. That gives us new info without throwing in too many wild cards at once.",
+          "timestamp": 7,
+          "global_turn_id": 16,
+          "phase": "discussion",
+          "thinking_time": 5.7757439613342285,
+          "reasoning_content": null
+        },
+        {
+          "player": "Iris",
+          "content": "I\u2019d lean toward keeping Alice and Henry from the first mission and then adding one of Bob/Grace plus someone a bit quieter like Eve so we get fresh info without completely throwing away the safety we just saw. I\u2019d be wary of loading the team with only the loudest voices, because that makes it easier for evil to steer the narrative.",
+          "timestamp": 8,
+          "global_turn_id": 17,
+          "phase": "discussion",
+          "thinking_time": 3.1332626342773438,
+          "reasoning_content": null
+        }
+      ],
+      "quest_actions": [
+        {
+          "player": "Alice",
+          "action": "success"
+        },
+        {
+          "player": "Bob",
+          "action": "success"
+        },
+        {
+          "player": "Henry",
+          "action": "success"
+        },
+        {
+          "player": "Eve",
+          "action": "fail"
+        }
+      ],
+      "mission_result": "fail",
+      "fail_count": 1
+    },
+    {
+      "mission_number": 3,
+      "proposals": [
+        {
+          "proposal_id": 0,
+          "leader": "Charlie",
+          "team_members": [
+            "Charlie",
+            "Diana",
+            "Henry",
+            "Frank"
+          ],
+          "reasoning": "Most people are aligned on building around Diana + Henry + Frank while keeping the suspicious Mission 2 pair (Bob/Eve) off this mission. I\u2019m adding myself instead of Grace to keep both Bob and Eve out of the lineup while still following the general consensus structure. This gives us: (1) continuity with Henry from the clean Mission 1, (2) Diana and Frank as broadly trusted picks, and (3) exactly one new variable (me) from outside the Mission 2 cluster, which should generate clearer information if anything goes wrong without reopening the whole Bob/Eve suspicion set at once.",
+          "thinking_time": 7.811044216156006,
+          "reasoning_content": null,
+          "votes": [
+            {
+              "player": "Alice",
+              "vote": "approve",
+              "comment": "Keeps the highly suspicious Bob/Eve pair off the mission while retaining Diana and Henry from the clean Mission 1 and adding only one new variable from outside that cluster; good balance of safety and information.",
+              "thinking_time": 5.617519855499268,
+              "reasoning_content": null
+            },
+            {
+              "player": "Bob",
+              "vote": "approve",
+              "comment": "Team includes my evil teammate Charlie while keeping me and Eve off, giving us sabotage potential with minimal suspicion on me.",
+              "thinking_time": 3.541522264480591,
+              "reasoning_content": null
+            },
+            {
+              "player": "Charlie",
+              "vote": "approve",
+              "comment": "I\u2019m evil and on the team, with both other known evils excluded, so this gives us a clean chance to sabotage without exposing the broader spy cluster.",
+              "thinking_time": 3.0340161323547363,
+              "reasoning_content": null
+            },
+            {
+              "player": "Diana",
+              "vote": "reject",
+              "comment": "Team still includes Henry from the {Bob, Henry, Eve} suspect cluster when we could form a team like Diana + Frank + Grace + Alice/Iris that avoids that entire set and is statistically safer for a pivotal 1\u20131 mission.",
+              "thinking_time": 3.4246857166290283,
+              "reasoning_content": null
+            },
+            {
+              "player": "Eve",
+              "vote": "approve",
+              "comment": "One known evil (to me) is on the team while I stay off, giving a good chance to sabotage without adding suspicion to myself or Bob.",
+              "thinking_time": 2.903045892715454,
+              "reasoning_content": null
+            },
+            {
+              "player": "Frank",
+              "vote": "reject",
+              "comment": "I\u2019d rather keep the Diana + Henry + Frank core but use Grace instead of Charlie, since that version had broader trust and Charlie is still an untested variable compared to Grace.",
+              "thinking_time": 19.45676898956299,
+              "reasoning_content": null
+            },
+            {
+              "player": "Grace",
+              "vote": "approve",
+              "comment": "Keeps both Bob and Eve (the main suspects from Mission 2) off the team while retaining Diana and Henry plus a generally trusted Frank; Charlie is an acceptable substitute for me with no strong suspicion yet.",
+              "thinking_time": 4.369545936584473,
+              "reasoning_content": null
+            },
+            {
+              "player": "Henry",
+              "vote": "reject",
+              "comment": "I\u2019m not fully comfortable adding Charlie here when we already had a clean core forming around Diana, Henry, and Frank; I\u2019d prefer swapping Charlie for someone less contested like Grace to reduce risk.",
+              "thinking_time": 2.460942268371582,
+              "reasoning_content": null
+            },
+            {
+              "player": "Iris",
+              "vote": "reject",
+              "comment": "I prefer the more consensus Diana + Henry + Frank + Grace team; Charlie adding himself over Grace feels self-serving and contradicts his earlier info-gain stance, making this lineup less trustworthy.",
+              "thinking_time": 8.529120922088623,
+              "reasoning_content": null
+            }
+          ],
+          "vote_result": "approved"
+        }
+      ],
+      "final_team_index": 0,
+      "discussion": [
+        {
+          "player": "Alice",
+          "content": "Given Mission 2 only had one fail and I know I\u2019m good, the spy has to be in {Bob, Henry, Eve}, and since Henry was also on the clean first mission, I\u2019m most suspicious of Bob or Eve and would prefer a team that keeps Diana and Henry while excluding Bob and Eve for now.",
+          "timestamp": 0,
+          "global_turn_id": 18,
+          "phase": "discussion",
+          "thinking_time": 3.4419338703155518,
+          "reasoning_content": null
+        },
+        {
+          "player": "Bob",
+          "content": "I get your logic, but we can\u2019t clear Henry just from Mission 1 being clean\u2014spies often stay quiet early. I\u2019d still like at least one of {Bob, Eve} on the next team with Henry or Diana so we actually learn something instead of just assuming.",
+          "timestamp": 1,
+          "global_turn_id": 19,
+          "phase": "discussion",
+          "thinking_time": 2.4669580459594727,
+          "reasoning_content": null
+        },
+        {
+          "player": "Charlie",
+          "content": "I don\u2019t think we can just soft-clear Henry off one clean mission\u2014if he\u2019s the spy, a team of \u201cAlice/Diana/Henry/+1\u201d gives him a really safe ride. I\u2019d rather see a mix like Diana, Henry, and at least one of Bob/Eve so we actually get more info instead of just reinforcing assumptions.",
+          "timestamp": 2,
+          "global_turn_id": 20,
+          "phase": "discussion",
+          "thinking_time": 5.095657825469971,
+          "reasoning_content": null
+        },
+        {
+          "player": "Diana",
+          "content": "I\u2019m fine keeping Henry on for now, but I\u2019d really prefer a team like me + Henry + two people outside the Bob/Eve pair so we\u2019re not doubling down on the most suspicious cluster.",
+          "timestamp": 3,
+          "global_turn_id": 21,
+          "phase": "discussion",
+          "thinking_time": 4.239336013793945,
+          "reasoning_content": null
+        },
+        {
+          "player": "Eve",
+          "content": "I\u2019m with Charlie that we can\u2019t auto-clear Henry off Mission 1, so I\u2019d like a middle ground like Diana + Henry + me + someone outside the Mission 2 group (say Frank or Grace) so we\u2019re not tunneling on the same cluster but still get useful info.",
+          "timestamp": 4,
+          "global_turn_id": 22,
+          "phase": "discussion",
+          "thinking_time": 6.506872653961182,
+          "reasoning_content": null
+        },
+        {
+          "player": "Frank",
+          "content": "From my perspective the safest next team is something like Diana + me + Grace + one of {Henry, Alice}, keeping both Bob and Eve off for now until we get clearer info. I\u2019m not ready to hard-clear Henry, but I\u2019d rather risk just one of {Henry/Alice} than reopen the whole Bob\u2013Eve cluster immediately.",
+          "timestamp": 5,
+          "global_turn_id": 23,
+          "phase": "discussion",
+          "thinking_time": 2.842381000518799,
+          "reasoning_content": null
+        },
+        {
+          "player": "Grace",
+          "content": "I like Frank\u2019s suggestion of something like Diana + Henry + Frank + me for this round\u2014keeping Bob and Eve off for now feels safer while we sort out whether Henry is actually clean or just riding the early success.",
+          "timestamp": 6,
+          "global_turn_id": 24,
+          "phase": "discussion",
+          "thinking_time": 2.9323770999908447,
+          "reasoning_content": null
+        },
+        {
+          "player": "Henry",
+          "content": "I\u2019m pretty comfortable with a Diana + me + Frank + Grace team here\u2014it keeps the suspicious Mission 2 cluster (Bob/Eve) off while still giving us a mostly consensus group. If that passes clean, we\u2019ll have a much firmer base to work from for Mission 4.",
+          "timestamp": 7,
+          "global_turn_id": 25,
+          "phase": "discussion",
+          "thinking_time": 2.867372989654541,
+          "reasoning_content": null
+        },
+        {
+          "player": "Iris",
+          "content": "I\u2019m okay leaning into the Diana + Henry + Frank + Grace lineup for now\u2014keeping both Bob and Eve off after that Mission 2 fail seems safer while we sort out who in that cluster is actually dirty. If this team comes back clean, I\u2019d be much more willing to revisit Eve (or even Bob) next round with better info.",
+          "timestamp": 8,
+          "global_turn_id": 26,
+          "phase": "discussion",
+          "thinking_time": 4.006505966186523,
+          "reasoning_content": null
+        }
+      ],
+      "quest_actions": [
+        {
+          "player": "Charlie",
+          "action": "fail"
+        },
+        {
+          "player": "Diana",
+          "action": "success"
+        },
+        {
+          "player": "Henry",
+          "action": "success"
+        },
+        {
+          "player": "Frank",
+          "action": "success"
+        }
+      ],
+      "mission_result": "fail",
+      "fail_count": 1
+    },
+    {
+      "mission_number": 4,
+      "proposals": [
+        {
+          "proposal_id": 0,
+          "leader": "Diana",
+          "team_members": [
+            "Alice",
+            "Bob",
+            "Diana",
+            "Grace",
+            "Iris"
+          ],
+          "reasoning": "Henry is the only player on both failed missions, so he\u2019s the clearest exclusion. Mission 1 (Alice, Diana, Henry) succeeded with 0 fails, and since Henry is now highly suspect, that strongly clears Alice and me (Diana) as good. Grace and Iris have not been on any failing teams, and there is broad agreement in discussion around an Alice/Diana/Grace/Iris core as the safest base. For the fifth slot, we must choose among players who\u2019ve shared a failed mission with Henry; any of them could be innocent if Henry was the lone saboteur. Between Bob/Eve/Frank/Charlie, table consensus leans slightly toward Bob, and including exactly one player from the Mission 2 team (Bob) avoids repeating the exact Mission 3 pattern while still giving us a plausible all-good team if Henry is the primary evil causing the fails. This lineup maximizes trust (strongly cleared Alice/Diana, untainted Grace/Iris) while limiting exposure to at most one of the ambiguous players.",
+          "thinking_time": 13.054085731506348,
+          "reasoning_content": null,
+          "votes": [
+            {
+              "player": "Alice",
+              "vote": "approve",
+              "comment": "Henry is the only common link on both failed missions and is excluded; this team keeps the trusted core of me and Diana from the clean Mission 1, adds two untainted players (Grace, Iris), and only one ambiguous player (Bob), which is about as safe as we can get now.",
+              "thinking_time": 7.82381796836853,
+              "reasoning_content": null
+            },
+            {
+              "player": "Bob",
+              "vote": "approve",
+              "comment": "I\u2019m on the team and we only need one more failed mission to win, so I want this to go through.",
+              "thinking_time": 2.3681342601776123,
+              "reasoning_content": null
+            },
+            {
+              "player": "Charlie",
+              "vote": "reject",
+              "comment": "Mission 4 likely needs 2 fails to sabotage, and this team only has one evil (Bob), so it would almost certainly succeed and give good a free point.",
+              "thinking_time": 7.552826166152954,
+              "reasoning_content": null
+            },
+            {
+              "player": "Diana",
+              "vote": "approve",
+              "comment": "Henry is the prime suspect and is off the team; the Alice/Diana/Grace/Iris core is widely trusted, and picking exactly one from the Mission 2 suspects (Bob) avoids repeating the Mission 3 pattern while still giving a plausible all-good lineup.",
+              "thinking_time": 13.87238883972168,
+              "reasoning_content": null
+            },
+            {
+              "player": "Eve",
+              "vote": "approve",
+              "comment": "Core Alice/Diana/Grace/Iris matches what I pushed for and Henry is rightly benched; while I\u2019d have slightly preferred myself over Bob in the fifth slot, this is still a reasonable, info-rich team and we shouldn\u2019t stall when we have broad consensus.",
+              "thinking_time": 5.391601085662842,
+              "reasoning_content": null
+            },
+            {
+              "player": "Frank",
+              "vote": "reject",
+              "comment": "I know I\u2019m good and wasn\u2019t on any failing team except with Henry, so from my perspective this lineup risks including Bob as an extra unknown instead of using a safer fifth like me or possibly Eve; at 1\u20132 down I want a team I\u2019m more confident in.",
+              "thinking_time": 16.514216899871826,
+              "reasoning_content": null
+            },
+            {
+              "player": "Grace",
+              "vote": "approve",
+              "comment": "This matches the Alice/Diana/Grace/Iris core I advocated, keeps Henry (most suspicious for both fails) off, avoids rerunning Mission 3, and only adds one ambiguous player (Bob) from Mission 2, which is a reasonable risk on a 2-fail mission.",
+              "thinking_time": 16.348811149597168,
+              "reasoning_content": null
+            },
+            {
+              "player": "Henry",
+              "vote": "approve",
+              "comment": "Keeps Henry and the most suspicious patterns off the team while using the broadly trusted Alice/Diana/Grace/Iris core plus a single tested player from Mission 2 (Bob). This is about as safe as we can get given current info.",
+              "thinking_time": 3.098294973373413,
+              "reasoning_content": null
+            },
+            {
+              "player": "Iris",
+              "vote": "approve",
+              "comment": "Henry is the clearest suspect from both failed missions; if he\u2019s evil, Alice and Diana are likely good from Mission 1, and adding me and Grace (not on fails) plus exactly one of the Mission 2 sharers (Bob) is a reasonable low-risk configuration.",
+              "thinking_time": 15.049243211746216,
+              "reasoning_content": null
+            }
+          ],
+          "vote_result": "approved"
+        }
+      ],
+      "final_team_index": 0,
+      "discussion": [
+        {
+          "player": "Alice",
+          "content": "Given the two fails, Henry is the only person on both bad teams, so I don\u2019t want him anywhere near this mission; I\u2019m happiest with a core like me and Diana, plus mostly people who haven\u2019t been on failing teams (Grace/Iris) and at most one of {Bob, Eve, Charlie, Frank}.",
+          "timestamp": 0,
+          "global_turn_id": 27,
+          "phase": "discussion",
+          "thinking_time": 5.685862064361572,
+          "reasoning_content": null
+        },
+        {
+          "player": "Bob",
+          "content": "Cutting Henry this round makes sense, but I\u2019m not convinced Frank should be treated the same as people who only shared with Henry\u2014if we\u2019re running Alice/Diana/Grace/Iris as a core, I\u2019d rather see the fifth be someone from Mission 2 (like me or Eve) than repeat the exact Mission 3 pattern.",
+          "timestamp": 1,
+          "global_turn_id": 28,
+          "phase": "discussion",
+          "thinking_time": 6.123492956161499,
+          "reasoning_content": null
+        },
+        {
+          "player": "Charlie",
+          "content": "Given the two single-fail missions, I agree Henry has to sit, and I think Diana should build around Alice/Grace/Iris, then pick one of Bob/Eve/Frank for the fifth. I get why people are wary of me after Mission 3, so I\u2019m fine staying off if that helps the team feel safer.",
+          "timestamp": 2,
+          "global_turn_id": 29,
+          "phase": "discussion",
+          "thinking_time": 12.489270687103271,
+          "reasoning_content": null
+        },
+        {
+          "player": "Diana",
+          "content": "I\u2019m fully on board with benching Henry and not rerunning the Mission 3 pattern; my ideal team is Alice, me, Grace, Iris, plus exactly one of Bob or Eve, but absolutely no Henry this round.",
+          "timestamp": 3,
+          "global_turn_id": 30,
+          "phase": "discussion",
+          "thinking_time": 4.08130407333374,
+          "reasoning_content": null
+        },
+        {
+          "player": "Eve",
+          "content": "I\u2019m good with the Alice/Diana/Grace/Iris core and keeping Henry off, and between Bob and me for the fifth I slightly prefer myself just because Mission 2 already gave us some info about Bob that evil could try to exploit. We shouldn\u2019t rerun Mission 3\u2019s pattern, so let\u2019s lock this in and move on.",
+          "timestamp": 4,
+          "global_turn_id": 31,
+          "phase": "discussion",
+          "thinking_time": 3.573791980743408,
+          "reasoning_content": null
+        },
+        {
+          "player": "Frank",
+          "content": "I agree Henry has to sit after being on both failing teams, and I\u2019m comfortable with the Alice/Diana/Grace/Iris core. For the fifth, I obviously know I\u2019m good so I\u2019d prefer to see myself there, but between Bob and Eve I slightly lean Eve to avoid repeating Mission 2\u2019s mix.",
+          "timestamp": 5,
+          "global_turn_id": 32,
+          "phase": "discussion",
+          "thinking_time": 4.268697023391724,
+          "reasoning_content": null
+        },
+        {
+          "player": "Grace",
+          "content": "I\u2019m happy with the Alice/Diana/Grace/Iris core and I agree Henry has to sit; for the fifth I slightly prefer Bob over Eve or Frank so we\u2019re not just reusing the Mission 3 pattern and we still keep someone from Mission 2 in the mix.",
+          "timestamp": 6,
+          "global_turn_id": 33,
+          "phase": "discussion",
+          "thinking_time": 5.232593297958374,
+          "reasoning_content": null
+        },
+        {
+          "player": "Henry",
+          "content": "I\u2019m fine sitting this one out, and I like the Alice/Diana/Grace/Iris core; between the fifth options I\u2019m a bit more comfortable with Bob or Frank than Eve, just so we\u2019re not repeating the Mission 2 mix that already gave us a fail.",
+          "timestamp": 7,
+          "global_turn_id": 34,
+          "phase": "discussion",
+          "thinking_time": 4.209371089935303,
+          "reasoning_content": null
+        },
+        {
+          "player": "Iris",
+          "content": "I like the Alice/Diana/Grace/Iris core and definitely keeping Henry off this one; for the fifth, I slightly lean Eve over Bob/Frank so we\u2019re not just rerunning the Mission 2/3 patterns and we still have a decent mix of info.",
+          "timestamp": 8,
+          "global_turn_id": 35,
+          "phase": "discussion",
+          "thinking_time": 3.4541220664978027,
+          "reasoning_content": null
+        }
+      ],
+      "quest_actions": [
+        {
+          "player": "Alice",
+          "action": "success"
+        },
+        {
+          "player": "Bob",
+          "action": "fail"
+        },
+        {
+          "player": "Diana",
+          "action": "success"
+        },
+        {
+          "player": "Grace",
+          "action": "success"
+        },
+        {
+          "player": "Iris",
+          "action": "success"
+        }
+      ],
+      "mission_result": "fail",
+      "fail_count": 1
+    }
+  ],
+  "winner": "evil",
+  "assassin_phase": null
+}
