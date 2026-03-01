@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { useSearchParams } from "next/navigation";
+import Link from "next/link";
 import { Game, Mission } from "@/types/game";
 import PlayerCard from "./PlayerCard";
 
@@ -11,12 +13,15 @@ interface GameViewerProps {
 type Phase = "overview" | "discussion" | "proposal" | "voting" | "execution" | "assassin";
 
 export default function GameViewer({ game }: GameViewerProps) {
+  const searchParams = useSearchParams();
   const [currentMission, setCurrentMission] = useState(0);
   const [currentPhase, setCurrentPhase] = useState<Phase>("overview");
   const [currentProposal, setCurrentProposal] = useState(0);
 
   const mission = game.missions[currentMission];
   const proposal = mission?.proposals[currentProposal];
+
+  const autoPlayHref = `/multi-round-avalon-agents?tournament=${searchParams.get("tournament") ?? 0}&game=${searchParams.get("game") ?? 0}`;
 
   // Build a map of player name -> loyal servant index for unique images
   const loyalServantIndexMap = useMemo(() => {
@@ -47,14 +52,26 @@ export default function GameViewer({ game }: GameViewerProps) {
               {game.players.length} players · {game.config.reasoning_effort} reasoning
             </p>
           </div>
-          <div
-            className={`px-3 py-1 rounded text-sm font-medium ${
-              game.winner === "good"
-                ? "bg-blue-100 text-blue-700"
-                : "bg-red-100 text-red-700"
-            }`}
-          >
-            {game.winner} wins
+          <div className="flex items-center gap-2">
+            <Link
+              href={autoPlayHref}
+              className="px-3 py-1 rounded text-sm font-medium bg-yellow-100 text-yellow-800 hover:bg-yellow-200 transition-colors flex items-center gap-1.5"
+              title="Auto Play with narration"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3" />
+              </svg>
+              Auto Play
+            </Link>
+            <div
+              className={`px-3 py-1 rounded text-sm font-medium ${
+                game.winner === "good"
+                  ? "bg-blue-100 text-blue-700"
+                  : "bg-red-100 text-red-700"
+              }`}
+            >
+              {game.winner} wins
+            </div>
           </div>
         </div>
 
