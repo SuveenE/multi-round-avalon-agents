@@ -136,24 +136,6 @@ function buildEventSequence(game: Game): GameEvent[] {
   return events;
 }
 
-// Position players in a pentagon around the table
-function getPlayerPosition(index: number, total: number) {
-  const angle = (index / total) * 2 * Math.PI - Math.PI / 2; // Start from top
-  const radius = 38; // % from center
-  const x = 50 + radius * Math.cos(angle);
-  const y = 50 + radius * Math.sin(angle);
-  return { x, y };
-}
-
-// Position speech bubble relative to player
-function getBubblePosition(index: number, total: number) {
-  const angle = (index / total) * 2 * Math.PI - Math.PI / 2;
-  const radius = 22; // Closer to center than player
-  const x = 50 + radius * Math.cos(angle);
-  const y = 50 + radius * Math.sin(angle);
-  return { x, y };
-}
-
 type PlaybackSpeed = 1 | 1.5 | 2;
 
 export default function AutoPlayViewer({ game }: AutoPlayViewerProps) {
@@ -321,40 +303,16 @@ export default function AutoPlayViewer({ game }: AutoPlayViewerProps) {
         </div>
       </div>
 
-      {/* Main area: circular table */}
-      <div className="flex-1 relative overflow-hidden">
-        {/* Table */}
-        <div
-          className="absolute rounded-full"
-          style={{
-            width: "280px",
-            height: "280px",
-            left: "50%",
-            top: "50%",
-            transform: "translate(-50%, -50%)",
-            background:
-              "radial-gradient(circle, #5c3d2e 0%, #4a2f20 40%, #3a2418 70%, #2a1a10 100%)",
-            boxShadow: "0 0 60px rgba(0,0,0,0.5), inset 0 0 30px rgba(0,0,0,0.3)",
-          }}
-        />
+      {/* Main area */}
+      <div className="flex-1 flex flex-col overflow-hidden">
+        {/* Players row */}
+        <div className="flex-shrink-0 px-6 py-6 flex justify-center gap-4">
+          {game.players.map((player, idx) => {
+            const isSpeaking = activeSpeaker === player.name;
 
-        {/* Players around the table */}
-        {game.players.map((player, idx) => {
-          const pos = getPlayerPosition(idx, game.players.length);
-          const isSpeaking = activeSpeaker === player.name;
-
-          return (
-            <div
-              key={player.name}
-              className="absolute flex flex-col items-center"
-              style={{
-                left: `${pos.x}%`,
-                top: `${pos.y}%`,
-                transform: "translate(-50%, -50%)",
-                zIndex: isSpeaking ? 20 : 10,
-              }}
-            >
+            return (
               <div
+                key={player.name}
                 className={`transition-all duration-300 ${
                   isSpeaking
                     ? "scale-110 drop-shadow-[0_0_20px_rgba(250,204,21,0.6)]"
@@ -363,36 +321,28 @@ export default function AutoPlayViewer({ game }: AutoPlayViewerProps) {
               >
                 <PlayerCard
                   player={player}
-                  size="lg"
+                  size="2xl"
                   isActive={isSpeaking}
                   loyalServantIndex={loyalServantIndexMap[player.name]}
                 />
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
 
         {/* Speech bubble */}
-        {currentEvent && (
-          <div
-            className="absolute z-30 transition-all duration-300"
-            style={{
-              left: "50%",
-              top: "50%",
-              transform: "translate(-50%, -50%)",
-              maxWidth: "320px",
-            }}
-          >
+        <div className="flex-1 flex items-center justify-center px-6">
+          {currentEvent ? (
             <div
-              className={`rounded-xl px-4 py-3 shadow-lg ${
+              className={`rounded-xl px-6 py-4 shadow-lg max-w-lg w-full ${
                 currentEvent.type === "narrator"
                   ? "bg-gray-800 border border-gray-600"
                   : "bg-white text-gray-900 border border-gray-200"
               }`}
             >
-              <div className="flex items-center gap-2 mb-1">
+              <div className="flex items-center gap-2 mb-2">
                 <span
-                  className={`text-xs font-bold uppercase ${
+                  className={`text-sm font-bold uppercase ${
                     currentEvent.type === "narrator" ? "text-yellow-400" : "text-blue-600"
                   }`}
                 >
@@ -401,29 +351,17 @@ export default function AutoPlayViewer({ game }: AutoPlayViewerProps) {
                 <span className="text-xs text-gray-400">{currentEvent.phase}</span>
               </div>
               <p
-                className={`text-sm leading-relaxed ${
+                className={`text-base leading-relaxed ${
                   currentEvent.type === "narrator" ? "text-gray-200" : "text-gray-800"
                 }`}
               >
                 {currentEvent.text}
               </p>
             </div>
-          </div>
-        )}
-
-        {/* No event yet - show start prompt */}
-        {!currentEvent && (
-          <div
-            className="absolute z-30"
-            style={{
-              left: "50%",
-              top: "50%",
-              transform: "translate(-50%, -50%)",
-            }}
-          >
+          ) : (
             <p className="text-gray-500 text-sm">Press play to begin</p>
-          </div>
-        )}
+          )}
+        </div>
       </div>
 
       {/* Playback controls */}
