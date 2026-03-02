@@ -76,7 +76,7 @@ function HomeContent() {
         ) : (
           <div className="flex-1 flex flex-col items-center justify-center text-gray-400">
             <div className="text-4xl mb-3">🏰</div>
-            <h1 className="text-lg font-medium text-gray-600 mb-1">Avalon Game Viewer</h1>
+            <h1 className="text-lg font-medium text-gray-600 mb-1 font-display">Avalon Game Viewer</h1>
             <p className="text-sm mb-4">Select a game from the sidebar</p>
             <Link
               href="/players"

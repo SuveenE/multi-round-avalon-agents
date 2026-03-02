@@ -51,7 +51,15 @@ export default function PlayerCard({
     md: "w-20 h-20",
     lg: "w-24 h-24",
     xl: "w-32 h-32",
-    "2xl": "w-40 h-40",
+    "2xl": "w-48 h-48",
+  };
+
+  const borderClasses = {
+    sm: "border",
+    md: "border-2",
+    lg: "border-2",
+    xl: "border-2",
+    "2xl": "border-2",
   };
 
   const textSizes = {
@@ -59,7 +67,7 @@ export default function PlayerCard({
     md: "text-sm",
     lg: "text-base",
     xl: "text-lg",
-    "2xl": "text-xl",
+    "2xl": "text-sm font-semibold",
   };
 
   const basePath = getBasePath();
@@ -77,16 +85,19 @@ export default function PlayerCard({
   }
   const imagePath = basePath + roleImage;
 
+  const borderColor = player.is_good ? "border-blue-200" : "border-red-200";
+  const borderColorActive = player.is_good ? "border-blue-400" : "border-red-400";
+
   return (
     <div
-      className={`flex flex-col items-center gap-0.5 p-1.5 rounded transition-all ${
-        isActive ? "bg-blue-100 ring-1 ring-blue-400" : "bg-gray-50"
+      className={`flex flex-col items-center transition-transform duration-200 ${
+        isActive ? "scale-105" : ""
       }`}
     >
       <div
-        className={`${sizeClasses[size]} relative rounded-full overflow-hidden border ${
-          player.is_good ? "border-blue-300" : "border-red-300"
-        }`}
+        className={`${sizeClasses[size]} relative rounded-full overflow-hidden ${borderClasses[size]} ${
+          isActive ? borderColorActive : borderColor
+        } transition-colors`}
       >
         <Image
           src={imagePath}
@@ -96,10 +107,10 @@ export default function PlayerCard({
           unoptimized
         />
       </div>
-      <span className={`font-medium ${textSizes[size]} text-gray-900`}>{player.name}</span>
+      <span className={`mt-1.5 ${textSizes[size]} text-gray-700 text-center font-display`}>{player.name}</span>
       {showRole && (
         <span
-          className={`${textSizes[size]} px-1.5 py-0.5 rounded text-xs ${
+          className={`text-xs px-1.5 py-0.5 rounded ${
             player.is_good
               ? "bg-blue-100 text-blue-700"
               : "bg-red-100 text-red-700"

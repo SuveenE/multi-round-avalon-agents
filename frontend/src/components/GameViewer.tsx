@@ -47,7 +47,7 @@ export default function GameViewer({ game }: GameViewerProps) {
       <div className="p-4 border-b border-gray-200 flex-shrink-0">
         <div className="flex items-center justify-between mb-3">
           <div>
-            <h1 className="text-lg font-semibold text-gray-900">{game.game_id}</h1>
+            <h1 className="text-lg font-semibold text-gray-900 font-display">{game.game_id}</h1>
             <p className="text-xs text-gray-500">
               {game.players.length} players · {game.config.reasoning_effort} reasoning
             </p>
