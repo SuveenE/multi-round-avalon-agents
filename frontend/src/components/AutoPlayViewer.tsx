@@ -237,11 +237,14 @@ export default function AutoPlayViewer({ game, gameNumber }: AutoPlayViewerProps
   }, [cancel]);
 
   const handleSkipForward = useCallback(() => {
+    const wasPlaying = isPlayingRef.current;
+    isPlayingRef.current = false;
     cancel();
     const next = Math.min(currentIndexRef.current + 1, events.length - 1);
     setCurrentEventIndex(next);
     currentIndexRef.current = next;
-    if (isPlayingRef.current) {
+    if (wasPlaying) {
+      isPlayingRef.current = true;
       playSequence(next);
     }
   }, [cancel, events.length, playSequence]);
@@ -256,11 +259,14 @@ export default function AutoPlayViewer({ game, gameNumber }: AutoPlayViewerProps
   }, [cancel, events.length]);
 
   const handleSkipBack = useCallback(() => {
+    const wasPlaying = isPlayingRef.current;
+    isPlayingRef.current = false;
     cancel();
     const prev = Math.max(currentIndexRef.current - 1, 0);
     setCurrentEventIndex(prev);
     currentIndexRef.current = prev;
-    if (isPlayingRef.current) {
+    if (wasPlaying) {
+      isPlayingRef.current = true;
       playSequence(prev);
     }
   }, [cancel, playSequence]);

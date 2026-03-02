@@ -67,7 +67,7 @@ export default function PlayerCard({
     md: "text-sm",
     lg: "text-base",
     xl: "text-lg",
-    "2xl": "text-sm font-semibold",
+    "2xl": "text-lg font-semibold",
   };
 
   const basePath = getBasePath();
@@ -110,7 +110,7 @@ export default function PlayerCard({
       <span className={`mt-1.5 ${textSizes[size]} text-gray-700 text-center font-display`}>{player.name}</span>
       {showRole && (
         <span
-          className={`text-xs px-1.5 py-0.5 rounded ${
+          className={`${size === "2xl" ? "text-sm" : "text-xs"} px-1.5 py-0.5 rounded font-display ${
             player.is_good
               ? "bg-blue-100 text-blue-700"
               : "bg-red-100 text-red-700"
