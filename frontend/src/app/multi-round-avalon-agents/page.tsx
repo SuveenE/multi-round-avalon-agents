@@ -98,7 +98,7 @@ function AutoPlayContent() {
 
   if (!game) return null;
 
-  return <AutoPlayViewer game={game} />;
+  return <AutoPlayViewer game={game} gameNumber={gameIndex !== null ? gameIndex + 1 : undefined} />;
 }
 
 export default function AutoPlayPage() {

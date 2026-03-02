@@ -7,6 +7,7 @@ import { useSpeechSynthesis, VoiceConfig } from "@/hooks/useSpeechSynthesis";
 
 interface AutoPlayViewerProps {
   game: Game;
+  gameNumber?: number;
 }
 
 interface GameEvent {
@@ -138,7 +139,7 @@ function buildEventSequence(game: Game): GameEvent[] {
 
 type PlaybackSpeed = 1 | 1.5 | 2;
 
-export default function AutoPlayViewer({ game }: AutoPlayViewerProps) {
+export default function AutoPlayViewer({ game, gameNumber }: AutoPlayViewerProps) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentEventIndex, setCurrentEventIndex] = useState(-1);
   const [speed, setSpeed] = useState<PlaybackSpeed>(1);
@@ -242,6 +243,15 @@ export default function AutoPlayViewer({ game }: AutoPlayViewerProps) {
     }
   }, [cancel, events.length, playSequence]);
 
+  const handleSkipToEnd = useCallback(() => {
+    cancel();
+    setIsPlaying(false);
+    isPlayingRef.current = false;
+    const lastIndex = events.length - 1;
+    setCurrentEventIndex(lastIndex);
+    currentIndexRef.current = lastIndex;
+  }, [cancel, events.length]);
+
   const handleSkipBack = useCallback(() => {
     cancel();
     const prev = Math.max(currentIndexRef.current - 1, 0);
@@ -262,12 +272,19 @@ export default function AutoPlayViewer({ game }: AutoPlayViewerProps) {
   // Mission progress
   const missionResults = game.missions.map((m) => m.mission_result);
 
+  const isAtEnd = currentEventIndex >= events.length - 1;
+
+  // Only reveal mission results for missions that have been reached during playback
+  const revealedMissionIndex = currentEvent?.missionIndex ?? -1;
+
   return (
     <div className="h-screen bg-gray-950 text-white flex flex-col overflow-hidden">
       {/* Top bar: game info + mission progress */}
       <div className="flex-shrink-0 px-6 py-4 flex items-center justify-between border-b border-gray-800">
         <div>
-          <h1 className="text-lg font-semibold">{game.game_id}</h1>
+          <h1 className="text-lg font-semibold">
+            {gameNumber ? `Game ${gameNumber}` : "Avalon"}
+          </h1>
           <p className="text-xs text-gray-400">
             {game.players.length} players &middot; {game.config.reasoning_effort} reasoning
           </p>
@@ -276,31 +293,40 @@ export default function AutoPlayViewer({ game }: AutoPlayViewerProps) {
         {/* Mission tracker */}
         <div className="flex items-center gap-2">
           <span className="text-xs text-gray-500 uppercase mr-1">Missions</span>
-          {missionResults.map((result, idx) => (
-            <div
-              key={idx}
-              className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${
-                result === "success"
-                  ? "bg-blue-500 text-white"
-                  : result === "fail"
-                  ? "bg-red-500 text-white"
-                  : "bg-gray-700 text-gray-400"
-              } ${currentEvent?.missionIndex === idx ? "ring-2 ring-yellow-400" : ""}`}
-            >
-              {idx + 1}
-            </div>
-          ))}
+          {missionResults.map((result, idx) => {
+            const revealed = idx <= revealedMissionIndex || isAtEnd;
+            return (
+              <div
+                key={idx}
+                className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${
+                  revealed && result === "success"
+                    ? "bg-blue-500 text-white"
+                    : revealed && result === "fail"
+                    ? "bg-red-500 text-white"
+                    : "bg-gray-700 text-gray-400"
+                } ${currentEvent?.missionIndex === idx ? "ring-2 ring-yellow-400" : ""}`}
+              >
+                {idx + 1}
+              </div>
+            );
+          })}
         </div>
 
-        <div
-          className={`px-3 py-1 rounded text-sm font-medium ${
-            game.winner === "good"
-              ? "bg-blue-900 text-blue-300"
-              : "bg-red-900 text-red-300"
-          }`}
-        >
-          {game.winner} wins
-        </div>
+        {isAtEnd ? (
+          <div
+            className={`px-3 py-1 rounded text-sm font-medium ${
+              game.winner === "good"
+                ? "bg-blue-900 text-blue-300"
+                : "bg-red-900 text-red-300"
+            }`}
+          >
+            {game.winner} wins
+          </div>
+        ) : (
+          <div className="px-3 py-1 rounded text-sm font-medium bg-gray-800 text-gray-400">
+            ?
+          </div>
+        )}
       </div>
 
       {/* Main area */}
@@ -417,6 +443,18 @@ export default function AutoPlayViewer({ game }: AutoPlayViewerProps) {
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <polygon points="5 4 15 12 5 20 5 4" />
             <line x1="19" y1="5" x2="19" y2="19" />
+          </svg>
+        </button>
+
+        {/* Skip to end */}
+        <button
+          onClick={handleSkipToEnd}
+          className="p-2 rounded-full hover:bg-gray-800 text-gray-400 hover:text-white transition-colors"
+          title="Skip to end"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <polygon points="5 4 15 12 5 20 5 4" />
+            <polygon points="13 4 23 12 13 20 13 4" />
           </svg>
         </button>
 
