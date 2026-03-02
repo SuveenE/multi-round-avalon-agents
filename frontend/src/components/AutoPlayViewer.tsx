@@ -302,7 +302,7 @@ export default function AutoPlayViewer({ game, gameNumber }: AutoPlayViewerProps
             </svg>
           </button>
           <div>
-            <h1 className="text-lg font-semibold text-gray-900">
+            <h1 className="text-lg font-semibold text-gray-900 font-display">
               {gameNumber ? `Game ${gameNumber}` : "Avalon"}
             </h1>
             <p className="text-xs text-gray-500">
@@ -313,7 +313,7 @@ export default function AutoPlayViewer({ game, gameNumber }: AutoPlayViewerProps
 
         {/* Mission tracker */}
         <div className="flex items-center gap-2">
-          <span className="text-xs text-gray-500 uppercase mr-1">Missions</span>
+          <span className="text-xs text-gray-500 uppercase mr-1 font-display">Missions</span>
           {missionResults.map((result, idx) => {
             const revealed = idx <= revealedMissionIndex || isAtEnd;
             return (
@@ -344,7 +344,7 @@ export default function AutoPlayViewer({ game, gameNumber }: AutoPlayViewerProps
             {game.winner} wins
           </div>
         ) : (
-          <div className="px-3 py-1 rounded text-sm font-medium bg-gray-100 text-gray-400">
+          <div className="px-3 py-1 rounded text-sm font-medium bg-gray-100 text-gray-400 font-display">
             ?
           </div>
         )}
@@ -389,13 +389,13 @@ export default function AutoPlayViewer({ game, gameNumber }: AutoPlayViewerProps
             >
               <div className="flex items-center gap-2 mb-2">
                 <span
-                  className={`text-sm font-bold uppercase ${
+                  className={`text-sm font-bold uppercase font-display ${
                     currentEvent.type === "narrator" ? "text-gray-500" : "text-blue-600"
                   }`}
                 >
                   {currentEvent.speaker}
                 </span>
-                <span className="text-xs text-gray-400">{currentEvent.phase}</span>
+                <span className="text-xs text-gray-400 font-display">{currentEvent.phase}</span>
               </div>
               <p className="text-base leading-relaxed text-gray-800">
                 {currentEvent.text}

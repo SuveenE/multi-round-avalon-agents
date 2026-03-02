@@ -94,7 +94,7 @@ export default function PlayersPage() {
       {/* Header */}
       <div className="bg-white border-b border-gray-200">
         <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-          <h1 className="text-lg font-bold text-gray-900">Character Guide</h1>
+          <h1 className="text-lg font-bold text-gray-900 font-display">Character Guide</h1>
           <Link
             href="/"
             className="text-sm text-gray-600 hover:text-gray-900 flex items-center gap-1"
@@ -121,7 +121,7 @@ export default function PlayersPage() {
         {/* Good Team */}
         <div className="mb-12">
           <div className="text-center mb-6">
-            <span className="text-sm font-semibold text-blue-600 uppercase tracking-wide">Good Team</span>
+            <span className="text-sm font-semibold text-blue-600 uppercase tracking-wide font-display">Good Team</span>
           </div>
           <div className="flex gap-8">
             {goodCharacters.map((character) => (
@@ -139,7 +139,7 @@ export default function PlayersPage() {
                     unoptimized
                   />
                 </div>
-                <div className="mt-3 text-sm font-semibold text-gray-700 text-center">
+                <div className="mt-3 text-sm font-semibold text-gray-700 text-center font-display">
                   {character.name}
                 </div>
               </button>
@@ -150,7 +150,7 @@ export default function PlayersPage() {
         {/* Evil Team */}
         <div>
           <div className="text-center mb-6">
-            <span className="text-sm font-semibold text-red-600 uppercase tracking-wide">Evil Team</span>
+            <span className="text-sm font-semibold text-red-600 uppercase tracking-wide font-display">Evil Team</span>
           </div>
           <div className="flex gap-6 flex-wrap justify-center">
             {evilCharacters.map((character) => (
@@ -168,7 +168,7 @@ export default function PlayersPage() {
                     unoptimized
                   />
                 </div>
-                <div className="mt-3 text-sm font-semibold text-gray-700 text-center">
+                <div className="mt-3 text-sm font-semibold text-gray-700 text-center font-display">
                   {character.name}
                 </div>
               </button>
@@ -203,7 +203,7 @@ export default function PlayersPage() {
                   unoptimized
                 />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">{selectedCharacter.name}</h3>
+              <h3 className="text-2xl font-bold text-gray-900 mb-2 font-display">{selectedCharacter.name}</h3>
               <span className={`inline-block px-4 py-1.5 rounded-full text-sm font-semibold mb-6 ${
                 selectedCharacter.team === "good"
                   ? "bg-blue-100 text-blue-700"
