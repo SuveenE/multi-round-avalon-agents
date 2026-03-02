@@ -21,7 +21,7 @@ export default function GameViewer({ game }: GameViewerProps) {
   const mission = game.missions[currentMission];
   const proposal = mission?.proposals[currentProposal];
 
-  const autoPlayHref = `/multi-round-avalon-agents?tournament=${searchParams.get("tournament") ?? 0}&game=${searchParams.get("game") ?? 0}`;
+  const autoPlayHref = `?tournament=${searchParams.get("tournament") ?? 0}&game=${searchParams.get("game") ?? 0}&autoplay=true`;
 
   // Build a map of player name -> loyal servant index for unique images
   const loyalServantIndexMap = useMemo(() => {

@@ -5,6 +5,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import GameSelector from "@/components/GameSelector";
 import GameViewer from "@/components/GameViewer";
+import AutoPlayViewer from "@/components/AutoPlayViewer";
 import { Game } from "@/types/game";
 import { getBasePath } from "@/lib/config";
 
@@ -19,6 +20,7 @@ function HomeContent() {
   // Get initial indices from URL
   const initialTournamentIndex = searchParams.get("tournament") ? parseInt(searchParams.get("tournament")!) : null;
   const initialGameIndex = searchParams.get("game") ? parseInt(searchParams.get("game")!) : null;
+  const isAutoPlay = searchParams.get("autoplay") === "true";
 
   const updateUrl = useCallback((tournamentIndex: number, gameIndex: number) => {
     const params = new URLSearchParams();
@@ -51,20 +53,26 @@ function HomeContent() {
 
   return (
     <div className="flex h-screen bg-white">
-      <GameSelector
-        onSelectGame={handleSelectGame}
-        collapsed={sidebarCollapsed}
-        onToggle={() => setSidebarCollapsed(!sidebarCollapsed)}
-        initialTournamentIndex={initialTournamentIndex}
-        initialGameIndex={initialGameIndex}
-      />
+      {!isAutoPlay && (
+        <GameSelector
+          onSelectGame={handleSelectGame}
+          collapsed={sidebarCollapsed}
+          onToggle={() => setSidebarCollapsed(!sidebarCollapsed)}
+          initialTournamentIndex={initialTournamentIndex}
+          initialGameIndex={initialGameIndex}
+        />
+      )}
       <div className="flex-1 flex flex-col">
         {loading ? (
           <div className="flex-1 flex items-center justify-center text-gray-400 text-sm">
             Loading...
           </div>
         ) : selectedGame ? (
-          <GameViewer game={selectedGame} />
+          isAutoPlay ? (
+            <AutoPlayViewer game={selectedGame} gameNumber={initialGameIndex !== null ? initialGameIndex + 1 : undefined} />
+          ) : (
+            <GameViewer game={selectedGame} />
+          )
         ) : (
           <div className="flex-1 flex flex-col items-center justify-center text-gray-400">
             <div className="text-4xl mb-3">🏰</div>
