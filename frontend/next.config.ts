@@ -4,8 +4,9 @@ const isProd = process.env.NODE_ENV === "production";
 
 const nextConfig: NextConfig = {
   output: "export",
-  basePath: isProd ? "/avalon-bench-multi-round" : "",
-  assetPrefix: isProd ? "/avalon-bench-multi-round/" : "",
+  trailingSlash: true,
+  basePath: isProd ? "/multi-round-avalon-agents" : "",
+  assetPrefix: isProd ? "/multi-round-avalon-agents/" : "",
   images: {
     unoptimized: true,
   },
