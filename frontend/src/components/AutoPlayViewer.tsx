@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useMemo, useRef, useCallback } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import { Game, Mission } from "@/types/game";
 import PlayerCard from "./PlayerCard";
 import { useSpeechSynthesis, VoiceConfig } from "@/hooks/useSpeechSynthesis";
@@ -140,6 +141,8 @@ function buildEventSequence(game: Game): GameEvent[] {
 type PlaybackSpeed = 1 | 1.5 | 2;
 
 export default function AutoPlayViewer({ game, gameNumber }: AutoPlayViewerProps) {
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentEventIndex, setCurrentEventIndex] = useState(-1);
   const [speed, setSpeed] = useState<PlaybackSpeed>(1);
@@ -262,6 +265,13 @@ export default function AutoPlayViewer({ game, gameNumber }: AutoPlayViewerProps
     }
   }, [cancel, playSequence]);
 
+  const handleExit = useCallback(() => {
+    cancel();
+    const params = new URLSearchParams(searchParams.toString());
+    params.delete("autoplay");
+    router.replace(`?${params.toString()}`, { scroll: false });
+  }, [cancel, router, searchParams]);
+
   // Cleanup on unmount
   useEffect(() => {
     return () => {
@@ -278,16 +288,27 @@ export default function AutoPlayViewer({ game, gameNumber }: AutoPlayViewerProps
   const revealedMissionIndex = currentEvent?.missionIndex ?? -1;
 
   return (
-    <div className="h-screen bg-gray-950 text-white flex flex-col overflow-hidden">
+    <div className="h-full bg-white text-gray-900 flex flex-col overflow-hidden">
       {/* Top bar: game info + mission progress */}
-      <div className="flex-shrink-0 px-6 py-4 flex items-center justify-between border-b border-gray-800">
-        <div>
-          <h1 className="text-lg font-semibold">
-            {gameNumber ? `Game ${gameNumber}` : "Avalon"}
-          </h1>
-          <p className="text-xs text-gray-400">
-            {game.players.length} players &middot; {game.config.reasoning_effort} reasoning
-          </p>
+      <div className="flex-shrink-0 px-6 py-4 flex items-center justify-between border-b border-gray-200">
+        <div className="flex items-center gap-3">
+          <button
+            onClick={handleExit}
+            className="p-1.5 rounded-full hover:bg-gray-100 text-gray-500 hover:text-gray-900 transition-colors"
+            title="Exit auto play"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+          <div>
+            <h1 className="text-lg font-semibold text-gray-900">
+              {gameNumber ? `Game ${gameNumber}` : "Avalon"}
+            </h1>
+            <p className="text-xs text-gray-500">
+              {game.players.length} players &middot; {game.config.reasoning_effort} reasoning
+            </p>
+          </div>
         </div>
 
         {/* Mission tracker */}
@@ -303,7 +324,7 @@ export default function AutoPlayViewer({ game, gameNumber }: AutoPlayViewerProps
                     ? "bg-blue-500 text-white"
                     : revealed && result === "fail"
                     ? "bg-red-500 text-white"
-                    : "bg-gray-700 text-gray-400"
+                    : "bg-gray-200 text-gray-400"
                 } ${currentEvent?.missionIndex === idx ? "ring-2 ring-yellow-400" : ""}`}
               >
                 {idx + 1}
@@ -316,14 +337,14 @@ export default function AutoPlayViewer({ game, gameNumber }: AutoPlayViewerProps
           <div
             className={`px-3 py-1 rounded text-sm font-medium ${
               game.winner === "good"
-                ? "bg-blue-900 text-blue-300"
-                : "bg-red-900 text-red-300"
+                ? "bg-blue-100 text-blue-700"
+                : "bg-red-100 text-red-700"
             }`}
           >
             {game.winner} wins
           </div>
         ) : (
-          <div className="px-3 py-1 rounded text-sm font-medium bg-gray-800 text-gray-400">
+          <div className="px-3 py-1 rounded text-sm font-medium bg-gray-100 text-gray-400">
             ?
           </div>
         )}
@@ -341,7 +362,7 @@ export default function AutoPlayViewer({ game, gameNumber }: AutoPlayViewerProps
                 key={player.name}
                 className={`transition-all duration-300 ${
                   isSpeaking
-                    ? "scale-110 drop-shadow-[0_0_20px_rgba(250,204,21,0.6)]"
+                    ? "scale-110 drop-shadow-[0_0_20px_rgba(59,130,246,0.5)]"
                     : ""
                 }`}
               >
@@ -360,42 +381,38 @@ export default function AutoPlayViewer({ game, gameNumber }: AutoPlayViewerProps
         <div className="flex-1 flex items-center justify-center px-6">
           {currentEvent ? (
             <div
-              className={`rounded-xl px-6 py-4 shadow-lg max-w-lg w-full ${
+              className={`rounded-xl px-6 py-4 shadow-md max-w-lg w-full ${
                 currentEvent.type === "narrator"
-                  ? "bg-gray-800 border border-gray-600"
-                  : "bg-white text-gray-900 border border-gray-200"
+                  ? "bg-gray-100 border border-gray-200"
+                  : "bg-white border border-gray-200 shadow-lg"
               }`}
             >
               <div className="flex items-center gap-2 mb-2">
                 <span
                   className={`text-sm font-bold uppercase ${
-                    currentEvent.type === "narrator" ? "text-yellow-400" : "text-blue-600"
+                    currentEvent.type === "narrator" ? "text-gray-500" : "text-blue-600"
                   }`}
                 >
                   {currentEvent.speaker}
                 </span>
                 <span className="text-xs text-gray-400">{currentEvent.phase}</span>
               </div>
-              <p
-                className={`text-base leading-relaxed ${
-                  currentEvent.type === "narrator" ? "text-gray-200" : "text-gray-800"
-                }`}
-              >
+              <p className="text-base leading-relaxed text-gray-800">
                 {currentEvent.text}
               </p>
             </div>
           ) : (
-            <p className="text-gray-500 text-sm">Press play to begin</p>
+            <p className="text-gray-400 text-sm">Press play to begin</p>
           )}
         </div>
       </div>
 
       {/* Playback controls */}
-      <div className="flex-shrink-0 px-6 py-4 border-t border-gray-800 flex items-center justify-center gap-4">
+      <div className="flex-shrink-0 px-6 py-4 border-t border-gray-200 flex items-center justify-center gap-4">
         {/* Restart */}
         <button
           onClick={handleRestart}
-          className="p-2 rounded-full hover:bg-gray-800 text-gray-400 hover:text-white transition-colors"
+          className="p-2 rounded-full hover:bg-gray-100 text-gray-400 hover:text-gray-700 transition-colors"
           title="Restart"
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -407,7 +424,7 @@ export default function AutoPlayViewer({ game, gameNumber }: AutoPlayViewerProps
         {/* Skip back */}
         <button
           onClick={handleSkipBack}
-          className="p-2 rounded-full hover:bg-gray-800 text-gray-400 hover:text-white transition-colors"
+          className="p-2 rounded-full hover:bg-gray-100 text-gray-400 hover:text-gray-700 transition-colors"
           title="Previous"
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -419,7 +436,7 @@ export default function AutoPlayViewer({ game, gameNumber }: AutoPlayViewerProps
         {/* Play / Pause */}
         <button
           onClick={handlePlayPause}
-          className="w-14 h-14 rounded-full bg-yellow-500 hover:bg-yellow-400 text-gray-900 flex items-center justify-center transition-colors"
+          className="w-14 h-14 rounded-full bg-gray-900 hover:bg-gray-700 text-white flex items-center justify-center transition-colors"
           title={isPlaying ? "Pause" : "Auto Play"}
         >
           {isPlaying ? (
@@ -437,7 +454,7 @@ export default function AutoPlayViewer({ game, gameNumber }: AutoPlayViewerProps
         {/* Skip forward */}
         <button
           onClick={handleSkipForward}
-          className="p-2 rounded-full hover:bg-gray-800 text-gray-400 hover:text-white transition-colors"
+          className="p-2 rounded-full hover:bg-gray-100 text-gray-400 hover:text-gray-700 transition-colors"
           title="Next"
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -449,7 +466,7 @@ export default function AutoPlayViewer({ game, gameNumber }: AutoPlayViewerProps
         {/* Skip to end */}
         <button
           onClick={handleSkipToEnd}
-          className="p-2 rounded-full hover:bg-gray-800 text-gray-400 hover:text-white transition-colors"
+          className="p-2 rounded-full hover:bg-gray-100 text-gray-400 hover:text-gray-700 transition-colors"
           title="Skip to end"
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -466,8 +483,8 @@ export default function AutoPlayViewer({ game, gameNumber }: AutoPlayViewerProps
               onClick={() => setSpeed(s)}
               className={`px-2 py-1 rounded text-xs font-medium transition-colors ${
                 speed === s
-                  ? "bg-yellow-500 text-gray-900"
-                  : "bg-gray-800 text-gray-400 hover:text-white"
+                  ? "bg-gray-900 text-white"
+                  : "bg-gray-100 text-gray-500 hover:text-gray-700"
               }`}
             >
               {s}x
@@ -476,7 +493,7 @@ export default function AutoPlayViewer({ game, gameNumber }: AutoPlayViewerProps
         </div>
 
         {/* Progress */}
-        <div className="ml-4 text-xs text-gray-500">
+        <div className="ml-4 text-xs text-gray-400">
           {currentEventIndex >= 0 ? currentEventIndex + 1 : 0} / {events.length}
         </div>
       </div>
