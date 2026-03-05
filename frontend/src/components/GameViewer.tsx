@@ -55,7 +55,8 @@ export default function GameViewer({ game }: GameViewerProps) {
           <div className="flex items-center gap-2">
             <Link
               href={autoPlayHref}
-              className="px-3 py-1 rounded text-sm font-medium bg-yellow-100 text-yellow-800 hover:bg-yellow-200 transition-colors flex items-center gap-1.5"
+              target="_blank"
+              className="px-4 py-1.5 rounded-full text-sm font-semibold bg-gray-900 text-white hover:bg-gray-700 transition-colors flex items-center gap-2 font-display"
               title="Auto Play with narration"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
