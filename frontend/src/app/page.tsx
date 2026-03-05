@@ -1,12 +1,12 @@
 "use client";
 
-import { useState, useCallback, Suspense } from "react";
+import { useState, useCallback, useEffect, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import GameSelector from "@/components/GameSelector";
 import GameViewer from "@/components/GameViewer";
 import AutoPlayViewer from "@/components/AutoPlayViewer";
-import { Game } from "@/types/game";
+import { Game, TournamentInfo } from "@/types/game";
 import { getBasePath } from "@/lib/config";
 
 function HomeContent() {
@@ -28,6 +28,47 @@ function HomeContent() {
     params.set("game", gameIndex.toString());
     router.replace(`?${params.toString()}`, { scroll: false });
   }, [router]);
+
+  // Load game directly from URL params (for new tab / direct link / autoplay)
+  useEffect(() => {
+    if (selectedGame || !isAutoPlay || initialTournamentIndex === null || initialGameIndex === null) return;
+
+    setLoading(true);
+    const basePath = getBasePath();
+
+    (async () => {
+      try {
+        const tournamentsRes = await fetch(`${basePath}/data/tournaments.json`);
+        const tournaments: TournamentInfo[] = await tournamentsRes.json();
+
+        if (initialTournamentIndex >= tournaments.length) {
+          setLoading(false);
+          return;
+        }
+
+        const tournament = tournaments[initialTournamentIndex];
+        const indexRes = await fetch(`${basePath}/data/${tournament.path}/index.json`);
+        const gameList = await indexRes.json();
+
+        if (initialGameIndex >= gameList.length) {
+          setLoading(false);
+          return;
+        }
+
+        const gameId = gameList[initialGameIndex].id;
+        const gamesRes = await fetch(`${basePath}/data/${tournament.path}/all_games.json`);
+        const gamesData = await gamesRes.json();
+        const foundGame = gamesData.games.find((g: Game) => g.game_id === gameId);
+
+        if (foundGame) {
+          setSelectedGame(foundGame);
+        }
+      } catch (error) {
+        console.error("Failed to load game:", error);
+      }
+      setLoading(false);
+    })();
+  }, [isAutoPlay, initialTournamentIndex, initialGameIndex, selectedGame]);
 
   const handleSelectGame = async (
     tournamentPath: string,
