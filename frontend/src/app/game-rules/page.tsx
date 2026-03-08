@@ -106,7 +106,7 @@ const compositions: Composition[] = [
         image: "/assets/loyal-servant-1.png",
         count: 2,
       },
-      { name: "Assassin", team: "evil", image: "/assets/assassin.png" },
+      { name: "Mordred", team: "evil", image: "/assets/mordred.png" },
       { name: "Morgana", team: "evil", image: "/assets/morgana.png" },
       { name: "Oberon", team: "evil", image: "/assets/oberon.png" },
     ],
@@ -114,8 +114,8 @@ const compositions: Composition[] = [
     knowledge: [
       {
         from: "Merlin",
-        sees: "Assassin, Morgana, Oberon",
-        note: "Sees all evil players",
+        sees: "Morgana, Oberon",
+        note: "Sees all evil except Mordred",
       },
       {
         from: "Percival",
@@ -124,13 +124,13 @@ const compositions: Composition[] = [
       },
       { from: "Loyal Servant", sees: "Nobody", note: "No special knowledge" },
       {
-        from: "Assassin",
+        from: "Mordred",
         sees: "Morgana",
-        note: "Knows fellow evil (not Oberon)",
+        note: "Hidden from Merlin; knows fellow evil (not Oberon)",
       },
       {
         from: "Morgana",
-        sees: "Assassin",
+        sees: "Mordred",
         note: "Knows fellow evil (not Oberon); appears as Merlin to Percival",
       },
       {
@@ -153,14 +153,14 @@ const compositions: Composition[] = [
       },
       { name: "Assassin", team: "evil", image: "/assets/assassin.png" },
       { name: "Morgana", team: "evil", image: "/assets/morgana.png" },
-      { name: "Minion", team: "evil", image: "/assets/minion.png" },
+      { name: "Mordred", team: "evil", image: "/assets/mordred.png" },
     ],
     missionSizes: [3, 4, 4, 5, 5],
     knowledge: [
       {
         from: "Merlin",
-        sees: "Assassin, Morgana, Minion",
-        note: "Sees all evil players",
+        sees: "Assassin, Morgana",
+        note: "Sees all evil except Mordred",
       },
       {
         from: "Percival",
@@ -168,13 +168,17 @@ const compositions: Composition[] = [
         note: "Sees both but doesn't know which is which",
       },
       { from: "Loyal Servant", sees: "Nobody", note: "No special knowledge" },
-      { from: "Assassin", sees: "Morgana, Minion", note: "Knows fellow evil" },
+      { from: "Assassin", sees: "Morgana, Mordred", note: "Knows fellow evil" },
       {
         from: "Morgana",
-        sees: "Assassin, Minion",
+        sees: "Assassin, Mordred",
         note: "Knows fellow evil; appears as Merlin to Percival",
       },
-      { from: "Minion", sees: "Assassin, Morgana", note: "Knows fellow evil" },
+      {
+        from: "Mordred",
+        sees: "Assassin, Morgana",
+        note: "Hidden from Merlin; knows fellow evil",
+      },
     ],
   },
   {
