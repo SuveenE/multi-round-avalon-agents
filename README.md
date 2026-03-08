@@ -1,6 +1,22 @@
-# 🏰 Multi-Round Avalon with AI Agents
+<p align="center">
+  <img src="assets/cover.png" width="600" />
+</p>
 
-A dataset of 188 games where LLM agents play [The Resistance: Avalon](#how-a-game-works)—a hidden-role deception game where "good" players try to complete missions while "evil" players secretly sabotage them. Unlike prior work on single-game performance, **our agents play repeated games while retaining memory of previous interactions—who played which roles and how they behaved.** This enables us to study how social dynamics like reputation and trust evolve over time.
+<h1 align="center">Multi-Round Avalon with AI Agents</h1>
+
+<p align="center">
+  <b>LLM agents play hidden-role deception games with memory across rounds.</b>
+</p>
+
+<p align="center">
+  A dataset of 188 games where AI agents play <a href="#how-a-game-works">The Resistance: Avalon</a> — a social deduction game where "good" players complete missions while "evil" players secretly sabotage them. <b>Agents retain memory across games</b>, enabling emergent reputation, trust, and strategic adaptation.
+</p>
+
+<p align="center">
+  <a href="#key-findings">Key Findings</a> · <a href="#dataset-structure">Dataset</a> · <a href="#quick-start">Quick Start</a> · <a href="#documentation">Docs</a>
+</p>
+
+---
 
 ![Tournament System](assets/chart.png)
 
@@ -8,13 +24,13 @@ A dataset of 188 games where LLM agents play [The Resistance: Avalon](#how-a-gam
 
 Five agents played 50 games in a row, keeping memories between games. What emerged was surprising:
 
-**Reputations formed naturally.** At game 20, agents were saying things like *"Alice tends to play straightforwardly early"* and making decisions based on past behavior. Charlie became known as "subtle" (mentioned 38 times). These reputations were role-conditional—Bob was called "straightforward" 27 times when good, but zero times when evil.
+**Reputations formed naturally.** At game 20, agents were saying things like *"Alice tends to play straightforwardly early"* and making decisions based on past behavior. Charlie became known as "subtle" (mentioned 38 times). These reputations were role-conditional — Bob was called "straightforward" 27 times when good, but zero times when evil.
 
 **Trust translated to power.** High-reputation players got picked for teams 45% more often.
 
 **More thinking = better lie detection.** Assassination accuracy (identifying the hidden Merlin): 67% (low reasoning) → 75% (medium) → 100% (high). Deeper reasoning unlocked new strategies like detecting timing tells and self-exclusion patterns.
 
-**The fundamental confusion.** 90% of wrong assassination guesses targeted regular good players who figured things out through logic—because smart deduction looks identical to hidden knowledge.
+**The fundamental confusion.** 90% of wrong assassination guesses targeted regular good players who figured things out through logic — because smart deduction looks identical to hidden knowledge.
 
 **Meta-awareness emerged.** At game 35: *"Anchoring off past games can be a trap if either of you rolled evil this time."*
 
