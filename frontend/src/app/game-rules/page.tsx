@@ -148,29 +148,46 @@ function KnowledgeChart({ composition, basePath }: { composition: Composition; b
       <div className="relative" style={{ width: 600, height: 560 }}>
         <svg width={600} height={560} className="absolute inset-0">
           <defs>
-            {edges.map((edge, i) => (
-              <marker
-                key={`arrow-${i}`}
-                id={`arrowhead-${i}`}
-                markerWidth="10"
-                markerHeight="7"
-                refX="9"
-                refY="3.5"
-                orient="auto"
-              >
-                <polygon
-                  points="0 0, 10 3.5, 0 7"
-                  fill={edge.mutual ? "#8b5cf6" : edgeColor(edge.fromIdx)}
-                  opacity={
-                    isHighlighting
-                      ? hoveredRole === roles[edge.fromIdx].name || hoveredRole === roles[edge.toIdx].name
-                        ? 1
-                        : 0.1
-                      : 0.7
-                  }
-                />
-              </marker>
-            ))}
+            {edges.map((edge, i) => {
+              const isRelevant =
+                hoveredRole === roles[edge.fromIdx].name || hoveredRole === roles[edge.toIdx].name;
+              const markerOpacity = isHighlighting ? (isRelevant ? 1 : 0.1) : 0.7;
+              const color = edge.mutual ? "#8b5cf6" : edgeColor(edge.fromIdx);
+              return (
+                <g key={`markers-${i}`}>
+                  <marker
+                    id={`arrowhead-${i}`}
+                    markerWidth="10"
+                    markerHeight="7"
+                    refX="9"
+                    refY="3.5"
+                    orient="auto"
+                  >
+                    <polygon
+                      points="0 0, 10 3.5, 0 7"
+                      fill={color}
+                      opacity={markerOpacity}
+                    />
+                  </marker>
+                  {edge.mutual && (
+                    <marker
+                      id={`arrowhead-rev-${i}`}
+                      markerWidth="10"
+                      markerHeight="7"
+                      refX="1"
+                      refY="3.5"
+                      orient="auto"
+                    >
+                      <polygon
+                        points="10 0, 0 3.5, 10 7"
+                        fill={color}
+                        opacity={markerOpacity}
+                      />
+                    </marker>
+                  )}
+                </g>
+              );
+            })}
           </defs>
 
           {/* Edges */}
@@ -184,7 +201,7 @@ function KnowledgeChart({ composition, basePath }: { composition: Composition; b
             const strokeWidth = isHighlighting && isRelevant ? 3 : 2;
 
             if (edge.mutual) {
-              // Draw double-headed line
+              // Draw double-headed line with arrows on both ends
               return (
                 <line
                   key={i}
@@ -196,6 +213,7 @@ function KnowledgeChart({ composition, basePath }: { composition: Composition; b
                   strokeWidth={strokeWidth}
                   opacity={opacity}
                   markerEnd={`url(#arrowhead-${i})`}
+                  markerStart={`url(#arrowhead-rev-${i})`}
                 />
               );
             } else {
