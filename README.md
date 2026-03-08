@@ -141,3 +141,17 @@ python multi_game_runner.py
 | [docs/DATASET.md](docs/DATASET.md) | Full schema, file structure, data fields |
 | [docs/GAME_RULES.md](docs/GAME_RULES.md) | Avalon rules, roles, phases, win conditions |
 | [docs/TOURNAMENT_SYSTEM.md](docs/TOURNAMENT_SYSTEM.md) | Memory system, cross-game learning |
+
+## Citation
+
+If you use this dataset or code in your research, please cite:
+
+```bibtex
+@misc{ellawela2025avalonagents,
+  title   = {Multi-Round Avalon with AI Agents},
+  author  = {Ellawela, Suveen},
+  year    = {2025},
+  url     = {https://github.com/SuveenE/multi-round-avalon-agents},
+  note    = {A dataset and analysis of LLM agents playing hidden-role deception games with memory across rounds}
+}
+```
