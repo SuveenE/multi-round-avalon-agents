@@ -18,20 +18,33 @@ function HomeContent() {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
   // Get initial indices from URL
-  const initialTournamentIndex = searchParams.get("tournament") ? parseInt(searchParams.get("tournament")!) : null;
-  const initialGameIndex = searchParams.get("game") ? parseInt(searchParams.get("game")!) : null;
+  const initialTournamentIndex = searchParams.get("tournament")
+    ? parseInt(searchParams.get("tournament")!)
+    : null;
+  const initialGameIndex = searchParams.get("game")
+    ? parseInt(searchParams.get("game")!)
+    : null;
   const isAutoPlay = searchParams.get("autoplay") === "true";
 
-  const updateUrl = useCallback((tournamentIndex: number, gameIndex: number) => {
-    const params = new URLSearchParams();
-    params.set("tournament", tournamentIndex.toString());
-    params.set("game", gameIndex.toString());
-    router.replace(`?${params.toString()}`, { scroll: false });
-  }, [router]);
+  const updateUrl = useCallback(
+    (tournamentIndex: number, gameIndex: number) => {
+      const params = new URLSearchParams();
+      params.set("tournament", tournamentIndex.toString());
+      params.set("game", gameIndex.toString());
+      router.replace(`?${params.toString()}`, { scroll: false });
+    },
+    [router],
+  );
 
   // Load game directly from URL params (for new tab / direct link / autoplay)
   useEffect(() => {
-    if (selectedGame || !isAutoPlay || initialTournamentIndex === null || initialGameIndex === null) return;
+    if (
+      selectedGame ||
+      !isAutoPlay ||
+      initialTournamentIndex === null ||
+      initialGameIndex === null
+    )
+      return;
 
     setLoading(true);
     const basePath = getBasePath();
@@ -47,7 +60,9 @@ function HomeContent() {
         }
 
         const tournament = tournaments[initialTournamentIndex];
-        const indexRes = await fetch(`${basePath}/data/${tournament.path}/index.json`);
+        const indexRes = await fetch(
+          `${basePath}/data/${tournament.path}/index.json`,
+        );
         const gameList = await indexRes.json();
 
         if (initialGameIndex >= gameList.length) {
@@ -56,9 +71,13 @@ function HomeContent() {
         }
 
         const gameId = gameList[initialGameIndex].id;
-        const gamesRes = await fetch(`${basePath}/data/${tournament.path}/all_games.json`);
+        const gamesRes = await fetch(
+          `${basePath}/data/${tournament.path}/all_games.json`,
+        );
         const gamesData = await gamesRes.json();
-        const foundGame = gamesData.games.find((g: Game) => g.game_id === gameId);
+        const foundGame = gamesData.games.find(
+          (g: Game) => g.game_id === gameId,
+        );
 
         if (foundGame) {
           setSelectedGame(foundGame);
@@ -74,13 +93,15 @@ function HomeContent() {
     tournamentPath: string,
     gameId: string,
     tournamentIndex: number,
-    gameIndex: number
+    gameIndex: number,
   ) => {
     setLoading(true);
     updateUrl(tournamentIndex, gameIndex);
     try {
       const basePath = getBasePath();
-      const res = await fetch(`${basePath}/data/${tournamentPath}/all_games.json`);
+      const res = await fetch(
+        `${basePath}/data/${tournamentPath}/all_games.json`,
+      );
       const data = await res.json();
       const game = data.games.find((g: Game) => g.game_id === gameId);
       if (game) {
@@ -110,21 +131,36 @@ function HomeContent() {
           </div>
         ) : selectedGame ? (
           isAutoPlay ? (
-            <AutoPlayViewer game={selectedGame} gameNumber={initialGameIndex !== null ? initialGameIndex + 1 : undefined} />
+            <AutoPlayViewer
+              game={selectedGame}
+              gameNumber={
+                initialGameIndex !== null ? initialGameIndex + 1 : undefined
+              }
+            />
           ) : (
             <GameViewer game={selectedGame} />
           )
         ) : (
           <div className="flex-1 flex flex-col items-center justify-center text-gray-400">
             <div className="text-4xl mb-3">🏰</div>
-            <h1 className="text-lg font-medium text-gray-600 mb-1 font-display">Avalon Game Viewer</h1>
+            <h1 className="text-lg font-medium text-gray-600 mb-1 font-display">
+              Avalon Game Viewer
+            </h1>
             <p className="text-sm mb-4">Select a game from the sidebar</p>
-            <Link
-              href="/players"
-              className="text-sm px-4 py-2 rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200 hover:text-gray-900 transition-colors"
-            >
-              View Character Guide
-            </Link>
+            <div className="flex gap-3">
+              <Link
+                href="/players"
+                className="text-sm px-4 py-2 rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200 hover:text-gray-900 transition-colors"
+              >
+                View Character Guide
+              </Link>
+              <Link
+                href="/game-rules"
+                className="text-sm px-4 py-2 rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200 hover:text-gray-900 transition-colors"
+              >
+                Game Rules
+              </Link>
+            </div>
           </div>
         )}
       </div>
@@ -134,11 +170,13 @@ function HomeContent() {
 
 export default function Home() {
   return (
-    <Suspense fallback={
-      <div className="flex h-screen bg-white items-center justify-center text-gray-400">
-        Loading...
-      </div>
-    }>
+    <Suspense
+      fallback={
+        <div className="flex h-screen bg-white items-center justify-center text-gray-400">
+          Loading...
+        </div>
+      }
+    >
       <HomeContent />
     </Suspense>
   );
