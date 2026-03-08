@@ -119,12 +119,20 @@ function HomeContent() {
             <div className="text-4xl mb-3">🏰</div>
             <h1 className="text-lg font-medium text-gray-600 mb-1 font-display">Avalon Game Viewer</h1>
             <p className="text-sm mb-4">Select a game from the sidebar</p>
-            <Link
-              href="/players"
-              className="text-sm px-4 py-2 rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200 hover:text-gray-900 transition-colors"
-            >
-              View Character Guide
-            </Link>
+            <div className="flex gap-3">
+              <Link
+                href="/players"
+                className="text-sm px-4 py-2 rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200 hover:text-gray-900 transition-colors"
+              >
+                View Character Guide
+              </Link>
+              <Link
+                href="/game-rules"
+                className="text-sm px-4 py-2 rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200 hover:text-gray-900 transition-colors"
+              >
+                Game Rules
+              </Link>
+            </div>
           </div>
         )}
       </div>
