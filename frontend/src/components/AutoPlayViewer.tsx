@@ -163,6 +163,17 @@ export default function AutoPlayViewer({
     return playerMem.reflections.filter((r) => r.game_number <= gameIndex);
   };
 
+  const getPlayerRoleInGame = (
+    playerName: string,
+    gameNumber: number,
+  ): string | null => {
+    if (!memories) return null;
+    const playerMem = memories.player_memories[playerName];
+    if (!playerMem) return null;
+    const ref = playerMem.reflections.find((r) => r.game_number === gameNumber);
+    return ref?.role_played ?? null;
+  };
+
   const isPlayingRef = useRef(false);
   const currentIndexRef = useRef(-1);
   const speedRef = useRef<PlaybackSpeed>(1);
@@ -724,19 +735,41 @@ export default function AutoPlayViewer({
                           </div>
                           <div className="space-y-1.5">
                             {Object.entries(reflection.player_observations).map(
-                              ([name, observation]) => (
-                                <div
-                                  key={name}
-                                  className="bg-gray-50 rounded p-2"
-                                >
-                                  <span className="text-sm font-medium text-gray-900">
-                                    {name}:
-                                  </span>{" "}
-                                  <span className="text-sm text-gray-600">
-                                    {observation}
-                                  </span>
-                                </div>
-                              ),
+                              ([name, observation]) => {
+                                const obsRole = getPlayerRoleInGame(
+                                  name,
+                                  reflection.game_number,
+                                );
+                                return (
+                                  <div
+                                    key={name}
+                                    className="bg-gray-50 rounded p-2"
+                                  >
+                                    <span className="text-sm font-medium text-gray-900">
+                                      {name}
+                                    </span>
+                                    {obsRole && (
+                                      <span
+                                        className={`ml-1.5 text-xs px-1.5 py-0.5 rounded font-medium ${
+                                          obsRole === "good" ||
+                                          obsRole === "merlin" ||
+                                          obsRole === "percival"
+                                            ? "bg-blue-100 text-blue-700"
+                                            : "bg-red-100 text-red-700"
+                                        }`}
+                                      >
+                                        {obsRole}
+                                      </span>
+                                    )}
+                                    <span className="text-sm font-medium text-gray-900">
+                                      :
+                                    </span>{" "}
+                                    <span className="text-sm text-gray-600">
+                                      {observation}
+                                    </span>
+                                  </div>
+                                );
+                              },
                             )}
                           </div>
                         </div>
