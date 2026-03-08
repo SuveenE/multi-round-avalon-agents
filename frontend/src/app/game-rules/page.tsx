@@ -9,6 +9,7 @@ interface Role {
   name: string;
   team: "good" | "evil";
   image: string;
+  count?: number;
 }
 
 interface KnowledgeEntry {
@@ -59,6 +60,215 @@ const compositions: Composition[] = [
       },
     ],
   },
+  {
+    playerCount: 6,
+    roles: [
+      { name: "Merlin", team: "good", image: "/assets/merlin.png" },
+      { name: "Percival", team: "good", image: "/assets/percival.png" },
+      {
+        name: "Loyal Servant",
+        team: "good",
+        image: "/assets/loyal-servant-1.png",
+        count: 2,
+      },
+      { name: "Assassin", team: "evil", image: "/assets/assassin.png" },
+      { name: "Morgana", team: "evil", image: "/assets/morgana.png" },
+    ],
+    missionSizes: [2, 3, 4, 3, 4],
+    knowledge: [
+      {
+        from: "Merlin",
+        sees: "Assassin, Morgana",
+        note: "Sees all evil players",
+      },
+      {
+        from: "Percival",
+        sees: "Merlin, Morgana",
+        note: "Sees both but doesn't know which is which",
+      },
+      { from: "Loyal Servant", sees: "Nobody", note: "No special knowledge" },
+      { from: "Assassin", sees: "Morgana", note: "Knows fellow evil" },
+      {
+        from: "Morgana",
+        sees: "Assassin",
+        note: "Knows fellow evil; appears as Merlin to Percival",
+      },
+    ],
+  },
+  {
+    playerCount: 7,
+    roles: [
+      { name: "Merlin", team: "good", image: "/assets/merlin.png" },
+      { name: "Percival", team: "good", image: "/assets/percival.png" },
+      {
+        name: "Loyal Servant",
+        team: "good",
+        image: "/assets/loyal-servant-1.png",
+        count: 2,
+      },
+      { name: "Assassin", team: "evil", image: "/assets/assassin.png" },
+      { name: "Morgana", team: "evil", image: "/assets/morgana.png" },
+      { name: "Oberon", team: "evil", image: "/assets/oberon.png" },
+    ],
+    missionSizes: [2, 3, 3, 4, 4],
+    knowledge: [
+      {
+        from: "Merlin",
+        sees: "Assassin, Morgana, Oberon",
+        note: "Sees all evil players",
+      },
+      {
+        from: "Percival",
+        sees: "Merlin, Morgana",
+        note: "Sees both but doesn't know which is which",
+      },
+      { from: "Loyal Servant", sees: "Nobody", note: "No special knowledge" },
+      {
+        from: "Assassin",
+        sees: "Morgana",
+        note: "Knows fellow evil (not Oberon)",
+      },
+      {
+        from: "Morgana",
+        sees: "Assassin",
+        note: "Knows fellow evil (not Oberon); appears as Merlin to Percival",
+      },
+      {
+        from: "Oberon",
+        sees: "Nobody",
+        note: "Unknown to other evil players; doesn't know evil team",
+      },
+    ],
+  },
+  {
+    playerCount: 8,
+    roles: [
+      { name: "Merlin", team: "good", image: "/assets/merlin.png" },
+      { name: "Percival", team: "good", image: "/assets/percival.png" },
+      {
+        name: "Loyal Servant",
+        team: "good",
+        image: "/assets/loyal-servant-1.png",
+        count: 3,
+      },
+      { name: "Assassin", team: "evil", image: "/assets/assassin.png" },
+      { name: "Morgana", team: "evil", image: "/assets/morgana.png" },
+      { name: "Minion", team: "evil", image: "/assets/minion.png" },
+    ],
+    missionSizes: [3, 4, 4, 5, 5],
+    knowledge: [
+      {
+        from: "Merlin",
+        sees: "Assassin, Morgana, Minion",
+        note: "Sees all evil players",
+      },
+      {
+        from: "Percival",
+        sees: "Merlin, Morgana",
+        note: "Sees both but doesn't know which is which",
+      },
+      { from: "Loyal Servant", sees: "Nobody", note: "No special knowledge" },
+      { from: "Assassin", sees: "Morgana, Minion", note: "Knows fellow evil" },
+      {
+        from: "Morgana",
+        sees: "Assassin, Minion",
+        note: "Knows fellow evil; appears as Merlin to Percival",
+      },
+      { from: "Minion", sees: "Assassin, Morgana", note: "Knows fellow evil" },
+    ],
+  },
+  {
+    playerCount: 9,
+    roles: [
+      { name: "Merlin", team: "good", image: "/assets/merlin.png" },
+      { name: "Percival", team: "good", image: "/assets/percival.png" },
+      {
+        name: "Loyal Servant",
+        team: "good",
+        image: "/assets/loyal-servant-1.png",
+        count: 4,
+      },
+      { name: "Assassin", team: "evil", image: "/assets/assassin.png" },
+      { name: "Morgana", team: "evil", image: "/assets/morgana.png" },
+      { name: "Mordred", team: "evil", image: "/assets/mordred.png" },
+    ],
+    missionSizes: [3, 4, 4, 5, 5],
+    knowledge: [
+      {
+        from: "Merlin",
+        sees: "Assassin, Morgana",
+        note: "Sees all evil except Mordred",
+      },
+      {
+        from: "Percival",
+        sees: "Merlin, Morgana",
+        note: "Sees both but doesn't know which is which",
+      },
+      { from: "Loyal Servant", sees: "Nobody", note: "No special knowledge" },
+      { from: "Assassin", sees: "Morgana, Mordred", note: "Knows fellow evil" },
+      {
+        from: "Morgana",
+        sees: "Assassin, Mordred",
+        note: "Knows fellow evil; appears as Merlin to Percival",
+      },
+      {
+        from: "Mordred",
+        sees: "Assassin, Morgana",
+        note: "Hidden from Merlin; knows fellow evil",
+      },
+    ],
+  },
+  {
+    playerCount: 10,
+    roles: [
+      { name: "Merlin", team: "good", image: "/assets/merlin.png" },
+      { name: "Percival", team: "good", image: "/assets/percival.png" },
+      {
+        name: "Loyal Servant",
+        team: "good",
+        image: "/assets/loyal-servant-1.png",
+        count: 4,
+      },
+      { name: "Assassin", team: "evil", image: "/assets/assassin.png" },
+      { name: "Morgana", team: "evil", image: "/assets/morgana.png" },
+      { name: "Mordred", team: "evil", image: "/assets/mordred.png" },
+      { name: "Oberon", team: "evil", image: "/assets/oberon.png" },
+    ],
+    missionSizes: [3, 4, 4, 5, 5],
+    knowledge: [
+      {
+        from: "Merlin",
+        sees: "Assassin, Morgana, Oberon",
+        note: "Sees all evil except Mordred",
+      },
+      {
+        from: "Percival",
+        sees: "Merlin, Morgana",
+        note: "Sees both but doesn't know which is which",
+      },
+      { from: "Loyal Servant", sees: "Nobody", note: "No special knowledge" },
+      {
+        from: "Assassin",
+        sees: "Morgana, Mordred",
+        note: "Knows fellow evil (not Oberon)",
+      },
+      {
+        from: "Morgana",
+        sees: "Assassin, Mordred",
+        note: "Knows fellow evil (not Oberon); appears as Merlin to Percival",
+      },
+      {
+        from: "Mordred",
+        sees: "Assassin, Morgana",
+        note: "Hidden from Merlin; knows fellow evil (not Oberon)",
+      },
+      {
+        from: "Oberon",
+        sees: "Nobody",
+        note: "Unknown to other evil players; doesn't know evil team",
+      },
+    ],
+  },
 ];
 
 function RoleCard({ role, basePath }: { role: Role; basePath: string }) {
@@ -70,16 +280,23 @@ function RoleCard({ role, basePath }: { role: Role; basePath: string }) {
     <div
       className={`flex flex-col items-center gap-2 p-4 rounded-xl ${bgColor}`}
     >
-      <div
-        className={`w-20 h-20 relative rounded-full overflow-hidden border-3 ${borderColor} shadow-md`}
-      >
-        <Image
-          src={basePath + role.image}
-          alt={role.name}
-          fill
-          className="object-cover"
-          unoptimized
-        />
+      <div className="relative">
+        <div
+          className={`w-20 h-20 relative rounded-full overflow-hidden border-3 ${borderColor} shadow-md`}
+        >
+          <Image
+            src={basePath + role.image}
+            alt={role.name}
+            fill
+            className="object-cover"
+            unoptimized
+          />
+        </div>
+        {role.count && role.count > 1 && (
+          <span className="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-gray-700 text-white text-xs font-bold flex items-center justify-center shadow">
+            {role.count}
+          </span>
+        )}
       </div>
       <span className="text-sm font-semibold text-gray-800 font-display">
         {role.name}
@@ -355,7 +572,7 @@ function KnowledgeChart({
 
 export default function GameRulesPage() {
   const basePath = getBasePath();
-  const [selectedCount] = useState(5);
+  const [selectedCount, setSelectedCount] = useState(5);
   const composition = compositions.find(
     (c) => c.playerCount === selectedCount,
   )!;
@@ -394,13 +611,31 @@ export default function GameRulesPage() {
       </div>
 
       <div className="flex-1 max-w-5xl mx-auto w-full px-6 py-10">
+        {/* Player count selector */}
+        <div className="flex justify-center gap-2 mb-10">
+          {compositions.map((c) => (
+            <button
+              key={c.playerCount}
+              onClick={() => setSelectedCount(c.playerCount)}
+              className={`px-5 py-2.5 rounded-lg text-sm font-semibold transition-colors ${
+                selectedCount === c.playerCount
+                  ? "bg-gray-900 text-white shadow-md"
+                  : "bg-white text-gray-600 border border-gray-200 hover:bg-gray-100"
+              }`}
+            >
+              {c.playerCount}P
+            </button>
+          ))}
+        </div>
+
         {/* Player count heading */}
         <div className="text-center mb-10">
           <h2 className="text-2xl font-bold text-gray-900 font-display">
             {selectedCount}-Player Game
           </h2>
           <p className="text-sm text-gray-500 mt-1">
-            {goodRoles.length} Good vs {evilRoles.length} Evil
+            {goodRoles.reduce((sum, r) => sum + (r.count || 1), 0)} Good vs{" "}
+            {evilRoles.reduce((sum, r) => sum + (r.count || 1), 0)} Evil
           </p>
         </div>
 
