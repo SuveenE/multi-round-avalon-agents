@@ -82,10 +82,10 @@ function KnowledgeChart({ composition, basePath }: { composition: Composition; b
   }
 
   // Layout: place roles in a circle
-  const cx = 300;
-  const cy = 280;
-  const radius = 200;
-  const nodeRadius = 36;
+  const cx = 350;
+  const cy = 320;
+  const radius = 230;
+  const nodeRadius = 48;
   // Start from top (-90deg) and go clockwise
   const angleOffset = -Math.PI / 2;
 
@@ -145,8 +145,8 @@ function KnowledgeChart({ composition, basePath }: { composition: Composition; b
 
   return (
     <div className="flex flex-col items-center">
-      <div className="relative" style={{ width: 600, height: 560 }}>
-        <svg width={600} height={560} className="absolute inset-0">
+      <div className="relative" style={{ width: 700, height: 660 }}>
+        <svg width={700} height={660} className="absolute inset-0">
           <defs>
             {edges.map((edge, i) => {
               const isRelevant =
