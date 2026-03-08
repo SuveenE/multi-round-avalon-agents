@@ -70,8 +70,9 @@ function RoleCard({ role, basePath }: { role: Role; basePath: string }) {
   );
 }
 
-function KnowledgeMatrix({ composition, basePath }: { composition: Composition; basePath: string }) {
+function KnowledgeChart({ composition, basePath }: { composition: Composition; basePath: string }) {
   const { roles, knowledge } = composition;
+  const [hoveredRole, setHoveredRole] = useState<string | null>(null);
 
   // Build a lookup: from -> set of names they see
   const seesMap = new Map<string, Set<string>>();
@@ -80,86 +81,207 @@ function KnowledgeMatrix({ composition, basePath }: { composition: Composition; 
     seesMap.set(k.from, new Set(names));
   }
 
+  // Layout: place roles in a circle
+  const cx = 300;
+  const cy = 280;
+  const radius = 200;
+  const nodeRadius = 36;
+  // Start from top (-90deg) and go clockwise
+  const angleOffset = -Math.PI / 2;
+
+  const positions = roles.map((_, i) => {
+    const angle = angleOffset + (2 * Math.PI * i) / roles.length;
+    return {
+      x: cx + radius * Math.cos(angle),
+      y: cy + radius * Math.sin(angle),
+    };
+  });
+
+  // Build edges
+  const edges: { fromIdx: number; toIdx: number; mutual: boolean }[] = [];
+  const edgeSet = new Set<string>();
+
+  roles.forEach((fromRole, fromIdx) => {
+    const sees = seesMap.get(fromRole.name) || new Set();
+    roles.forEach((toRole, toIdx) => {
+      if (fromIdx === toIdx || !sees.has(toRole.name)) return;
+      const key = [Math.min(fromIdx, toIdx), Math.max(fromIdx, toIdx)].join("-");
+      if (edgeSet.has(key)) {
+        // Mark as mutual
+        const existing = edges.find(
+          (e) => (e.fromIdx === toIdx && e.toIdx === fromIdx) || (e.fromIdx === fromIdx && e.toIdx === toIdx)
+        );
+        if (existing) existing.mutual = true;
+        return;
+      }
+      edgeSet.add(key);
+      edges.push({ fromIdx, toIdx, mutual: false });
+    });
+  });
+
+  // Compute arrow path with offset from node edge
+  function getArrowPoints(from: { x: number; y: number }, to: { x: number; y: number }) {
+    const dx = to.x - from.x;
+    const dy = to.y - from.y;
+    const dist = Math.sqrt(dx * dx + dy * dy);
+    const ux = dx / dist;
+    const uy = dy / dist;
+    const startOffset = nodeRadius + 4;
+    const endOffset = nodeRadius + 4;
+    return {
+      x1: from.x + ux * startOffset,
+      y1: from.y + uy * startOffset,
+      x2: to.x - ux * endOffset,
+      y2: to.y - uy * endOffset,
+    };
+  }
+
+  // Color for edges based on the "from" role
+  function edgeColor(fromIdx: number) {
+    return roles[fromIdx].team === "good" ? "#3b82f6" : "#ef4444";
+  }
+
+  const isHighlighting = hoveredRole !== null;
+
   return (
-    <div className="overflow-x-auto">
-      <table className="border-collapse">
-        <thead>
-          <tr>
-            <th className="p-3 text-xs text-gray-500 font-medium text-left">Sees &rarr;</th>
-            {roles.map((role) => (
-              <th key={role.name} className="p-2 text-center">
-                <div className="flex flex-col items-center gap-1">
-                  <div className={`w-10 h-10 relative rounded-full overflow-hidden border-2 ${
-                    role.team === "good" ? "border-blue-200" : "border-red-200"
-                  }`}>
-                    <Image
-                      src={basePath + role.image}
-                      alt={role.name}
-                      fill
-                      className="object-cover"
-                      unoptimized
-                    />
-                  </div>
-                  <span className="text-xs font-medium text-gray-600 font-display whitespace-nowrap">
-                    {role.name}
-                  </span>
-                </div>
-              </th>
+    <div className="flex flex-col items-center">
+      <div className="relative" style={{ width: 600, height: 560 }}>
+        <svg width={600} height={560} className="absolute inset-0">
+          <defs>
+            {edges.map((edge, i) => (
+              <marker
+                key={`arrow-${i}`}
+                id={`arrowhead-${i}`}
+                markerWidth="10"
+                markerHeight="7"
+                refX="9"
+                refY="3.5"
+                orient="auto"
+              >
+                <polygon
+                  points="0 0, 10 3.5, 0 7"
+                  fill={edge.mutual ? "#8b5cf6" : edgeColor(edge.fromIdx)}
+                  opacity={
+                    isHighlighting
+                      ? hoveredRole === roles[edge.fromIdx].name || hoveredRole === roles[edge.toIdx].name
+                        ? 1
+                        : 0.1
+                      : 0.7
+                  }
+                />
+              </marker>
             ))}
-          </tr>
-        </thead>
-        <tbody>
-          {roles.map((fromRole) => {
-            const sees = seesMap.get(fromRole.name) || new Set();
-            return (
-              <tr key={fromRole.name} className="border-t border-gray-100">
-                <td className="p-3">
-                  <div className="flex items-center gap-2">
-                    <div className={`w-8 h-8 relative rounded-full overflow-hidden border-2 ${
-                      fromRole.team === "good" ? "border-blue-200" : "border-red-200"
-                    }`}>
-                      <Image
-                        src={basePath + fromRole.image}
-                        alt={fromRole.name}
-                        fill
-                        className="object-cover"
-                        unoptimized
-                      />
-                    </div>
-                    <span className="text-sm font-medium text-gray-700 font-display whitespace-nowrap">
-                      {fromRole.name}
-                    </span>
-                  </div>
-                </td>
-                {roles.map((toRole) => {
-                  const canSee = sees.has(toRole.name);
-                  const isSelf = fromRole.name === toRole.name;
-                  return (
-                    <td key={toRole.name} className="p-2 text-center">
-                      {isSelf ? (
-                        <span className="text-gray-300 text-lg">&mdash;</span>
-                      ) : canSee ? (
-                        <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-green-100">
-                          <svg className="w-5 h-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                          </svg>
-                        </span>
-                      ) : (
-                        <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-gray-50">
-                          <svg className="w-5 h-5 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M3 3l18 18" />
-                          </svg>
-                        </span>
-                      )}
-                    </td>
-                  );
-                })}
-              </tr>
-            );
+          </defs>
+
+          {/* Edges */}
+          {edges.map((edge, i) => {
+            const from = positions[edge.fromIdx];
+            const to = positions[edge.toIdx];
+            const { x1, y1, x2, y2 } = getArrowPoints(from, to);
+            const isRelevant =
+              hoveredRole === roles[edge.fromIdx].name || hoveredRole === roles[edge.toIdx].name;
+            const opacity = isHighlighting ? (isRelevant ? 1 : 0.08) : 0.6;
+            const strokeWidth = isHighlighting && isRelevant ? 3 : 2;
+
+            if (edge.mutual) {
+              // Draw double-headed line
+              return (
+                <line
+                  key={i}
+                  x1={x1}
+                  y1={y1}
+                  x2={x2}
+                  y2={y2}
+                  stroke="#8b5cf6"
+                  strokeWidth={strokeWidth}
+                  opacity={opacity}
+                  markerEnd={`url(#arrowhead-${i})`}
+                />
+              );
+            } else {
+              return (
+                <line
+                  key={i}
+                  x1={x1}
+                  y1={y1}
+                  x2={x2}
+                  y2={y2}
+                  stroke={edgeColor(edge.fromIdx)}
+                  strokeWidth={strokeWidth}
+                  opacity={opacity}
+                  markerEnd={`url(#arrowhead-${i})`}
+                />
+              );
+            }
           })}
-        </tbody>
-      </table>
+        </svg>
+
+        {/* Role nodes as HTML on top of SVG */}
+        {roles.map((role, i) => {
+          const pos = positions[i];
+          const isHovered = hoveredRole === role.name;
+          const isDimmed = isHighlighting && !isHovered;
+          const borderColor = role.team === "good" ? "border-blue-400" : "border-red-400";
+          const ringColor = isHovered
+            ? role.team === "good"
+              ? "ring-blue-300"
+              : "ring-red-300"
+            : "";
+
+          return (
+            <div
+              key={role.name}
+              className="absolute flex flex-col items-center"
+              style={{
+                left: pos.x - nodeRadius,
+                top: pos.y - nodeRadius,
+                width: nodeRadius * 2,
+              }}
+              onMouseEnter={() => setHoveredRole(role.name)}
+              onMouseLeave={() => setHoveredRole(null)}
+            >
+              <div
+                className={`relative rounded-full overflow-hidden border-3 ${borderColor} shadow-lg cursor-pointer transition-all duration-200 ${
+                  isHovered ? `ring-4 ${ringColor} scale-110` : ""
+                } ${isDimmed ? "opacity-30" : ""}`}
+                style={{ width: nodeRadius * 2, height: nodeRadius * 2 }}
+              >
+                <Image
+                  src={basePath + role.image}
+                  alt={role.name}
+                  fill
+                  className="object-cover"
+                  unoptimized
+                />
+              </div>
+              <span
+                className={`mt-1 text-xs font-semibold text-gray-700 font-display whitespace-nowrap transition-opacity duration-200 ${
+                  isDimmed ? "opacity-30" : ""
+                }`}
+              >
+                {role.name}
+              </span>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Legend */}
+      <div className="flex gap-6 mt-2 text-xs text-gray-500">
+        <div className="flex items-center gap-2">
+          <div className="w-6 h-0.5 bg-blue-500 rounded" />
+          <span>Good sees</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <div className="w-6 h-0.5 bg-red-500 rounded" />
+          <span>Evil sees</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <div className="w-6 h-0.5 bg-purple-500 rounded" />
+          <span>Mutual</span>
+        </div>
+      </div>
+      <p className="text-xs text-gray-400 mt-2">Hover over a role to highlight their connections</p>
     </div>
   );
 }
@@ -240,7 +362,7 @@ export default function GameRulesPage() {
         <section className="mb-12">
           <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-5 font-display">Who Knows Who</h3>
           <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
-            <KnowledgeMatrix composition={composition} basePath={basePath} />
+            <KnowledgeChart composition={composition} basePath={basePath} />
           </div>
         </section>
 
