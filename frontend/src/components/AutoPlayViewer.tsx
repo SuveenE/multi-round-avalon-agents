@@ -430,30 +430,10 @@ export default function AutoPlayViewer({
                   size="2xl"
                   isActive={isSpeaking}
                   loyalServantIndex={loyalServantIndexMap[player.name]}
+                  onMemoryClick={
+                    hasMemories ? () => setMemoryPlayer(player.name) : undefined
+                  }
                 />
-                {hasMemories && (
-                  <button
-                    onClick={() => setMemoryPlayer(player.name)}
-                    className="mt-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-amber-100 text-amber-800 hover:bg-amber-200 transition-colors flex items-center gap-1 font-display"
-                    title={`View ${player.name}'s memories`}
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="12"
-                      height="12"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
-                      <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
-                    </svg>
-                    Memories
-                  </button>
-                )}
               </div>
             );
           })}
