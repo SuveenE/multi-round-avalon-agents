@@ -142,21 +142,21 @@ function HomeContent() {
           )
         ) : (
           <div className="flex-1 flex flex-col items-center justify-center text-gray-400">
-            <div className="text-4xl mb-3">🏰</div>
-            <h1 className="text-lg font-medium text-gray-600 mb-1 font-display">
+            <div className="text-7xl mb-5">🏰</div>
+            <h1 className="text-3xl font-medium text-gray-600 mb-2 font-display">
               Avalon Game Viewer
             </h1>
-            <p className="text-sm mb-4">Select a game from the sidebar</p>
+            <p className="text-lg mb-6">Select a game from the sidebar</p>
             <div className="flex gap-3">
               <Link
                 href="/players"
-                className="text-sm px-4 py-2 rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200 hover:text-gray-900 transition-colors"
+                className="text-base px-6 py-3 rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200 hover:text-gray-900 transition-colors"
               >
                 View Character Guide
               </Link>
               <Link
                 href="/game-rules"
-                className="text-sm px-4 py-2 rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200 hover:text-gray-900 transition-colors"
+                className="text-base px-6 py-3 rounded-lg bg-gray-100 text-gray-600 hover:bg-gray-200 hover:text-gray-900 transition-colors"
               >
                 Game Rules
               </Link>
