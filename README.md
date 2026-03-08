@@ -13,10 +13,12 @@
 </p>
 
 <p align="center">
-  <a href="#key-findings">Key Findings</a> · <a href="#dataset-structure">Dataset</a> · <a href="#quick-start">Quick Start</a> · <a href="#documentation">Docs</a>
+  <a href="#key-findings">Key Findings</a> · <a href="#dataset-structure">Dataset</a> · <a href="#quick-start">Quick Start</a> · <a href="#documentation">Docs</a> · <a href="https://suveenellawela.com/multi-round-avalon-agents">Game Viewer</a>
 </p>
 
 ---
+
+Agents play back-to-back games of Avalon in tournaments, retaining memories of previous games — who played which roles, who lied, and who they can trust. This creates a persistent social environment where reputation and trust evolve over time.
 
 ![Tournament System](assets/chart.png)
 
