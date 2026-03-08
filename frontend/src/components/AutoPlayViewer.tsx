@@ -4,7 +4,6 @@ import { useState, useEffect, useMemo, useRef, useCallback } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Game, Mission } from "@/types/game";
 import PlayerCard from "./PlayerCard";
-import { useSpeechSynthesis, VoiceConfig } from "@/hooks/useSpeechSynthesis";
 
 interface AutoPlayViewerProps {
   game: Game;
@@ -140,17 +139,20 @@ function buildEventSequence(game: Game): GameEvent[] {
 
 type PlaybackSpeed = 1 | 1.5 | 2;
 
-export default function AutoPlayViewer({ game, gameNumber }: AutoPlayViewerProps) {
+export default function AutoPlayViewer({
+  game,
+  gameNumber,
+}: AutoPlayViewerProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentEventIndex, setCurrentEventIndex] = useState(-1);
   const [speed, setSpeed] = useState<PlaybackSpeed>(1);
-  const { voices, speak, cancel, assignVoices, narratorConfig } = useSpeechSynthesis();
 
   const isPlayingRef = useRef(false);
   const currentIndexRef = useRef(-1);
   const speedRef = useRef<PlaybackSpeed>(1);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Keep refs in sync
   useEffect(() => {
@@ -165,11 +167,6 @@ export default function AutoPlayViewer({ game, gameNumber }: AutoPlayViewerProps
 
   const events = useMemo(() => buildEventSequence(game), [game]);
 
-  const voiceMap = useMemo(() => {
-    if (voices.length === 0) return {};
-    return assignVoices(game.players.map((p) => p.name));
-  }, [voices, game.players, assignVoices]);
-
   const loyalServantIndexMap = useMemo(() => {
     const map: Record<string, number> = {};
     let idx = 0;
@@ -181,109 +178,123 @@ export default function AutoPlayViewer({ game, gameNumber }: AutoPlayViewerProps
     return map;
   }, [game.players]);
 
-  const currentEvent = currentEventIndex >= 0 && currentEventIndex < events.length
-    ? events[currentEventIndex]
-    : null;
+  const currentEvent =
+    currentEventIndex >= 0 && currentEventIndex < events.length
+      ? events[currentEventIndex]
+      : null;
 
-  const activeSpeaker = currentEvent?.type === "player" ? currentEvent.speaker : null;
+  const activeSpeaker =
+    currentEvent?.type === "player" ? currentEvent.speaker : null;
+
+  // Calculate delay based on text length and speed
+  function getDelay(text: string, speedMultiplier: number): number {
+    const baseDelay = Math.min(Math.max(text.length * 30, 2000), 8000);
+    return baseDelay / speedMultiplier;
+  }
+
+  const clearTimer = useCallback(() => {
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+      timerRef.current = null;
+    }
+  }, []);
 
   const playSequence = useCallback(
-    async (startIndex: number) => {
-      for (let i = startIndex; i < events.length; i++) {
-        if (!isPlayingRef.current) break;
+    (startIndex: number) => {
+      const scheduleNext = (i: number) => {
+        if (i >= events.length || !isPlayingRef.current) {
+          setIsPlaying(false);
+          isPlayingRef.current = false;
+          return;
+        }
 
         setCurrentEventIndex(i);
         currentIndexRef.current = i;
 
-        const event = events[i];
-        let config: VoiceConfig;
-        if (event.type === "narrator") {
-          config = narratorConfig;
-        } else {
-          config = voiceMap[event.speaker] || narratorConfig;
-        }
+        const delay = getDelay(events[i].text, speedRef.current);
+        timerRef.current = setTimeout(() => {
+          if (isPlayingRef.current) {
+            scheduleNext(i + 1);
+          }
+        }, delay);
+      };
 
-        await speak(event.text, config, speedRef.current);
-
-        if (!isPlayingRef.current) break;
-      }
-
-      // Finished
-      setIsPlaying(false);
-      isPlayingRef.current = false;
+      scheduleNext(startIndex);
     },
-    [events, narratorConfig, voiceMap, speak]
+    [events],
   );
 
   const handlePlayPause = useCallback(() => {
     if (isPlaying) {
       setIsPlaying(false);
       isPlayingRef.current = false;
-      cancel();
+      clearTimer();
     } else {
       setIsPlaying(true);
       isPlayingRef.current = true;
       const startIdx = currentEventIndex < 0 ? 0 : currentEventIndex;
       playSequence(startIdx);
     }
-  }, [isPlaying, currentEventIndex, cancel, playSequence]);
+  }, [isPlaying, currentEventIndex, clearTimer, playSequence]);
 
   const handleRestart = useCallback(() => {
-    cancel();
+    clearTimer();
     setIsPlaying(false);
     isPlayingRef.current = false;
     setCurrentEventIndex(-1);
     currentIndexRef.current = -1;
-  }, [cancel]);
+  }, [clearTimer]);
 
   const handleSkipForward = useCallback(() => {
     const wasPlaying = isPlayingRef.current;
     isPlayingRef.current = false;
-    cancel();
+    clearTimer();
     const next = Math.min(currentIndexRef.current + 1, events.length - 1);
     setCurrentEventIndex(next);
     currentIndexRef.current = next;
     if (wasPlaying) {
       isPlayingRef.current = true;
+      setIsPlaying(true);
       playSequence(next);
     }
-  }, [cancel, events.length, playSequence]);
+  }, [clearTimer, events.length, playSequence]);
 
   const handleSkipToEnd = useCallback(() => {
-    cancel();
+    clearTimer();
     setIsPlaying(false);
     isPlayingRef.current = false;
     const lastIndex = events.length - 1;
     setCurrentEventIndex(lastIndex);
     currentIndexRef.current = lastIndex;
-  }, [cancel, events.length]);
+  }, [clearTimer, events.length]);
 
   const handleSkipBack = useCallback(() => {
     const wasPlaying = isPlayingRef.current;
     isPlayingRef.current = false;
-    cancel();
+    clearTimer();
     const prev = Math.max(currentIndexRef.current - 1, 0);
     setCurrentEventIndex(prev);
     currentIndexRef.current = prev;
     if (wasPlaying) {
       isPlayingRef.current = true;
+      setIsPlaying(true);
       playSequence(prev);
     }
-  }, [cancel, playSequence]);
+  }, [clearTimer, playSequence]);
 
   const handleExit = useCallback(() => {
-    cancel();
+    clearTimer();
     const params = new URLSearchParams(searchParams.toString());
     params.delete("autoplay");
     router.replace(`?${params.toString()}`, { scroll: false });
-  }, [cancel, router, searchParams]);
+  }, [clearTimer, router, searchParams]);
 
   // Cleanup on unmount
   useEffect(() => {
     return () => {
-      cancel();
+      clearTimer();
     };
-  }, [cancel]);
+  }, [clearTimer]);
 
   // Mission progress
   const missionResults = game.missions.map((m) => m.mission_result);
@@ -303,7 +314,17 @@ export default function AutoPlayViewer({ game, gameNumber }: AutoPlayViewerProps
             className="p-1.5 rounded-full hover:bg-gray-100 text-gray-500 hover:text-gray-900 transition-colors"
             title="Exit auto play"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
               <polyline points="15 18 9 12 15 6"></polyline>
             </svg>
           </button>
@@ -312,14 +333,17 @@ export default function AutoPlayViewer({ game, gameNumber }: AutoPlayViewerProps
               {gameNumber ? `Game ${gameNumber}` : "Avalon"}
             </h1>
             <p className="text-xs text-gray-500">
-              {game.players.length} players &middot; {game.config.reasoning_effort} reasoning
+              {game.players.length} players &middot;{" "}
+              {game.config.reasoning_effort} reasoning
             </p>
           </div>
         </div>
 
         {/* Mission tracker */}
         <div className="flex items-center gap-2">
-          <span className="text-xs text-gray-500 uppercase mr-1 font-display">Missions</span>
+          <span className="text-xs text-gray-500 uppercase mr-1 font-display">
+            Missions
+          </span>
           {missionResults.map((result, idx) => {
             const revealed = idx <= revealedMissionIndex || isAtEnd;
             return (
@@ -329,8 +353,8 @@ export default function AutoPlayViewer({ game, gameNumber }: AutoPlayViewerProps
                   revealed && result === "success"
                     ? "bg-blue-500 text-white"
                     : revealed && result === "fail"
-                    ? "bg-red-500 text-white"
-                    : "bg-gray-200 text-gray-400"
+                      ? "bg-red-500 text-white"
+                      : "bg-gray-200 text-gray-400"
                 } ${currentEvent?.missionIndex === idx ? "ring-2 ring-yellow-400" : ""}`}
               >
                 {idx + 1}
@@ -396,12 +420,16 @@ export default function AutoPlayViewer({ game, gameNumber }: AutoPlayViewerProps
               <div className="flex items-center gap-2 mb-2">
                 <span
                   className={`text-sm font-bold uppercase font-display ${
-                    currentEvent.type === "narrator" ? "text-gray-500" : "text-blue-600"
+                    currentEvent.type === "narrator"
+                      ? "text-gray-500"
+                      : "text-blue-600"
                   }`}
                 >
                   {currentEvent.speaker}
                 </span>
-                <span className="text-xs text-gray-400 font-display">{currentEvent.phase}</span>
+                <span className="text-xs text-gray-400 font-display">
+                  {currentEvent.phase}
+                </span>
               </div>
               <p className="text-base leading-relaxed text-gray-800">
                 {currentEvent.text}
@@ -421,7 +449,17 @@ export default function AutoPlayViewer({ game, gameNumber }: AutoPlayViewerProps
           className="p-2 rounded-full hover:bg-gray-100 text-gray-400 hover:text-gray-700 transition-colors"
           title="Restart"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
             <path d="M3 12a9 9 0 1 1 9 9 9.75 9.75 0 0 1-6.74-2.74L3 16" />
             <path d="M3 22v-6h6" />
           </svg>
@@ -433,7 +471,17 @@ export default function AutoPlayViewer({ game, gameNumber }: AutoPlayViewerProps
           className="p-2 rounded-full hover:bg-gray-100 text-gray-400 hover:text-gray-700 transition-colors"
           title="Previous"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
             <polygon points="19 20 9 12 19 4 19 20" />
             <line x1="5" y1="19" x2="5" y2="5" />
           </svg>
@@ -446,12 +494,24 @@ export default function AutoPlayViewer({ game, gameNumber }: AutoPlayViewerProps
           title={isPlaying ? "Pause" : "Auto Play"}
         >
           {isPlaying ? (
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
               <rect x="6" y="4" width="4" height="16" />
               <rect x="14" y="4" width="4" height="16" />
             </svg>
           ) : (
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
               <polygon points="5 3 19 12 5 21 5 3" />
             </svg>
           )}
@@ -463,7 +523,17 @@ export default function AutoPlayViewer({ game, gameNumber }: AutoPlayViewerProps
           className="p-2 rounded-full hover:bg-gray-100 text-gray-400 hover:text-gray-700 transition-colors"
           title="Next"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
             <polygon points="5 4 15 12 5 20 5 4" />
             <line x1="19" y1="5" x2="19" y2="19" />
           </svg>
@@ -475,7 +545,17 @@ export default function AutoPlayViewer({ game, gameNumber }: AutoPlayViewerProps
           className="p-2 rounded-full hover:bg-gray-100 text-gray-400 hover:text-gray-700 transition-colors"
           title="Skip to end"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
             <polygon points="5 4 15 12 5 20 5 4" />
             <polygon points="13 4 23 12 13 20 13 4" />
           </svg>
