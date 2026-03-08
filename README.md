@@ -5,11 +5,11 @@
 <h1 align="center">Multi-Round Avalon with AI Agents</h1>
 
 <p align="center">
-  <b>LLM agents play hidden-role deception games with memory across rounds.</b>
+  <b>A dataset and analysis of LLM agents playing hidden-role deception games with memory across rounds.</b>
 </p>
 
 <p align="center">
-  A dataset of 188 games where AI agents play <a href="#how-a-game-works">The Resistance: Avalon</a> — a social deduction game where "good" players complete missions while "evil" players secretly sabotage them. <b>Agents retain memory across games</b>, enabling emergent reputation, trust, and strategic adaptation.
+  188 games where AI agents play <a href="#how-a-game-works">The Resistance: Avalon</a> — a social deduction game where "good" players complete missions while "evil" players secretly sabotage them. <b>Agents retain memory across games</b>, enabling emergent reputation, trust, and strategic adaptation.
 </p>
 
 <p align="center">
