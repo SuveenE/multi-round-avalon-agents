@@ -92,3 +92,24 @@ export interface TournamentInfo {
   reasoning: string;
   hasMemory: boolean;
 }
+
+export interface Reflection {
+  game_number: number;
+  player_name: string;
+  role_played: string;
+  game_result: string;
+  self_assessment: string;
+  player_observations: Record<string, string>;
+  thinking_time: number;
+}
+
+export interface PlayerMemories {
+  player_name: string;
+  reflections: Reflection[];
+}
+
+export interface TournamentMemories {
+  session_id: string;
+  num_games: number;
+  player_memories: Record<string, PlayerMemories>;
+}
