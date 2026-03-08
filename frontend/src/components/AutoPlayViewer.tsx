@@ -426,15 +426,15 @@ export default function AutoPlayViewer({
         <div className="flex-1 flex items-center justify-center px-6">
           {currentEvent ? (
             <div
-              className={`rounded-xl px-6 py-4 shadow-md max-w-lg w-full ${
+              className={`rounded-2xl px-8 py-6 shadow-md max-w-2xl w-full ${
                 currentEvent.type === "narrator"
                   ? "bg-gray-100 border border-gray-200"
                   : "bg-white border border-gray-200 shadow-lg"
               }`}
             >
-              <div className="flex items-center gap-2 mb-2">
+              <div className="flex items-center gap-3 mb-3">
                 <span
-                  className={`text-sm font-bold uppercase font-display ${
+                  className={`text-base font-bold uppercase font-display ${
                     currentEvent.type === "narrator"
                       ? "text-gray-500"
                       : "text-blue-600"
@@ -442,11 +442,11 @@ export default function AutoPlayViewer({
                 >
                   {currentEvent.speaker}
                 </span>
-                <span className="text-xs text-gray-400 font-display">
+                <span className="text-sm text-gray-400 font-display">
                   {currentEvent.phase}
                 </span>
               </div>
-              <p className="text-base leading-relaxed text-gray-800">
+              <p className="text-lg leading-relaxed text-gray-800">
                 {currentEvent.text}
               </p>
             </div>
