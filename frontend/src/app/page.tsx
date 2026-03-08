@@ -190,6 +190,8 @@ function HomeContent() {
               gameNumber={
                 initialGameIndex !== null ? initialGameIndex + 1 : undefined
               }
+              memories={tournamentMemories}
+              gameIndex={currentGameIndex ?? undefined}
             />
           ) : (
             <GameViewer
