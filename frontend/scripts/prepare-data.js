@@ -34,8 +34,20 @@ if (fs.existsSync(datasetA)) {
     players: g.players?.length || 5,
   }));
 
-  fs.writeFileSync(path.join(destDir, "index.json"), JSON.stringify(gamesIndex, null, 2));
-  fs.writeFileSync(path.join(destDir, "all_games.json"), JSON.stringify(data, null, 2));
+  fs.writeFileSync(
+    path.join(destDir, "index.json"),
+    JSON.stringify(gamesIndex, null, 2),
+  );
+  fs.writeFileSync(
+    path.join(destDir, "all_games.json"),
+    JSON.stringify(data, null, 2),
+  );
+
+  const memoriesPathA = path.join(datasetA, "player_memories.json");
+  if (fs.existsSync(memoriesPathA)) {
+    fs.copyFileSync(memoriesPathA, path.join(destDir, "player_memories.json"));
+    console.log("  Copied player_memories.json");
+  }
 
   tournaments.push({
     name: "A: Cross-Game Learning (50 games)",
@@ -71,8 +83,23 @@ if (fs.existsSync(datasetB)) {
       players: g.players?.length || parseInt(pc),
     }));
 
-    fs.writeFileSync(path.join(destDir, "index.json"), JSON.stringify(gamesIndex, null, 2));
-    fs.writeFileSync(path.join(destDir, "all_games.json"), JSON.stringify(data, null, 2));
+    fs.writeFileSync(
+      path.join(destDir, "index.json"),
+      JSON.stringify(gamesIndex, null, 2),
+    );
+    fs.writeFileSync(
+      path.join(destDir, "all_games.json"),
+      JSON.stringify(data, null, 2),
+    );
+
+    const memoriesPathB = path.join(pcPath, "player_memories.json");
+    if (fs.existsSync(memoriesPathB)) {
+      fs.copyFileSync(
+        memoriesPathB,
+        path.join(destDir, "player_memories.json"),
+      );
+      console.log(`  Copied player_memories.json for ${pc}`);
+    }
 
     tournaments.push({
       name: `B: Tournament ${pc} (${data.games.length} games)`,
@@ -106,7 +133,9 @@ if (fs.existsSync(datasetC)) {
     const gameFiles = fs.readdirSync(pcPath).filter((f) => f.endsWith(".json"));
 
     for (const file of gameFiles) {
-      const gameData = JSON.parse(fs.readFileSync(path.join(pcPath, file), "utf-8"));
+      const gameData = JSON.parse(
+        fs.readFileSync(path.join(pcPath, file), "utf-8"),
+      );
       allGames.push(gameData);
       gamesIndex.push({
         id: gameData.game_id,
@@ -115,8 +144,14 @@ if (fs.existsSync(datasetC)) {
       });
     }
 
-    fs.writeFileSync(path.join(destDir, "all_games.json"), JSON.stringify({ games: allGames }, null, 2));
-    fs.writeFileSync(path.join(destDir, "index.json"), JSON.stringify(gamesIndex, null, 2));
+    fs.writeFileSync(
+      path.join(destDir, "all_games.json"),
+      JSON.stringify({ games: allGames }, null, 2),
+    );
+    fs.writeFileSync(
+      path.join(destDir, "index.json"),
+      JSON.stringify(gamesIndex, null, 2),
+    );
 
     tournaments.push({
       name: `C: Individual ${pc} (${allGames.length} games)`,
@@ -155,8 +190,23 @@ if (fs.existsSync(datasetD)) {
         players: g.players?.length || 5,
       }));
 
-      fs.writeFileSync(path.join(destDir, "index.json"), JSON.stringify(gamesIndex, null, 2));
-      fs.writeFileSync(path.join(destDir, "all_games.json"), JSON.stringify(data, null, 2));
+      fs.writeFileSync(
+        path.join(destDir, "index.json"),
+        JSON.stringify(gamesIndex, null, 2),
+      );
+      fs.writeFileSync(
+        path.join(destDir, "all_games.json"),
+        JSON.stringify(data, null, 2),
+      );
+
+      const memoriesPathD = path.join(levelPath, "player_memories.json");
+      if (fs.existsSync(memoriesPathD)) {
+        fs.copyFileSync(
+          memoriesPathD,
+          path.join(destDir, "player_memories.json"),
+        );
+        console.log(`  Copied player_memories.json for ${level}`);
+      }
 
       tournaments.push({
         name: `D: Reasoning ${level} (${data.games.length} games)`,
@@ -176,7 +226,7 @@ if (fs.existsSync(datasetD)) {
 // Write tournaments index
 fs.writeFileSync(
   path.join(OUTPUT_PATH, "tournaments.json"),
-  JSON.stringify(tournaments, null, 2)
+  JSON.stringify(tournaments, null, 2),
 );
 
 console.log(`\n========================================`);

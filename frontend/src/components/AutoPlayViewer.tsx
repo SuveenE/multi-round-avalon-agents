@@ -2,12 +2,14 @@
 
 import { useState, useEffect, useMemo, useRef, useCallback } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Game, Mission } from "@/types/game";
+import { Game, Mission, TournamentMemories, Reflection } from "@/types/game";
 import PlayerCard from "./PlayerCard";
 
 interface AutoPlayViewerProps {
   game: Game;
   gameNumber?: number;
+  memories?: TournamentMemories | null;
+  gameIndex?: number;
 }
 
 interface GameEvent {
@@ -142,12 +144,24 @@ type PlaybackSpeed = 1 | 1.5 | 2;
 export default function AutoPlayViewer({
   game,
   gameNumber,
+  memories,
+  gameIndex,
 }: AutoPlayViewerProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentEventIndex, setCurrentEventIndex] = useState(-1);
   const [speed, setSpeed] = useState<PlaybackSpeed>(1);
+  const [memoryPlayer, setMemoryPlayer] = useState<string | null>(null);
+
+  const hasMemories = memories && gameIndex !== undefined && gameIndex > 0;
+
+  const getPlayerReflections = (playerName: string): Reflection[] => {
+    if (!memories || gameIndex === undefined) return [];
+    const playerMem = memories.player_memories[playerName];
+    if (!playerMem) return [];
+    return playerMem.reflections.filter((r) => r.game_number <= gameIndex);
+  };
 
   const isPlayingRef = useRef(false);
   const currentIndexRef = useRef(-1);
@@ -405,7 +419,7 @@ export default function AutoPlayViewer({
             return (
               <div
                 key={player.name}
-                className={`transition-all duration-300 ${
+                className={`flex flex-col items-center transition-all duration-300 ${
                   isSpeaking
                     ? "scale-110 drop-shadow-[0_0_20px_rgba(59,130,246,0.5)]"
                     : ""
@@ -417,6 +431,29 @@ export default function AutoPlayViewer({
                   isActive={isSpeaking}
                   loyalServantIndex={loyalServantIndexMap[player.name]}
                 />
+                {hasMemories && (
+                  <button
+                    onClick={() => setMemoryPlayer(player.name)}
+                    className="mt-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-amber-100 text-amber-800 hover:bg-amber-200 transition-colors flex items-center gap-1 font-display"
+                    title={`View ${player.name}'s memories`}
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="12"
+                      height="12"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+                      <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+                    </svg>
+                    Memories
+                  </button>
+                )}
               </div>
             );
           })}
@@ -598,6 +635,140 @@ export default function AutoPlayViewer({
           {currentEventIndex >= 0 ? currentEventIndex + 1 : 0} / {events.length}
         </div>
       </div>
+
+      {/* Memory Modal */}
+      {memoryPlayer && hasMemories && (
+        <div
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+          onClick={() => setMemoryPlayer(null)}
+        >
+          <div
+            className="bg-white rounded-xl shadow-2xl max-w-3xl w-full max-h-[85vh] flex flex-col"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="p-5 border-b border-gray-200 flex items-center justify-between flex-shrink-0">
+              <div>
+                <h2 className="text-lg font-semibold text-gray-900 font-display">
+                  {memoryPlayer}&apos;s Memories
+                </h2>
+                <p className="text-xs text-gray-500 mt-0.5">
+                  Reflections going into Game {(gameIndex ?? 0) + 1} (from games
+                  1&ndash;{gameIndex})
+                </p>
+              </div>
+              <div className="flex items-center gap-2">
+                {game.players.map((p) => (
+                  <button
+                    key={p.name}
+                    onClick={() => setMemoryPlayer(p.name)}
+                    className={`px-2.5 py-1 rounded text-xs font-medium transition-colors ${
+                      memoryPlayer === p.name
+                        ? "bg-gray-900 text-white"
+                        : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                    }`}
+                  >
+                    {p.name}
+                  </button>
+                ))}
+                <button
+                  onClick={() => setMemoryPlayer(null)}
+                  className="ml-2 text-gray-400 hover:text-gray-600 transition-colors"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <div className="flex-1 overflow-y-auto p-5">
+              {getPlayerReflections(memoryPlayer).length === 0 ? (
+                <p className="text-sm text-gray-400 text-center py-8">
+                  No memories available for this player.
+                </p>
+              ) : (
+                <div className="space-y-4">
+                  {getPlayerReflections(memoryPlayer).map((reflection) => (
+                    <div
+                      key={reflection.game_number}
+                      className="border border-gray-200 rounded-lg p-4"
+                    >
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="text-sm font-semibold text-gray-900 font-display">
+                          Game {reflection.game_number}
+                        </span>
+                        <span
+                          className={`text-xs px-1.5 py-0.5 rounded font-medium ${
+                            reflection.role_played === "good" ||
+                            reflection.role_played === "merlin"
+                              ? "bg-blue-100 text-blue-700"
+                              : "bg-red-100 text-red-700"
+                          }`}
+                        >
+                          {reflection.role_played}
+                        </span>
+                        <span
+                          className={`text-xs px-1.5 py-0.5 rounded font-medium ${
+                            reflection.game_result === "won"
+                              ? "bg-green-100 text-green-700"
+                              : "bg-gray-100 text-gray-600"
+                          }`}
+                        >
+                          {reflection.game_result}
+                        </span>
+                      </div>
+                      <div className="mb-3">
+                        <div className="text-xs text-gray-500 uppercase font-medium mb-1">
+                          Self Assessment
+                        </div>
+                        <p className="text-sm text-gray-700">
+                          {reflection.self_assessment}
+                        </p>
+                      </div>
+                      {Object.keys(reflection.player_observations).length >
+                        0 && (
+                        <div>
+                          <div className="text-xs text-gray-500 uppercase font-medium mb-1">
+                            Observations
+                          </div>
+                          <div className="space-y-1.5">
+                            {Object.entries(reflection.player_observations).map(
+                              ([name, observation]) => (
+                                <div
+                                  key={name}
+                                  className="bg-gray-50 rounded p-2"
+                                >
+                                  <span className="text-sm font-medium text-gray-900">
+                                    {name}:
+                                  </span>{" "}
+                                  <span className="text-sm text-gray-600">
+                                    {observation}
+                                  </span>
+                                </div>
+                              ),
+                            )}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

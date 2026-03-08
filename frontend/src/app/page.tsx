@@ -6,7 +6,7 @@ import Link from "next/link";
 import GameSelector from "@/components/GameSelector";
 import GameViewer from "@/components/GameViewer";
 import AutoPlayViewer from "@/components/AutoPlayViewer";
-import { Game, TournamentInfo } from "@/types/game";
+import { Game, TournamentInfo, TournamentMemories } from "@/types/game";
 import { getBasePath } from "@/lib/config";
 
 function HomeContent() {
@@ -16,6 +16,12 @@ function HomeContent() {
   const [selectedGame, setSelectedGame] = useState<Game | null>(null);
   const [loading, setLoading] = useState(false);
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const [tournamentMemories, setTournamentMemories] =
+    useState<TournamentMemories | null>(null);
+  const [currentGameIndex, setCurrentGameIndex] = useState<number | null>(null);
+  const [cachedMemoryTournamentPath, setCachedMemoryTournamentPath] = useState<
+    string | null
+  >(null);
 
   // Get initial indices from URL
   const initialTournamentIndex = searchParams.get("tournament")
@@ -81,13 +87,36 @@ function HomeContent() {
 
         if (foundGame) {
           setSelectedGame(foundGame);
+          setCurrentGameIndex(initialGameIndex);
+
+          if (
+            tournament.hasMemory &&
+            cachedMemoryTournamentPath !== tournament.path
+          ) {
+            try {
+              const memRes = await fetch(
+                `${basePath}/data/${tournament.path}/player_memories.json`,
+              );
+              const memData: TournamentMemories = await memRes.json();
+              setTournamentMemories(memData);
+              setCachedMemoryTournamentPath(tournament.path);
+            } catch {
+              setTournamentMemories(null);
+            }
+          }
         }
       } catch (error) {
         console.error("Failed to load game:", error);
       }
       setLoading(false);
     })();
-  }, [isAutoPlay, initialTournamentIndex, initialGameIndex, selectedGame]);
+  }, [
+    isAutoPlay,
+    initialTournamentIndex,
+    initialGameIndex,
+    selectedGame,
+    cachedMemoryTournamentPath,
+  ]);
 
   const handleSelectGame = async (
     tournamentPath: string,
@@ -97,6 +126,7 @@ function HomeContent() {
   ) => {
     setLoading(true);
     updateUrl(tournamentIndex, gameIndex);
+    setCurrentGameIndex(gameIndex);
     try {
       const basePath = getBasePath();
       const res = await fetch(
@@ -106,6 +136,30 @@ function HomeContent() {
       const game = data.games.find((g: Game) => g.game_id === gameId);
       if (game) {
         setSelectedGame(game);
+      }
+
+      // Load memories if this tournament has them and we haven't cached them
+      if (cachedMemoryTournamentPath !== tournamentPath) {
+        const tournamentsRes = await fetch(`${basePath}/data/tournaments.json`);
+        const tournaments: TournamentInfo[] = await tournamentsRes.json();
+        const tournament = tournaments[tournamentIndex];
+
+        if (tournament?.hasMemory) {
+          try {
+            const memRes = await fetch(
+              `${basePath}/data/${tournamentPath}/player_memories.json`,
+            );
+            const memData: TournamentMemories = await memRes.json();
+            setTournamentMemories(memData);
+            setCachedMemoryTournamentPath(tournamentPath);
+          } catch {
+            setTournamentMemories(null);
+            setCachedMemoryTournamentPath(null);
+          }
+        } else {
+          setTournamentMemories(null);
+          setCachedMemoryTournamentPath(null);
+        }
       }
     } catch (error) {
       console.error("Failed to load game:", error);
@@ -136,9 +190,15 @@ function HomeContent() {
               gameNumber={
                 initialGameIndex !== null ? initialGameIndex + 1 : undefined
               }
+              memories={tournamentMemories}
+              gameIndex={currentGameIndex ?? undefined}
             />
           ) : (
-            <GameViewer game={selectedGame} />
+            <GameViewer
+              game={selectedGame}
+              memories={tournamentMemories}
+              gameIndex={currentGameIndex ?? undefined}
+            />
           )
         ) : (
           <div className="flex-1 flex flex-col items-center justify-center text-gray-400">
