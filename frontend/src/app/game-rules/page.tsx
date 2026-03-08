@@ -362,6 +362,14 @@ export default function GameRulesPage() {
           </div>
         </section>
 
+        {/* Knowledge chart */}
+        <section className="mb-12">
+          <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-5 font-display">Who Knows Who</h3>
+          <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
+            <KnowledgeChart composition={composition} basePath={basePath} />
+          </div>
+        </section>
+
         {/* Mission sizes */}
         <section className="mb-12">
           <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-5 font-display">Mission Team Sizes</h3>
@@ -373,14 +381,6 @@ export default function GameRulesPage() {
                 <span className="text-xs text-gray-400">players</span>
               </div>
             ))}
-          </div>
-        </section>
-
-        {/* Knowledge matrix */}
-        <section className="mb-12">
-          <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-5 font-display">Who Knows Who</h3>
-          <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
-            <KnowledgeChart composition={composition} basePath={basePath} />
           </div>
         </section>
 
