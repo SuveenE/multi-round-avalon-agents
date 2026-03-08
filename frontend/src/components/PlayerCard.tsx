@@ -10,6 +10,7 @@ interface PlayerCardProps {
   showRole?: boolean;
   size?: "sm" | "md" | "lg" | "xl" | "2xl";
   loyalServantIndex?: number;
+  onMemoryClick?: () => void;
 }
 
 const roleToImage: Record<string, string> = {
@@ -33,7 +34,7 @@ const loyalServantImages = [
 function getImageIndexFromName(name: string): number {
   let hash = 0;
   for (let i = 0; i < name.length; i++) {
-    hash = ((hash << 5) - hash) + name.charCodeAt(i);
+    hash = (hash << 5) - hash + name.charCodeAt(i);
     hash |= 0;
   }
   return Math.abs(hash) % loyalServantImages.length;
@@ -45,6 +46,7 @@ export default function PlayerCard({
   showRole = true,
   size = "md",
   loyalServantIndex,
+  onMemoryClick,
 }: PlayerCardProps) {
   const sizeClasses = {
     sm: "w-14 h-14",
@@ -76,9 +78,10 @@ export default function PlayerCard({
   let roleImage: string;
   if (player.role === "good") {
     // Use provided index for uniqueness, fallback to hash if not provided
-    const idx = loyalServantIndex !== undefined
-      ? loyalServantIndex % loyalServantImages.length
-      : getImageIndexFromName(player.name);
+    const idx =
+      loyalServantIndex !== undefined
+        ? loyalServantIndex % loyalServantImages.length
+        : getImageIndexFromName(player.name);
     roleImage = loyalServantImages[idx];
   } else {
     roleImage = roleToImage[player.role] || loyalServantImages[0];
@@ -86,7 +89,9 @@ export default function PlayerCard({
   const imagePath = basePath + roleImage;
 
   const borderColor = player.is_good ? "border-blue-200" : "border-red-200";
-  const borderColorActive = player.is_good ? "border-blue-400" : "border-red-400";
+  const borderColorActive = player.is_good
+    ? "border-blue-400"
+    : "border-red-400";
 
   return (
     <div
@@ -107,7 +112,36 @@ export default function PlayerCard({
           unoptimized
         />
       </div>
-      <span className={`mt-1.5 ${textSizes[size]} text-gray-700 text-center font-display`}>{player.name}</span>
+      <span
+        className={`mt-1.5 ${textSizes[size]} text-gray-700 text-center font-display flex items-center gap-1`}
+      >
+        {player.name}
+        {onMemoryClick && (
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onMemoryClick();
+            }}
+            className="text-amber-600 hover:text-amber-800 transition-colors"
+            title={`View ${player.name}'s memories`}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width={size === "2xl" ? 16 : size === "xl" ? 14 : 12}
+              height={size === "2xl" ? 16 : size === "xl" ? 14 : 12}
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+            </svg>
+          </button>
+        )}
+      </span>
       {showRole && (
         <span
           className={`${size === "2xl" ? "text-sm" : "text-xs"} px-1.5 py-0.5 rounded font-display ${
