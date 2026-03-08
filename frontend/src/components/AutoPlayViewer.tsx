@@ -289,6 +289,21 @@ export default function AutoPlayViewer({
     router.replace(`?${params.toString()}`, { scroll: false });
   }, [clearTimer, router, searchParams]);
 
+  // Keyboard shortcuts
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "ArrowRight") {
+        e.preventDefault();
+        handleSkipForward();
+      } else if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        handleSkipBack();
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [handleSkipForward, handleSkipBack]);
+
   // Cleanup on unmount
   useEffect(() => {
     return () => {
