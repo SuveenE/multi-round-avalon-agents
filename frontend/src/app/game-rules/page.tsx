@@ -505,14 +505,18 @@ function KnowledgeChart({
         {roles.map((role, i) => {
           const pos = positions[i];
           const isHovered = hoveredRole === role.name;
-          const isDimmed = isHighlighting && !isHovered;
+          // Check if this role is connected to the hovered role (either direction)
+          const isConnected =
+            isHighlighting &&
+            !isHovered &&
+            hoveredRole !== null &&
+            (seesMap.get(hoveredRole)?.has(role.name) ||
+              seesMap.get(role.name)?.has(hoveredRole));
+          const isDimmed = isHighlighting && !isHovered && !isConnected;
           const borderColor =
             role.team === "good" ? "border-blue-400" : "border-red-400";
-          const ringColor = isHovered
-            ? role.team === "good"
-              ? "ring-blue-300"
-              : "ring-red-300"
-            : "";
+          const ringColor =
+            role.team === "good" ? "ring-blue-300" : "ring-red-300";
 
           return (
             <div
@@ -529,7 +533,7 @@ function KnowledgeChart({
               <div
                 className={`relative rounded-full overflow-hidden border-3 ${borderColor} shadow-lg cursor-pointer transition-all duration-200 ${
                   isHovered ? `ring-4 ${ringColor} scale-110` : ""
-                } ${isDimmed ? "opacity-30" : ""}`}
+                } ${isConnected ? `ring-2 ${ringColor} scale-105 opacity-90` : ""} ${isDimmed ? "opacity-20" : ""}`}
                 style={{ width: nodeRadius * 2, height: nodeRadius * 2 }}
               >
                 <Image
@@ -541,9 +545,9 @@ function KnowledgeChart({
                 />
               </div>
               <span
-                className={`mt-1 text-xs font-semibold text-gray-700 font-display whitespace-nowrap transition-opacity duration-200 ${
-                  isDimmed ? "opacity-30" : ""
-                }`}
+                className={`mt-1 text-xs font-semibold text-gray-700 font-display whitespace-nowrap transition-all duration-200 ${
+                  isConnected ? "opacity-90" : ""
+                } ${isDimmed ? "opacity-20" : ""}`}
               >
                 {role.name}
               </span>
