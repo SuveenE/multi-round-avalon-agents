@@ -147,6 +147,35 @@ function buildEventSequence(game: Game): GameEvent[] {
   return events;
 }
 
+function HighlightedText({
+  text,
+  playerNames,
+}: {
+  text: string;
+  playerNames: string[];
+}) {
+  if (playerNames.length === 0) return <>{text}</>;
+  const pattern = new RegExp(`\\b(${playerNames.join("|")})\\b`, "g");
+  const parts = text.split(pattern);
+  const nameSet = new Set(playerNames);
+  return (
+    <>
+      {parts.map((part, i) =>
+        nameSet.has(part) ? (
+          <span
+            key={i}
+            className="font-semibold text-gray-900 bg-gray-100 rounded px-0.5"
+          >
+            {part}
+          </span>
+        ) : (
+          <span key={i}>{part}</span>
+        ),
+      )}
+    </>
+  );
+}
+
 type PlaybackSpeed = 1 | 1.5 | 2;
 
 export default function AutoPlayViewer({
@@ -199,6 +228,10 @@ export default function AutoPlayViewer({
   }, [speed]);
 
   const events = useMemo(() => buildEventSequence(game), [game]);
+  const playerNames = useMemo(
+    () => game.players.map((p) => p.name),
+    [game.players],
+  );
 
   const loyalServantIndexMap = useMemo(() => {
     const map: Record<string, number> = {};
@@ -561,7 +594,10 @@ export default function AutoPlayViewer({
                   </span>
                 </div>
                 <p className="text-lg leading-relaxed text-gray-800">
-                  {currentEvent.text}
+                  <HighlightedText
+                    text={currentEvent.text}
+                    playerNames={playerNames}
+                  />
                 </p>
               </div>
             ) : (
