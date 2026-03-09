@@ -18,6 +18,9 @@ interface GameEvent {
   text: string;
   phase: string; // e.g. "Mission 1 - Discussion", "Assassin Phase"
   missionIndex?: number;
+  proposalIndex?: number;
+  isVoteResult?: boolean;
+  isMissionResult?: boolean;
 }
 
 function buildEventSequence(game: Game): GameEvent[] {
@@ -64,6 +67,7 @@ function buildEventSequence(game: Game): GameEvent[] {
         text: `${proposal.leader} proposes a team: ${proposal.team_members.join(", ")}.`,
         phase: `${missionLabel} - Proposal ${pi + 1}`,
         missionIndex: mi,
+        proposalIndex: pi,
       });
 
       // Votes
@@ -76,6 +80,7 @@ function buildEventSequence(game: Game): GameEvent[] {
           text: `${voteWord}.${comment}`,
           phase: `${missionLabel} - Voting`,
           missionIndex: mi,
+          proposalIndex: pi,
         });
       }
 
@@ -85,6 +90,8 @@ function buildEventSequence(game: Game): GameEvent[] {
         text: `The proposal is ${proposal.vote_result}.`,
         phase: `${missionLabel} - Vote Result`,
         missionIndex: mi,
+        proposalIndex: pi,
+        isVoteResult: true,
       });
     }
 
@@ -97,6 +104,7 @@ function buildEventSequence(game: Game): GameEvent[] {
         text: `The quest ${mission.mission_result === "success" ? "succeeds" : "fails"} with ${failCount} fail card${failCount !== 1 ? "s" : ""}.`,
         phase: `${missionLabel} - Result`,
         missionIndex: mi,
+        isMissionResult: true,
       });
     }
   }
@@ -344,6 +352,75 @@ export default function AutoPlayViewer({
   // Only reveal mission results for missions that have been reached during playback
   const revealedMissionIndex = currentEvent?.missionIndex ?? -1;
 
+  // Build visible mission history based on events seen so far
+  const missionHistory = useMemo(() => {
+    if (currentEventIndex < 0) return [];
+
+    const history: {
+      missionIndex: number;
+      teamSize: number;
+      proposals: {
+        leader: string;
+        team: string[];
+        voteResult?: "approved" | "rejected";
+        votes?: { player: string; vote: "approve" | "reject" }[];
+      }[];
+      result?: "success" | "fail";
+      failCount?: number;
+    }[] = [];
+
+    // Scan all events up to current to determine what's been revealed
+    for (let i = 0; i <= currentEventIndex; i++) {
+      const evt = events[i];
+      if (evt.missionIndex === undefined) continue;
+
+      const mi = evt.missionIndex;
+      // Ensure mission entry exists
+      while (history.length <= mi) {
+        history.push({
+          missionIndex: history.length,
+          teamSize: game.config.mission_team_sizes[history.length] ?? 0,
+          proposals: [],
+        });
+      }
+
+      const entry = history[mi];
+
+      if (evt.proposalIndex !== undefined) {
+        const pi = evt.proposalIndex;
+        while (entry.proposals.length <= pi) {
+          const proposal = game.missions[mi].proposals[entry.proposals.length];
+          entry.proposals.push({
+            leader: proposal.leader,
+            team: proposal.team_members,
+          });
+        }
+
+        if (evt.isVoteResult) {
+          const proposal = game.missions[mi].proposals[pi];
+          entry.proposals[pi].voteResult = proposal.vote_result;
+          entry.proposals[pi].votes = proposal.votes.map((v) => ({
+            player: v.player,
+            vote: v.vote,
+          }));
+        }
+      }
+
+      if (evt.isMissionResult) {
+        const mission = game.missions[mi];
+        entry.result = mission.mission_result ?? undefined;
+        entry.failCount = mission.fail_count ?? undefined;
+      }
+    }
+
+    return history;
+  }, [
+    currentEventIndex,
+    events,
+    game.missions,
+    game.config.mission_team_sizes,
+  ]);
+
   return (
     <div className="h-full bg-white text-gray-900 flex flex-col overflow-hidden">
       {/* Top bar: game info + mission progress */}
@@ -426,67 +503,175 @@ export default function AutoPlayViewer({
       </div>
 
       {/* Main area */}
-      <div className="flex-1 flex flex-col overflow-hidden">
-        {/* Players row */}
-        <div className="flex-shrink-0 px-6 py-6 flex justify-center gap-4">
-          {game.players.map((player, idx) => {
-            const isSpeaking = activeSpeaker === player.name;
+      <div className="flex-1 flex overflow-hidden">
+        {/* Center content */}
+        <div className="flex-1 flex flex-col overflow-hidden">
+          {/* Players row */}
+          <div className="flex-shrink-0 px-6 py-6 flex justify-center gap-4">
+            {game.players.map((player, idx) => {
+              const isSpeaking = activeSpeaker === player.name;
 
-            return (
-              <div
-                key={player.name}
-                className={`flex flex-col items-center transition-all duration-300 ${
-                  isSpeaking
-                    ? "scale-110 drop-shadow-[0_0_20px_rgba(59,130,246,0.5)]"
-                    : ""
-                }`}
-              >
-                <PlayerCard
-                  player={player}
-                  size="2xl"
-                  isActive={isSpeaking}
-                  loyalServantIndex={loyalServantIndexMap[player.name]}
-                  onMemoryClick={
-                    hasMemories ? () => setMemoryPlayer(player.name) : undefined
-                  }
-                />
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Speech bubble */}
-        <div className="flex-1 flex items-center justify-center px-6">
-          {currentEvent ? (
-            <div
-              className={`rounded-2xl px-8 py-6 shadow-md max-w-2xl w-full ${
-                currentEvent.type === "narrator"
-                  ? "bg-gray-100 border border-gray-200"
-                  : "bg-white border border-gray-200 shadow-lg"
-              }`}
-            >
-              <div className="flex items-center gap-3 mb-3">
-                <span
-                  className={`text-base font-bold uppercase font-display ${
-                    currentEvent.type === "narrator"
-                      ? "text-gray-500"
-                      : "text-blue-600"
+              return (
+                <div
+                  key={player.name}
+                  className={`flex flex-col items-center transition-all duration-300 ${
+                    isSpeaking
+                      ? "scale-110 drop-shadow-[0_0_20px_rgba(59,130,246,0.5)]"
+                      : ""
                   }`}
                 >
-                  {currentEvent.speaker}
-                </span>
-                <span className="text-sm text-gray-400 font-display">
-                  {currentEvent.phase}
-                </span>
+                  <PlayerCard
+                    player={player}
+                    size="2xl"
+                    isActive={isSpeaking}
+                    loyalServantIndex={loyalServantIndexMap[player.name]}
+                    onMemoryClick={
+                      hasMemories
+                        ? () => setMemoryPlayer(player.name)
+                        : undefined
+                    }
+                  />
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Speech bubble */}
+          <div className="flex-1 flex items-center justify-center px-6">
+            {currentEvent ? (
+              <div
+                className={`rounded-2xl px-8 py-6 shadow-md max-w-2xl w-full ${
+                  currentEvent.type === "narrator"
+                    ? "bg-gray-100 border border-gray-200"
+                    : "bg-white border border-gray-200 shadow-lg"
+                }`}
+              >
+                <div className="flex items-center gap-3 mb-3">
+                  <span
+                    className={`text-base font-bold uppercase font-display ${
+                      currentEvent.type === "narrator"
+                        ? "text-gray-500"
+                        : "text-blue-600"
+                    }`}
+                  >
+                    {currentEvent.speaker}
+                  </span>
+                  <span className="text-sm text-gray-400 font-display">
+                    {currentEvent.phase}
+                  </span>
+                </div>
+                <p className="text-lg leading-relaxed text-gray-800">
+                  {currentEvent.text}
+                </p>
               </div>
-              <p className="text-lg leading-relaxed text-gray-800">
-                {currentEvent.text}
-              </p>
-            </div>
-          ) : (
-            <p className="text-gray-400 text-sm">Press play to begin</p>
-          )}
+            ) : (
+              <p className="text-gray-400 text-sm">Press play to begin</p>
+            )}
+          </div>
         </div>
+
+        {/* Right sidebar - Mission History */}
+        {missionHistory.length > 0 && (
+          <div className="w-72 flex-shrink-0 border-l border-gray-200 overflow-y-auto bg-gray-50/50">
+            <div className="p-4">
+              <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3 font-display">
+                Mission History
+              </h3>
+              <div className="space-y-3">
+                {missionHistory.map((mission) => {
+                  const isCurrent =
+                    currentEvent?.missionIndex === mission.missionIndex;
+                  return (
+                    <div
+                      key={mission.missionIndex}
+                      className={`rounded-lg border p-3 transition-colors ${
+                        isCurrent
+                          ? "border-yellow-300 bg-yellow-50/50"
+                          : mission.result === "success"
+                            ? "border-blue-200 bg-blue-50/30"
+                            : mission.result === "fail"
+                              ? "border-red-200 bg-red-50/30"
+                              : "border-gray-200 bg-white"
+                      }`}
+                    >
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-sm font-semibold text-gray-800 font-display">
+                          Mission {mission.missionIndex + 1}
+                        </span>
+                        <div className="flex items-center gap-1.5">
+                          <span className="text-xs text-gray-400">
+                            {mission.teamSize}p
+                          </span>
+                          {mission.result && (
+                            <span
+                              className={`text-xs px-1.5 py-0.5 rounded font-medium ${
+                                mission.result === "success"
+                                  ? "bg-blue-100 text-blue-700"
+                                  : "bg-red-100 text-red-700"
+                              }`}
+                            >
+                              {mission.result}
+                              {mission.result === "fail" &&
+                                mission.failCount !== undefined &&
+                                ` (${mission.failCount})`}
+                            </span>
+                          )}
+                        </div>
+                      </div>
+
+                      {mission.proposals.map((proposal, pi) => (
+                        <div
+                          key={pi}
+                          className={`text-xs mb-1.5 last:mb-0 ${
+                            proposal.voteResult === "rejected"
+                              ? "opacity-50"
+                              : ""
+                          }`}
+                        >
+                          <div className="flex items-center gap-1 mb-0.5">
+                            <span className="font-medium text-gray-600">
+                              {proposal.leader}:
+                            </span>
+                            <span className="text-gray-500">
+                              {proposal.team.join(", ")}
+                            </span>
+                          </div>
+                          {proposal.voteResult && proposal.votes && (
+                            <div className="flex flex-wrap gap-1 ml-1">
+                              {proposal.votes.map((v) => (
+                                <span
+                                  key={v.player}
+                                  className={`px-1 py-0.5 rounded text-[10px] font-medium ${
+                                    v.vote === "approve"
+                                      ? "bg-green-100 text-green-700"
+                                      : "bg-gray-200 text-gray-500"
+                                  }`}
+                                  title={`${v.player}: ${v.vote}`}
+                                >
+                                  {v.player.charAt(0)}
+                                  {v.vote === "approve" ? "\u2713" : "\u2717"}
+                                </span>
+                              ))}
+                              <span
+                                className={`px-1 py-0.5 rounded text-[10px] font-medium ${
+                                  proposal.voteResult === "approved"
+                                    ? "bg-green-200 text-green-800"
+                                    : "bg-gray-300 text-gray-600"
+                                }`}
+                              >
+                                {proposal.voteResult}
+                              </span>
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Playback controls */}
