@@ -386,18 +386,23 @@ export default function AutoPlayViewer({
           </span>
           {missionResults.map((result, idx) => {
             const revealed = idx <= revealedMissionIndex || isAtEnd;
+            const teamSize = game.config.mission_team_sizes?.[idx];
             return (
-              <div
-                key={idx}
-                className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${
-                  revealed && result === "success"
-                    ? "bg-blue-500 text-white"
-                    : revealed && result === "fail"
-                      ? "bg-red-500 text-white"
-                      : "bg-gray-200 text-gray-400"
-                } ${currentEvent?.missionIndex === idx ? "ring-2 ring-yellow-400" : ""}`}
-              >
-                {idx + 1}
+              <div key={idx} className="flex flex-col items-center gap-0.5">
+                <div
+                  className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${
+                    revealed && result === "success"
+                      ? "bg-blue-500 text-white"
+                      : revealed && result === "fail"
+                        ? "bg-red-500 text-white"
+                        : "bg-gray-200 text-gray-400"
+                  } ${currentEvent?.missionIndex === idx ? "ring-2 ring-yellow-400" : ""}`}
+                >
+                  {idx + 1}
+                </div>
+                {teamSize && (
+                  <span className="text-[10px] text-gray-400">{teamSize}p</span>
+                )}
               </div>
             );
           })}
