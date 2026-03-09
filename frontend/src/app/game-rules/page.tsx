@@ -615,6 +615,23 @@ export default function GameRulesPage() {
       </div>
 
       <div className="flex-1 max-w-5xl mx-auto w-full px-6 py-10">
+        {/* Game flow diagram */}
+        <section className="mb-12">
+          <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-5 font-display">
+            How a Game Works
+          </h3>
+          <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm flex justify-center">
+            <Image
+              src={basePath + "/assets/gameflow.png"}
+              alt="Game flow diagram showing the phases of an Avalon game"
+              width={900}
+              height={400}
+              className="w-full max-w-4xl h-auto"
+              unoptimized
+            />
+          </div>
+        </section>
+
         {/* Player count selector */}
         <div className="flex justify-center gap-2 mb-10">
           {compositions.map((c) => (
