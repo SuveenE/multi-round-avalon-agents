@@ -13,7 +13,7 @@
 </p>
 
 <p align="center">
-  <a href="#key-findings">Key Findings</a> · <a href="#dataset-structure">Dataset</a> · <a href="#quick-start">Quick Start</a> · <a href="#documentation">Docs</a> · <a href="https://suveenellawela.com/multi-round-avalon-agents">Game Viewer</a>
+  <a href="#key-findings">Key Findings</a> · <a href="#dataset-structure">Dataset</a> · <a href="#quick-start">Quick Start</a> · <a href="#documentation">Docs</a> · <a href="https://suveenellawela.com/multi-round-avalon-agents">Game Viewer</a> · <a href="https://suveenellawela.com/thoughts/avalon">Blog Post</a>
 </p>
 
 ---
