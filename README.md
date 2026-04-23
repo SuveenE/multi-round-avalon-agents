@@ -5,6 +5,11 @@
 <h1 align="center">Multi-Round Avalon with AI Agents</h1>
 
 <p align="center">
+  <a href="https://suveenellawela.com/multi-round-avalon-agents"><img src="https://img.shields.io/badge/Game_Viewer-4285F4?logo=googlechrome&logoColor=white" alt="Game Viewer"></a>
+  <a href="https://suveenellawela.com/thoughts/avalon"><img src="https://img.shields.io/badge/Blog_Post-FF5722?logo=hashnode&logoColor=white" alt="Blog Post"></a>
+</p>
+
+<p align="center">
   <b>A dataset and analysis of LLM agents playing hidden-role deception games with memory across rounds.</b>
 </p>
 
