@@ -153,11 +153,13 @@ python multi_game_runner.py
 If you use this dataset or code in your research, please cite:
 
 ```bibtex
-@misc{ellawela2025avalonagents,
-  title   = {Multi-Round Avalon with AI Agents},
-  author  = {Ellawela, Suveen},
-  year    = {2025},
-  url     = {https://github.com/SuveenE/multi-round-avalon-agents},
-  note    = {A dataset and analysis of LLM agents playing hidden-role deception games with memory across rounds}
+@misc{ellawela2026trustlieslongmemories,
+      title={Trust, Lies, and Long Memories: Emergent Social Dynamics and Reputation in Multi-Round Avalon with LLM Agents}, 
+      author={Suveen Ellawela},
+      year={2026},
+      eprint={2604.20582},
+      archivePrefix={arXiv},
+      primaryClass={cs.MA},
+      url={https://arxiv.org/abs/2604.20582}, 
 }
 ```
