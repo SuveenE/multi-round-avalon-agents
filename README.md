@@ -5,6 +5,8 @@
 <h1 align="center">Multi-Round Avalon with AI Agents</h1>
 
 <p align="center">
+  <a href="https://suveenellawela.com/multi-round-avalon-agents"><img src="https://img.shields.io/badge/Game_Viewer-4285F4?logo=googlechrome&logoColor=white" alt="Game Viewer"></a>
+  <a href="https://suveenellawela.com/thoughts/avalon"><img src="https://img.shields.io/badge/Blog_Post-FF5722?logo=hashnode&logoColor=white" alt="Blog Post"></a>
   <a href="https://arxiv.org/pdf/2604.20582"><img src="https://img.shields.io/badge/arXiv-2604.20582-b31b1b.svg" alt="arXiv"></a>
 </p>
 
